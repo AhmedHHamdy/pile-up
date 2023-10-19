@@ -12,6 +12,12 @@ import CreatePile from './pages/pile/CreatePile'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from "./pages/Signup"
+import PileView from './pages/pile/PileView'
+import ItemsView from "./pages/pile/pile-details/ItemsView"
+import ShareView from "./pages/pile/pile-details/ShareView"
+import ManagersView from "./pages/pile/pile-details/ManagersView"
+import ReportsView from "./pages/pile/pile-details/ReportsView"
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,10 +33,16 @@ function App() {
           <Route path='managers' element={<ManagerView />} />
           <Route path='reports' element={<ReportView />} />
           <Route path='addressBook' element={<AddressBookView />} />
+          <Route path='createpile' element={<CreatePile />} />
+          <Route path='pileview' element={<PileView />}>
+            <Route index element={<ItemsView />} />
+            <Route path='share' element={<ShareView />} />
+            <Route path='managers' element={<ManagersView />} />
+            <Route path='reports' element={<ReportsView />} />
 
+          </Route>
         </Route>
 
-        <Route path='createpile' element={<CreatePile />} />
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<Signup/>} />
 

@@ -217,7 +217,6 @@ export default function Home() {
           <h4>About</h4>
           <div>
             <Link>About Us</Link>
-            <Link>Press</Link>
             <Link>Partner With Us</Link>
             <Link>Become an Affiliate</Link>
             <Link>Contact Us</Link>

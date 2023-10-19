@@ -9,7 +9,7 @@ export default function FolderView() {
     <section className="folder-view">
       <section className="folder-creation-section">
         <div className="create-pile-div">
-          <Link className="create-pile-button" to="/createpile">Create a Pile</Link>
+          <Link className="create-pile-button" to="createpile">Create a Pile</Link>
         </div>
 
         <div className="folders-section">
@@ -54,7 +54,7 @@ export default function FolderView() {
               <h2>This folder is empty</h2>
               <p>Drag a pile into this folder or create a new pile</p>
             </div>
-            <Link className="create-pile-button" to="../createpile">Create a Pile</Link>
+            <Link className="create-pile-button" to="createpile">Create a Pile</Link>
             <button className="quick-tour-button">Take a quick tour</button>
           </div>
         </div>
