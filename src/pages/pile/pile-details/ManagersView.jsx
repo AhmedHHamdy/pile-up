@@ -24,29 +24,31 @@ export default function ManagersView() {
           </div>
           
           <div className="managers-list-container-manager-info">
-          <table>
-            <colgroup span="4"></colgroup>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Date Added</th>
-            </tr>
+            <table>
+              <colgroup span="4"></colgroup>
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Date Added</th>
+                </tr>
 
-            <tr>
-              <td>May Kenawi</td>
-              <td>name@example.com</td>
-              <td>11/08/2023</td>
-            </tr>
+                <tr>
+                  <td>May Kenawi</td>
+                  <td>name@example.com</td>
+                  <td>11/08/2023</td>
+                </tr>
 
-            <tr>
-              <td>May Kenawi</td>
-              <td>name@example.com</td>
-              <td>23/08/2023</td>
-            </tr>
-          
-          </table>
-
+                <tr>
+                  <td>May Kenawi</td>
+                  <td>name@example.com</td>
+                <td>23/08/2023</td>
+              </tr>
+              </tbody>
+            
+            </table>
           </div>
+          
         </div>
       </div>
     </section>

@@ -1,10 +1,40 @@
 import "../App.css"
-import { AiOutlinePlus } from "react-icons/ai"
+import { AiOutlinePlus, AiFillCloseCircle } from "react-icons/ai"
 import { Link } from "react-router-dom"
 import Pile from "../components/Pile"
 import File from "../components/file"
+import { useState, useRef, useEffect } from "react"
 
 export default function FolderView() {
+  const modelRef = useRef(null)
+  const [isFolderFormOpen, setIsFolderFormOpen] = useState(false)
+
+  const openFolderForm = () => {
+    setIsFolderFormOpen(true)
+  }
+
+  const closeFolderForm = () => {
+    setIsFolderFormOpen(false)
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modelRef.current && !modelRef.current.contain(event.target)) {
+        closeFolderForm()
+      }
+
+      if (isFolderFormOpen) {
+        document.addEventListener("click", handleClickOutside)
+      }
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside)
+      }
+    }
+  }, [isFolderFormOpen])
+
+
+
   return (
     <section className="folder-view">
       <section className="folder-creation-section">
@@ -15,7 +45,7 @@ export default function FolderView() {
         <div className="folders-section">
           <div className="create-folder-section">
             <h2>My Folders</h2>
-            <button>
+            <button onClick={openFolderForm}>
               <AiOutlinePlus />
             </button>
           </div>
@@ -69,6 +99,22 @@ export default function FolderView() {
           <button>Redeem</button>
         </div>
       </section>
+
+
+      { isFolderFormOpen && <div className="model-overlay-folder-form">
+        <div className="model-folder-form" ref={modelRef}>
+          <div className="folder-form-header">
+            <h1>New Folder</h1>
+            <button type="button" onClick={closeFolderForm}><AiFillCloseCircle /></button>
+          </div>
+
+          <form >
+            <label htmlFor="">Name <span>*</span></label>
+            <input type="text" placeholder="Enter a name" />
+            <button>Save</button>
+          </form>
+        </div>
+      </div>}
     </section>
   )
 }

@@ -1,5 +1,5 @@
 import "../../App.css"
-import { NavLink, Link, Outlet } from "react-router-dom"
+import { NavLink, Link, Outlet, useLocation } from "react-router-dom"
 import pileIcon  from "../../assets/Icon.png"
 import { IoIosArrowBack } from "react-icons/io"
 import { MdModeEdit } from "react-icons/md"
@@ -9,14 +9,17 @@ export default function PileView() {
     borderBottom: "2px solid #EF6C4D"
   }
 
+  const location = useLocation()
+  let reportsPath = location.pathname.split('/')[location.pathname.split('/').length -1]
+
   return (
     <section className="pileview-container">
       <div className="pileview-container-buttons">
-        <Link><IoIosArrowBack /> Back to piles</Link>
+        <Link to=".."><IoIosArrowBack /> Back to piles</Link>
         <span> 
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.5 10C12.5 10.663 12.2366 11.2989 11.7678 11.7678C11.2989 12.2366 10.663 12.5 10 12.5C9.33696 12.5 8.70107 12.2366 8.23223 11.7678C7.76339 11.2989 7.5 10.663 7.5 10C7.5 9.33696 7.76339 8.70107 8.23223 8.23223C8.70107 7.76339 9.33696 7.5 10 7.5C10.663 7.5 11.2989 7.76339 11.7678 8.23223C12.2366 8.70107 12.5 9.33696 12.5 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2.04834 10.0001C3.11001 6.61925 6.26917 4.16675 10 4.16675C13.7317 4.16675 16.89 6.61925 17.9517 10.0001C16.89 13.3809 13.7317 15.8334 10 15.8334C6.26917 15.8334 3.11001 13.3809 2.04834 10.0001Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.5 10C12.5 10.663 12.2366 11.2989 11.7678 11.7678C11.2989 12.2366 10.663 12.5 10 12.5C9.33696 12.5 8.70107 12.2366 8.23223 11.7678C7.76339 11.2989 7.5 10.663 7.5 10C7.5 9.33696 7.76339 8.70107 8.23223 8.23223C8.70107 7.76339 9.33696 7.5 10 7.5C10.663 7.5 11.2989 7.76339 11.7678 8.23223C12.2366 8.70107 12.5 9.33696 12.5 10Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2.04834 10.0001C3.11001 6.61925 6.26917 4.16675 10 4.16675C13.7317 4.16675 16.89 6.61925 17.9517 10.0001C16.89 13.3809 13.7317 15.8334 10 15.8334C6.26917 15.8334 3.11001 13.3809 2.04834 10.0001Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           Preview
         </span>
@@ -31,9 +34,16 @@ export default function PileView() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris rhoncus aenean vel elit.</p>
           </div>
           <a href=""><MdModeEdit /></a>
-
-
         </div>
+
+        { reportsPath == "reports" && 
+          <div className="reports-total-collected">
+            <h3>Total Collected</h3>
+            <h1>0.0 EGP</h1>
+          </div>
+        }
+
+
         <div className="pileview-container-nav">
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to="." end>Items</NavLink>
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to="share">Share</NavLink>
