@@ -3,6 +3,8 @@ import { NavLink, Link, Outlet, useLocation } from "react-router-dom"
 import pileIcon  from "../../assets/Icon.png"
 import { IoIosArrowBack } from "react-icons/io"
 import { MdModeEdit } from "react-icons/md"
+import { AiFillCloseCircle } from "react-icons/ai"
+import { useRef, useState } from "react"
 
 export default function PileView() {
   const activeStyle = {
@@ -11,6 +13,17 @@ export default function PileView() {
 
   const location = useLocation()
   let reportsPath = location.pathname.split('/')[location.pathname.split('/').length -1]
+
+  const [editPileInfoForm, setEditPileInfoForm] = useState(false)
+  const modelRef = useRef(null)
+
+  const openEditPileForm = () => {
+    setEditPileInfoForm(true)
+  }
+
+  const closeEditPileForm = () => {
+    setEditPileInfoForm(false)
+  }
 
   return (
     <section className="pileview-container">
@@ -33,7 +46,7 @@ export default function PileView() {
             <h3>My Pile 01</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris rhoncus aenean vel elit.</p>
           </div>
-          <a href=""><MdModeEdit /></a>
+          <button className="pile-info-edit-button" onClick={openEditPileForm}><MdModeEdit /></button>
         </div>
 
         { reportsPath == "reports" && 
@@ -51,6 +64,24 @@ export default function PileView() {
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to="reports">Reports</NavLink>
           </div>
       </div>
+
+      { editPileInfoForm && <div className="model-overlay-edit-pile-form">
+        <div className="model-edit-pile-form" ref={modelRef}>
+          <div className="edit-pile-form-header">
+            <h1>Edit Pile Info</h1>
+            <button type="button" onClick={closeEditPileForm}><AiFillCloseCircle /></button>
+          </div>
+
+          <form >
+            <label htmlFor="">Name <span>*</span></label>
+            <input type="text" placeholder="Enter a name" />
+
+            <label htmlFor="">Description <span>*</span></label>
+            <textarea placeholder="Enter a Description" />
+            <button>Save</button>
+          </form>
+        </div>
+      </div>}
       
       <Outlet />
       

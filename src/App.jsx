@@ -17,6 +17,7 @@ import ItemsView from "./pages/pile/pile-details/ItemsView"
 import ShareView from "./pages/pile/pile-details/ShareView"
 import ManagersView from "./pages/pile/pile-details/ManagersView"
 import ReportsView from "./pages/pile/pile-details/ReportsView"
+import SendInvitation from './pages/SendInvitation'
 
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
             <Route path='reports' element={<ReportsView />} />
 
           </Route>
+          <Route path='sendInvitation' element={<SendInvitation />} />
+
+
         </Route>
 
         <Route path='login' element={<Login />} />

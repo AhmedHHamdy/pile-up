@@ -4,6 +4,7 @@ import { BsLink45Deg } from "react-icons/bs"
 import { HiDownload } from "react-icons/hi"
 import { AiOutlineMail } from "react-icons/ai"
 import qrCodeImage from "../../../assets/qrcode.png"
+import { Link } from "react-router-dom"
 
 export default function ShareView() {
   return (
@@ -33,7 +34,7 @@ export default function ShareView() {
       <div className="share-page-email">
         <h2><AiOutlineMail /> Share via email</h2>
         <p>Send invitations and track payments and responses</p>
-        <button>Send a custom invitation</button>
+        <Link to="../../sendInvitation">Send a custom invitation</Link>
       </div>
 
     </section>

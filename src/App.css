@@ -24,7 +24,6 @@ header {
 header .link-img-logo {
   grid-column: 2;
   align-self: center;
-  padding-top: 1rem;
 }
 
 .home-link, .resources-link, .vendors-link, .signup-link, .login-link  {
@@ -364,6 +363,7 @@ header > svg {
   gap: 0.2rem;
 }
 
+
 .pile-container .pile-info h3, .pile-container .pile-info h4 {
   margin: 0;
 }
@@ -465,7 +465,7 @@ header > svg {
   justify-content: flex-start;
   align-items: center;
   height: 89vh;
-  grid-column: 7/10;
+  grid-column: 5/11;
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
@@ -1988,6 +1988,89 @@ main {
   padding: 2rem 0rem;
 }
 
+.pileview-container .pile-container .pile-info-edit-button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.pileview-container .pile-container .pile-info-edit-button > svg {
+  font-size: 1.5rem;
+  color: #707070;
+}
+
+/* Edit pile info dialog */
+.model-overlay-edit-pile-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.model-edit-pile-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  width: 400px;
+  z-index: 1000;
+  position: relative;
+}
+
+.edit-pile-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-pile-form-header button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.edit-pile-form-header button > svg {
+  font-size: 2rem;
+  color: #EF6C4D;
+}
+
+.model-edit-pile-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.model-edit-pile-form form label span {
+  color: #EF6C4D;
+}
+
+.model-edit-pile-form form input {
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  padding: 0.5rem 0;
+  text-indent: 0.5rem;
+}
+
+.model-edit-pile-form form button {
+  align-self: center;
+  background: #EF6C4D;
+  color: #F5F5F5;
+  border: 0;
+  padding: 0.6rem 1rem;
+  border-radius: 0.3rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+
+
 .pileview-container-buttons a {
   display: flex;
   justify-content: center;
@@ -2486,6 +2569,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .share-page-download-buttons a svg {
@@ -2534,6 +2618,7 @@ main {
   padding: 0.5rem 2rem;
   border-radius: 0.4rem;
   color: #FFFFFF;
+  cursor: pointer;
 }
 
 .share-page-link .edit-link {
@@ -2565,12 +2650,14 @@ main {
   margin-right: 0.5rem;
 }
 
-.share-page-email button {
+.share-page-email a {
+  text-decoration: none;
   background: #EF6C4D;
   border: 0;
   padding: 0.5rem 2rem;
   border-radius: 0.4rem;
   color: #FFFFFF;
+  cursor: pointer;
 }
 
 
@@ -2639,6 +2726,77 @@ main {
 
 .managers-list-container-manager .managers-list-container-manager-info {
   grid-column: 2/-1;
+}
+
+/* Add a manager Dialog */
+
+.model-overlay-manager-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.model-manager-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  width: 400px;
+  z-index: 1000;
+  position: relative;
+}
+
+.manager-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.manager-form-header button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.manager-form-header button > svg {
+  font-size: 2rem;
+  color: #EF6C4D;
+}
+
+.model-manager-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.model-manager-form form label span {
+  color: #EF6C4D;
+}
+
+.model-manager-form form input {
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  padding: 0.5rem 0;
+  text-indent: 0.5rem;
+}
+
+.model-manager-form form button {
+  align-self: center;
+  background: #EF6C4D;
+  color: #F5F5F5;
+  border: 0;
+  padding: 0.6rem 1rem;
+  border-radius: 0.3rem;
+  width: 100%;
+  cursor: pointer;
 }
 
 table {
@@ -2763,4 +2921,225 @@ tfoot {
   color: #fff;
 }
 
+/* Send Invitation Page */
 
+
+
+.invitation-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  grid-column: 5/11;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.invitation-form-container h1 {
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 0rem 2rem;
+}
+
+.invitation-form {
+  border: 1px solid #CCCCCC;
+  /* width: 95vh; */
+  background: #FFFFFF;
+  border-bottom: 0;
+  /* padding-bottom: 5rem; */
+}
+
+.invitation-form-container {
+  /* padding: 0rem 2rem; */
+  border: 1px solid #CCCCCC;
+  border-left: 0;
+  border-right: 0;
+
+}
+
+.invitation-from-elements-container {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  border: 1px solid #CCCCCC;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  padding-top: 1rem;
+}
+
+.invitation-from-elements-container .input-container {
+  grid-column: 1/-1;
+  padding: 0 4rem;
+  margin-bottom: 1rem;
+}
+
+
+.invitation-from-elements-container .editor {
+   grid-row: 4;
+   grid-column: 1/-1;
+   margin: 1rem 0;
+   padding: 0rem 6rem;
+   width: 65vh;
+   height: 25vh;
+}
+
+.invitation-form .form-buttons {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #CCCCCC;
+  padding: 1rem 4rem;
+}
+
+.invitation-form  .form-buttons button {
+  background: #EF6C4D;
+  color: #F5F5F5;
+  font-size: 0.9rem;
+  border: 0;
+  padding: 0.6rem 2rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+}
+
+.invitation-form  .form-buttons a {
+  text-decoration: none;
+  color: #707070;
+  font-size: 0.9rem;
+  border: 0;
+  padding: 0 0;
+  border-radius: 0.3rem;
+  font-weight: bold;
+}
+
+.invitation-form  .form-buttons a:hover {
+  text-decoration: underline;
+}
+
+.invite-input-container {
+    grid-row: 2;
+    grid-column: 9/15;
+    padding: 0 0rem 0 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.invitation-from-elements-container  .title-input-container {
+  grid-row: 2;
+  grid-column: 1/7;
+  padding: 0 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-input-container label, .invite-input-container label {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.title-input-container input, .invite-input-container select {
+  border: 1px solid #CCCCCC;
+  border-radius: 0.3rem;
+  padding: 0.45rem;
+}
+
+.title-input-container label span, .invite-input-container label span{
+  color: #EF6C4D;
+}
+
+.invitation-back-button {
+  background: #03BCA4;
+  /* width: 95vh; */
+  padding: 1.5rem 0;
+  border: 1px solid #CCCCCC;
+  margin-top: 0;
+
+}
+
+.invitation-back-button a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #F5F5F5;
+  padding-left: 1.7rem;
+}
+
+
+.invite-message-container {
+  grid-row: 3;
+  grid-column: 2/15;
+  margin-top: 1rem;
+  border-top: 1px solid #CCCCCC;
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.invite-message-container-from-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  grid-column: 1/6;
+}
+
+.invite-message-container-from-input label span {
+  color: #EF6C4D;
+}
+
+.invite-message-container-from-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  grid-column: 7/-1;
+}
+
+.invite-message-container-from-input input {
+  border: 1px solid #CCCCCC;
+  border-radius: 0.3rem;
+  padding: 0.45rem;
+}
+
+.invite-message-container-from-select select {
+  border: 1px solid #CCCCCC;
+  border-radius: 0.3rem;
+  padding: 0.45rem;
+}
+
+.invite-message-container .editor {
+  grid-row: 4;
+  grid-column: 1/-1;
+  margin: 3rem 0;
+  padding: 0;
+}
+
+.invite-message-container-from-select label span {
+  color: #EF6C4D;
+}
+
+.invite-form-add-recipients-button-container {
+  grid-row: 2;
+  grid-column: 2/15;
+  margin-top: 6rem;
+}
+
+.invite-form-add-recipients-button-container label span {
+  color: #EF6C4D;
+}
+
+.invite-form-add-recipients-button-container p {
+  background: #F5F5F5;
+  color: #EF6C4D;
+  padding: 0.5rem;
+}
+
+.invite-form-add-recipients-button-container button {
+  background: #EF6C4D;
+  color: #F5F5F5;
+  font-size: 0.9rem;
+  border: 0;
+  padding: 0.6rem 1rem;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
