@@ -3143,3 +3143,13 @@ tfoot {
   font-weight: 600;
   cursor: pointer;
 }
+
+
+/* Login validation */
+.err-msg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin: 0 2rem 0.5rem 2rem;
+}

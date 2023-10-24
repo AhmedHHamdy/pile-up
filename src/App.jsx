@@ -18,6 +18,7 @@ import ShareView from "./pages/pile/pile-details/ShareView"
 import ManagersView from "./pages/pile/pile-details/ManagersView"
 import ReportsView from "./pages/pile/pile-details/ReportsView"
 import SendInvitation from './pages/SendInvitation'
+import AuthRequired from './components/AuthRequired'
 
 
 function App() {
@@ -28,24 +29,27 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />}/>
-        <Route path='dashboard' element={<SideNav />}>
-          <Route index element={<CollectionsView />}/>
-          <Route path='history' element={<HistoryView />} />
-          <Route path='managers' element={<ManagerView />} />
-          <Route path='reports' element={<ReportView />} />
-          <Route path='addressBook' element={<AddressBookView />} />
-          <Route path='createpile' element={<CreatePile />} />
-          <Route path='pileview' element={<PileView />}>
-            <Route index element={<ItemsView />} />
-            <Route path='share' element={<ShareView />} />
-            <Route path='managers' element={<ManagersView />} />
-            <Route path='reports' element={<ReportsView />} />
+        <Route element={<AuthRequired />}>
+          <Route path='dashboard' element={<SideNav />}>
+            <Route index element={<CollectionsView />}/>
+            <Route path='history' element={<HistoryView />} />
+            <Route path='managers' element={<ManagerView />} />
+            <Route path='reports' element={<ReportView />} />
+            <Route path='addressBook' element={<AddressBookView />} />
+            <Route path='createpile' element={<CreatePile />} />
+            <Route path='pileview' element={<PileView />}>
+              <Route index element={<ItemsView />} />
+              <Route path='share' element={<ShareView />} />
+              <Route path='managers' element={<ManagersView />} />
+              <Route path='reports' element={<ReportsView />} />
+
+            </Route>
+            <Route path='sendInvitation' element={<SendInvitation />} />
+
 
           </Route>
-          <Route path='sendInvitation' element={<SendInvitation />} />
-
-
         </Route>
+        
 
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<Signup/>} />
