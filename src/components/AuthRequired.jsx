@@ -7,7 +7,8 @@ export default function AuthRequired() {
   // return (
   //   auth ?  <Outlet /> : <Navigate to="/login" replace />
   // )
-  if (!auth.token) {
+  const token = localStorage.getItem("userToken")
+  if (!token) {
     return <Navigate to="/login" replace />
   }
   return <Outlet />

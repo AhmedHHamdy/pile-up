@@ -19,6 +19,7 @@ import ManagersView from "./pages/pile/pile-details/ManagersView"
 import ReportsView from "./pages/pile/pile-details/ReportsView"
 import SendInvitation from './pages/SendInvitation'
 import AuthRequired from './components/AuthRequired'
+import Profile from './pages/profile/Profile'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />}/>
+        <Route path='profile' element={<Profile />} />
         <Route element={<AuthRequired />}>
           <Route path='dashboard' element={<SideNav />}>
             <Route index element={<CollectionsView />}/>
@@ -44,8 +46,9 @@ function App() {
               <Route path='reports' element={<ReportsView />} />
 
             </Route>
-            <Route path='sendInvitation' element={<SendInvitation />} />
 
+            <Route path='sendInvitation' element={<SendInvitation />} />
+          
 
           </Route>
         </Route>

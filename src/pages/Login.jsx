@@ -27,8 +27,6 @@ export default function Login() {
     setErrMsg('')
   }, [formData])
 
-  console.log(formData)
-
   function handleChange(event) {
     const { name, value } = event.target
     setFormData(prevFormData => {
@@ -44,8 +42,12 @@ export default function Login() {
     try {
       const response = await axios.post('https://main.mahmoud.social/api/v1/auth/login', formData)
       const data = response.data.data
-      console.log(data)
-      // const accessToken = response.data.data.token
+      console.log(response)
+      
+      localStorage.setItem('userToken', data.token)
+      
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
+
       setAuth({ ...data })
   
       setFormData({
@@ -54,7 +56,6 @@ export default function Login() {
       })
       if (data.token) {
         navigate('/dashboard')
-
       }
 
     } catch (err) {

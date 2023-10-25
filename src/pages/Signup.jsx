@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import pileupLogo from "../assets/pileup_logo.png"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 
 export default function Signup() {
+  const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -13,6 +15,24 @@ export default function Signup() {
     password_confirmation: ''
   })
 
+  const navigate = useNavigate()
+  
+  const [validPassword, setValidPassword] = useState(false);
+  const [validMatch, setValidMatch] = useState(false)
+
+  const userRef = useRef()
+  const errRef = useRef()
+
+  const [errMsg, setErrMsg] = useState('')
+
+  useEffect(() => {
+    userRef.current.focus()
+  }, [])
+
+  useEffect(() => {
+    setErrMsg('')
+  }, [formData])
+
   function handleChange(event) {
     const {name, value} = event.target
     setFormData(prevFormData => {
@@ -21,25 +41,56 @@ export default function Signup() {
         [name]: value
       }
     })
+
+    if (name === "password") {
+      const isPasswordValid = PWD_REGEX.test(value);
+      setValidPassword(isPasswordValid);
+      setValidMatch(isPasswordValid && value === formData.password_confirmation);
+    } else if (name === "password_confirmation") {
+      setValidMatch(value === formData.password && validPassword);
+    }
   }
 
   console.log(formData)
+  console.log(validPassword)
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    axios.post('https://main.mahmoud.social/api/v1/auth/register', formData)
-      .then(res => {
-        console.log(res);
-        // Check for validation errors in the response and provide user feedback if needed
-        if (res.data.errors) {
-          // Handle validation errors here, for example:
-          // setErrorMessages(res.data.errors);
-          console.log(res.data.errors)
-        }
+
+
+
+    try {
+
+      if (!validMatch) {
+        setErrMsg('Passwords do not match')
+        return;
+      }
+
+      if (!validPassword) {
+        setErrMsg('Password does not meet the requirements')
+      }
+
+      const response = await axios.post('https://main.mahmoud.social/api/v1/auth/register', formData)
+      const data = response.data.data
+      console.log(data)
+      
+      setFormData({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        password: '',
+        password_confirmation: ''
       })
-      .catch(error => {
-        console.error(error);
-      });
+
+      if (data.token) {
+        navigate("/login")
+      }
+
+    } catch (err) {
+      console.error(err.response.data.message);
+      setErrMsg(err.response.data.message)
+    }
   }
 
 
@@ -52,33 +103,32 @@ export default function Signup() {
           <p>Already have an account? <Link to="/login">Login</Link></p>
         </div>
         
+        <p ref={errRef} className={errMsg ? "err-msg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+
         <form onSubmit={handleSubmit} className="signup-section-form">
           <div className="signup-section-userinfo">
             <div className="first-name-input">
               <label htmlFor="first_name">First name</label>
-              <input type="text" name="first_name" id="firstName" onChange={handleChange} />
+              <input type="text" name="first_name" id="firstName" required onChange={handleChange} ref={userRef} value={formData.first_name} />
             </div>
 
             <div className="last-name-input">
               <label htmlFor="last_name">Last name</label>
-              <input type="text" name="last_name" id="lastName" onChange={handleChange} />
+              <input type="text" name="last_name" id="lastName" required onChange={handleChange} value={formData.last_name} />
             </div>
           </div>
 
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" onChange={handleChange} />
-
-          {/* <label htmlFor="userName">Username <span>(only letters, numbers, and underscores)</span></label>
-          <input type="text" name="userName" id="userName" onChange={handleChange} /> */}
+          <input type="email" name="email" id="email" onChange={handleChange} required value={formData.email} />
 
           <label htmlFor="phone">phone</label>
-          <input type="text" name="phone" id="phone" onChange={handleChange} />
+          <input type="text" name="phone" id="phone" onChange={handleChange} required value={formData.phone} />
 
           <label htmlFor="password">Password <span>(min. 8 char)</span></label>
-          <input type="password" name="password" id="password" onChange={handleChange} />
+          <input type="password" name="password" id="password" onChange={handleChange} required value={formData.password} />
 
           <label htmlFor="password_confirmation">Confirm Password</label>
-          <input type="password" name="password_confirmation" id="password_confirmation" onChange={handleChange} />
+          <input type="password" name="password_confirmation" id="password_confirmation" required onChange={handleChange} value={formData.password_confirmation} />
 
           <button>Join</button>
         </form>

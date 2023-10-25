@@ -1,9 +1,13 @@
-import { useContext } from "react";
-import AuthContext from "../context/AuthProvider";
+import { useState, useEffect } from "react";
 
-const useAuth = () => {
-  const { auth } = useContext(AuthContext)
-  return useContext(AuthContext)
+export default function useAuth() {
+    const [authenticated, setAuthenticated] = useState(!!localStorage.getItem('userToken'));
+
+    useEffect(() => {
+        // Check for changes in authentication status when the component mounts
+        const token = localStorage.getItem('userToken');
+        setAuthenticated(!!token);
+    }, []);
+
+    return authenticated;
 }
-
-export default useAuth
