@@ -1,10 +1,10 @@
-import "../App.css"
+import "../../App.css"
 import { AiOutlinePlus, AiFillCloseCircle } from "react-icons/ai"
 import { Link, useNavigate } from "react-router-dom"
-import Pile from "../components/Pile"
-import File from "../components/file"
+import Pile from "../../components/Pile"
+import File from "../../components/file"
 import { useState, useRef, useEffect } from "react"
-import useAuth from "../hooks/useAuth"
+// import useAuth from "../../hooks/useAuth"
 
 export default function FolderView() {
   const modelRef = useRef(null)
@@ -34,13 +34,13 @@ export default function FolderView() {
     }
   }, [isFolderFormOpen])
 
-  const isAuthenticated = useAuth()
-  const navigate = useNavigate();
+  // const isAuthenticated = useAuth()
+  // const navigate = useNavigate();
 
-  if (!isAuthenticated) {
-    navigate('/login')
-    return null
-  }
+  // if (!isAuthenticated) {
+  //   navigate('/login')
+  //   return null
+  // }
 
   return (
     <section className="folder-view">

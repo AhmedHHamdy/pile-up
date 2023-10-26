@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect, useContext } from "react";
+// import AuthContext from "../context/AuthProvider";
 
-export default function useAuth() {
-    const [authenticated, setAuthenticated] = useState(!!localStorage.getItem('userToken'));
+// export default function useAuth() {
+//     // const [authenticated, setAuthenticated] = useState(!!localStorage.getItem('userToken'));
 
-    useEffect(() => {
-        // Check for changes in authentication status when the component mounts
-        const token = localStorage.getItem('userToken');
-        setAuthenticated(!!token);
-    }, []);
+//     // useEffect(() => {
+//     //     // Check for changes in authentication status when the component mounts
+//     //     const token = localStorage.getItem('userToken');
+//     //     setAuthenticated(!!token);
+//     // }, []);
 
-    return authenticated;
-}
+//     return useContext(AuthContext)
+// }

@@ -1,15 +1,15 @@
 import { Outlet, Navigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import {useAuth} from "../context/AuthProvider";
 
 export default function AuthRequired() {
-  const { auth } = useAuth()
-  console.log(auth)
-  // return (
-  //   auth ?  <Outlet /> : <Navigate to="/login" replace />
-  // )
-  const token = localStorage.getItem("userToken")
+  const { token } = useAuth()  
+  console.log(token)
+  // Check if the use is authenticated
   if (!token) {
+    // If not authenticated, redirect to the login page
     return <Navigate to="/login" replace />
   }
+
+  // If authenticated, render the child routes
   return <Outlet />
 }

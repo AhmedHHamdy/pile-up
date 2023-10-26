@@ -1,9 +1,25 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../../App.css"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import { AiFillCloseCircle } from "react-icons/ai"
 
 export default function Profile() {
+  const [passwordFormOpen, setPasswordFormOpen] = useState(false)
+
+  const openPasswordForm = () => {
+    setPasswordFormOpen(true)
+  }
+
+  const closePasswordForm = () => {
+    setPasswordFormOpen(false)
+  }
+
+  useEffect(() => {
+    axios.get('https://main.mahmoud.social/api/v1/profile')
+          .then(res => setFormData(res.data.data))
+  }, [])
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -12,6 +28,27 @@ export default function Profile() {
     password: '',
     password_confirmation: ''
   })
+
+  const [formPassword, setFormPassword] = useState({
+    old_password: '',
+    password: '',
+    password_confirmation: ''
+  })
+
+  function handleChangePassword(even){
+    const {name, value} = event.target
+    setFormPassword(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    })
+  }
+
+  function handlePasswordFormSubmit(event) {
+    event.preventDefault()
+
+  }
 
   function handleChange(event) {
     const {name, value} = event.target
@@ -60,24 +97,38 @@ export default function Profile() {
           <label htmlFor="last_name">Last name</label>
           <input type="text" name="last_name" id="lastName" onChange={handleChange} value={formData.last_name} />
 
-
           <label htmlFor="email">Email</label>
           <input type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
-
-          {/* <label htmlFor="userName">Username <span>(only letters, numbers, and underscores)</span></label>
-          <input type="text" name="userName" id="userName" onChange={handleChange} /> */}
 
           <label htmlFor="phone">phone</label>
           <input type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
 
-          {/* <label htmlFor="password">Password <span>(min. 8 char)</span></label>
-          <input type="password" name="password" id="password" onChange={handleChange} required value={formData.password} />
-
-          <label htmlFor="password_confirmation">Confirm Password</label>
-          <input type="password" name="password_confirmation" id="password_confirmation" required onChange={handleChange} value={formData.password_confirmation} /> */}
-
           <button>Save Profile</button>
         </form>
+
+        <button className="change-password" onClick={openPasswordForm}>Change Password</button>
+        
+        {passwordFormOpen && 
+        <div className="model-overlay-password-form">
+          <div className="model-password-form password-form">
+            <div className="password-form-header">
+              <h1>Change Password</h1>
+              <button type="button" onClick={closePasswordForm}><AiFillCloseCircle /></button>
+            </div>
+
+            <form onSubmit={handlePasswordFormSubmit}>
+              <label htmlFor="old_password">Old Password</label>
+              <input type="password" name="old_password" id="old_password" onChange={handleChangePassword} required value={formPassword.old_password} />
+
+              <label htmlFor="password">Password</label>
+              <input type="password" name="password" id="password" onChange={handleChangePassword} required value={formPassword.password} />
+
+              <label htmlFor="password_confirmation">Confirm Password</label>
+              <input type="password" name="password_confirmation" id="password_confirmation" required onChange={handleChangePassword} value={formPassword.password_confirmation} />
+              <button>Save</button>
+            </form>
+          </div>
+        </div>}
       </section>
   )
 }

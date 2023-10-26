@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import pileupLogo from "../assets/pileup_logo.png"
+import pileupLogo from "../../../assets/pileup_logo.png"
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 

@@ -1,16 +1,16 @@
 import { Link, useNavigate } from "react-router-dom"
-import pileupLogo from "../assets/pileup_logo.png"
+import pileupLogo from "../../../assets/pileup_logo.png"
 import { useState, useRef, useEffect, useContext } from "react"
-import AuthContext from "../context/AuthProvider"
 import axios from "axios"
+import { useAuth } from "../../../context/AuthProvider"
 
 export default function Login() {
-  const { setAuth } = useContext(AuthContext)
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   })
 
+  const { setToken } = useAuth()
   const navigate = useNavigate()
 
   const userRef = useRef();
@@ -44,16 +44,14 @@ export default function Login() {
       const data = response.data.data
       console.log(response)
       
-      localStorage.setItem('userToken', data.token)
+      // localStorage.setItem('token', data.token)
       
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
+      // axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
 
-      setAuth({ ...data })
+      // setAuth({ ...data })
+
+      setToken(data.token)
   
-      setFormData({
-        username: '',
-        password: ''
-      })
       if (data.token) {
         navigate('/dashboard')
       }

@@ -26,7 +26,7 @@ header .link-img-logo {
   align-self: center;
 }
 
-.home-link, .resources-link, .vendors-link, .signup-link, .login-link  {
+.home-link, .resources-link, .vendors-link, .signup-link, .login-link, logout-link {
   justify-self: center;
   align-self: center;
   text-decoration: none;
@@ -50,6 +50,21 @@ header .link-img-logo {
 
 .vendors-link {
   grid-column: 8;
+}
+
+.profile-link, .notification-link {
+  color: #1A181B;
+  font-size: 1.8rem;
+  align-self: center;
+  justify-self: center;
+}
+
+.profile-link {
+  grid-column: 11;
+}
+
+.notification-link {
+  grid-column: 10;
 }
 
 .signup-link, .login-link {
@@ -81,6 +96,15 @@ header .link-img-logo {
 .login-link {
   grid-column: 11;
   grid-row: 1;
+}
+
+.logout-link {
+  padding-bottom: 0.5rem;
+  color: #EF6C4D;
+  grid-column: 12;
+  align-self: center;
+  font-size: 1.2rem;
+  justify-self: center;
 }
 
 /* header nav {
@@ -3168,8 +3192,8 @@ tfoot {
   flex-direction: column;
   background: #fff;
   border-top: 1px solid #CCCCCC;
-  height: 67vh;
-  padding: 5rem;
+  height: 80vh;
+  padding: 1rem;
 }
 
 .profile-header h1{
@@ -3205,3 +3229,180 @@ tfoot {
   margin-top: 2rem;
   align-self: center;
 }
+
+.change-password {
+  background: #EF6C4D;
+  color: #F5F5F5;
+  font-size: 0.9rem;
+  border: 0;
+  padding: 0.6rem 1rem;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  align-self: center;
+}
+
+.model-overlay-password-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.model-password-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  width: 400px;
+  z-index: 1000;
+  position: relative;
+}
+
+.password-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.password-form-header button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.password-form-header button > svg {
+  font-size: 2rem;
+  color: #EF6C4D;
+}
+
+.model-password-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.model-password-form form label span {
+  color: #EF6C4D;
+}
+
+.model-password-form form input {
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  padding: 0.5rem 0;
+  text-indent: 0.5rem;
+}
+
+.model-password-form form button {
+  align-self: center;
+  background: #EF6C4D;
+  color: #F5F5F5;
+  border: 0;
+  padding: 0.6rem 1rem;
+  border-radius: 0.3rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+
+/* Send Reset Code page */
+
+.send-reset-code-container {
+  background: #FFFFFF;
+  text-align: left;
+  padding: 2rem;
+  border-radius: 0.2rem;
+  margin: 5rem auto;
+  width: 20%;
+}
+
+.send-reset-code-container h1 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.send-reset-code-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.send-reset-code-container form input {
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  padding: 0.5rem 0;
+  text-indent: 0.5rem;
+}
+
+/* Verify Reset Code page */
+
+.verify-reset-code-container {
+  background: #FFFFFF;
+  text-align: left;
+  padding: 2rem;
+  border-radius: 0.2rem;
+  margin: 5rem auto;
+  width: 20%;
+}
+
+.verify-reset-code-container h1 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.verify-reset-code-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.verify-reset-code-container form input {
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  padding: 0.5rem 0;
+  text-indent: 0.5rem;
+}
+
+/* Reset Password page */
+
+.reset-password-container {
+  background: #FFFFFF;
+  text-align: left;
+  padding: 2rem;
+  border-radius: 0.2rem;
+  margin: 5rem auto;
+  width: 20%;
+}
+
+.reset-password-container h1 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.reset-password-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.reset-password-container form input {
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  padding: 0.5rem 0;
+  text-indent: 0.5rem;
+}
+

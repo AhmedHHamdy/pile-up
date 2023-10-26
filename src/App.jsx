@@ -2,24 +2,28 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './App.css'
 import Layout from './components/Layout'
-import CollectionsView from './pages/CollectionsView'
+import CollectionsView from './pages/dashboard/CollectionsView'
 import SideNav from './components/SideNav'
-import HistoryView from './pages/HistoryView'
-import ManagerView from './pages/ManagerView'
-import ReportView from './pages/ReportView'
-import AddressBookView from './pages/AddressBookView'
+import HistoryView from './pages/dashboard/HistoryView'
+import ManagerView from './pages/dashboard/ManagerView'
+import ReportView from './pages/dashboard/ReportView'
+import AddressBookView from './pages/dashboard/AddressBookView'
 import CreatePile from './pages/pile/CreatePile'
 import Home from './pages/Home'
-import Login from './pages/Login'
-import Signup from "./pages/Signup"
+import Login from './pages/account/login/Login'
+import Signup from "./pages/account/register/Signup"
 import PileView from './pages/pile/PileView'
 import ItemsView from "./pages/pile/pile-details/ItemsView"
 import ShareView from "./pages/pile/pile-details/ShareView"
 import ManagersView from "./pages/pile/pile-details/ManagersView"
 import ReportsView from "./pages/pile/pile-details/ReportsView"
-import SendInvitation from './pages/SendInvitation'
+import SendInvitation from './pages/pile/SendInvitation'
 import AuthRequired from './components/AuthRequired'
 import Profile from './pages/profile/Profile'
+import ResetPassword from './pages/account/forgot/ResetPassword'
+import SendResetCode from './pages/account/forgot/sendResetCode'
+import VerifyResetCode from './pages/account/forgot/VerifyResetCode'
+import { useAuth } from './context/AuthProvider'
 
 
 function App() {
@@ -29,8 +33,9 @@ function App() {
    <BrowserRouter>
     <Routes>
       <Route path='/' element={<Layout />}>
+
         <Route index element={<Home />}/>
-        <Route path='profile' element={<Profile />} />
+
         <Route element={<AuthRequired />}>
           <Route path='dashboard' element={<SideNav />}>
             <Route index element={<CollectionsView />}/>
@@ -44,12 +49,9 @@ function App() {
               <Route path='share' element={<ShareView />} />
               <Route path='managers' element={<ManagersView />} />
               <Route path='reports' element={<ReportsView />} />
-
             </Route>
 
             <Route path='sendInvitation' element={<SendInvitation />} />
-          
-
           </Route>
         </Route>
         
@@ -57,8 +59,19 @@ function App() {
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<Signup/>} />
 
+        <Route path='resetPassword' element={<ResetPassword />} />
+        <Route path='sendResetCode' element={<SendResetCode />} />
+        <Route path='verifyResetCode' element={<VerifyResetCode />} />
+        
+        <Route path='profile' element={<AuthRequired />}>
+          <Route index element={<Profile />}/>
+        </Route>
+
       </Route>
     </Routes>
+
+
+
     
    </BrowserRouter>
   )
