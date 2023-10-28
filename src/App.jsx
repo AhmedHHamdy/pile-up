@@ -33,23 +33,29 @@ function App() {
    <BrowserRouter>
     <Routes>
       <Route path='/' element={<Layout />}>
-
         <Route index element={<Home />}/>
 
         <Route element={<AuthRequired />}>
           <Route path='dashboard' element={<SideNav />}>
-            <Route index element={<CollectionsView />}/>
-            <Route path='history' element={<HistoryView />} />
-            <Route path='managers' element={<ManagerView />} />
-            <Route path='reports' element={<ReportView />} />
-            <Route path='addressBook' element={<AddressBookView />} />
-            <Route path='createpile' element={<CreatePile />} />
-            <Route path='pileview' element={<PileView />}>
+            <Route path='folders' element={<CollectionsView />}>
+
+            </Route>
+
+            <Route path='folders/pileview' element={<PileView />}>
               <Route index element={<ItemsView />} />
               <Route path='share' element={<ShareView />} />
               <Route path='managers' element={<ManagersView />} />
               <Route path='reports' element={<ReportsView />} />
             </Route>
+
+            
+            <Route path='history' element={<HistoryView />} />
+            <Route path='managers' element={<ManagerView />} />
+            <Route path='reports' element={<ReportView />} />
+            <Route path='addressBook' element={<AddressBookView />} />
+            <Route path='createpile' element={<CreatePile />} />
+            
+
 
             <Route path='sendInvitation' element={<SendInvitation />} />
           </Route>

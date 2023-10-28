@@ -53,7 +53,7 @@ export default function Login() {
       setToken(data.token)
   
       if (data.token) {
-        navigate('/dashboard')
+        navigate('/dashboard/folders')
       }
 
     } catch (err) {

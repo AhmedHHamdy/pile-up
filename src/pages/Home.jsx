@@ -65,7 +65,7 @@ export default function Home() {
         <section className="first-section-info">
           <h1>Money Collec<span>t</span>ion, Simplified with PileUp!</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
-          <Link to="/dashboard">Get Started</Link>
+          <Link to="/dashboard/folders">Get Started</Link>
         </section>
 
         <div className="first-section-bg"></div>

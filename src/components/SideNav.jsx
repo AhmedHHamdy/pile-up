@@ -15,7 +15,7 @@ export default function SideNav() {
   return (
     <div className="side-navigation">
       <nav>
-        <NavLink className="sideNav-links" style={({isActive}) => isActive ? activeStyle : null} end to="."><img src={collections} alt="collections-icon" /></NavLink>
+        <NavLink className="sideNav-links" style={({isActive}) => isActive ? activeStyle : null} end to="./folders"><img src={collections} alt="collections-icon" /></NavLink>
         <NavLink className="sideNav-links" style={({isActive}) => isActive ? activeStyle : null} to="history"><img src={history} alt="history" /></NavLink>
         <NavLink className="sideNav-links" style={({isActive}) => isActive ? activeStyle : null} to="managers"><img src={managers} alt="managers" /></NavLink>
         <NavLink className="sideNav-links" style={({isActive}) => isActive ? activeStyle : null} to="reports"><img src={reports} alt="reports" /></NavLink>

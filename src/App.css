@@ -260,12 +260,12 @@ header > svg {
 .folder-container-top div {
   display: flex;
   justify-content: space-between;
-  width: 75vh;
+  width: 88vh;
 }
 
 /* Folder component Styling*/
 .folder {
-  background: #D9F5F1;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -274,6 +274,10 @@ header > svg {
   border-bottom-right-radius: 1rem;
   padding: 0.8rem;
   cursor: pointer;
+}
+
+.selected {
+  background: #D9F5F1;
 }
 
 .folder h2 {
@@ -583,6 +587,11 @@ header > svg {
   padding: 0.8rem 4rem;
 }
 
+div.form-buttons button.create-button {
+  background: #EF6C4D;
+  color: #F5F5F5;
+}
+
 .form-buttons button {
   background: #EF6C4D;
   color: #F5F5F5;
@@ -614,7 +623,7 @@ header > svg {
 
 .title-input-container input, .folder-input-container select {
   border: 1px solid #CCCCCC;
-  padding: 0.8rem;
+  padding: 0.4rem;
   border-radius: 0.3rem;
 }
 
@@ -622,6 +631,65 @@ header > svg {
   color: #EF6C4D;
 }
 
+.status-checkbox-input {
+  grid-row: 5;
+  grid-column: 2/-1;
+  padding: 0 0 0 0.7rem;
+  margin-top: 1rem;
+}
+
+
+.from-elements-container .pile-type-input-container {
+  grid-column: 1/7;
+  padding: 0 4rem;
+  margin-bottom: 1rem;
+  grid-row: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.from-elements-container .pile-type-input-container label span {
+  color: #EF6C4D;
+}
+
+.from-elements-container .pile-type-input-container select {
+  border: 1px solid #CCCCCC;
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+}
+
+.from-elements-container .event-data-input-container  {
+  grid-row: 4;
+  grid-column: 7/10;
+  padding: 0 5 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.from-elements-container .event-data-input-container input {
+  border: 1px solid #CCCCCC;
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+}
+
+.from-elements-container .dead-line-input-container {
+  grid-row: 4;
+  grid-column: 12/15;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0rem 0 0;
+  gap: 0.3rem;
+}
+
+.from-elements-container .dead-line-input-container input {
+  border: 1px solid #CCCCCC;
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+}
 
 /* Home Page  */
 
@@ -2148,7 +2216,7 @@ main {
 .pile-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   background: #FFFFFF;
 }
@@ -3406,3 +3474,65 @@ tfoot {
   text-indent: 0.5rem;
 }
 
+/* Menu Component */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  background-color: #EF6C4D;
+  width: 10vh;
+  border-radius: 0.5rem;
+}
+
+.menu-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #e6a682;
+  padding-bottom: 0.3rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.menu-button > svg {
+  font-size: 2rem;
+  color: #1A181B;
+}
+
+.menu-button > svg:hover {
+  color: #EF6C4D;
+}
+
+.menu-container div {
+  text-decoration: none;
+  padding: 0.2rem 0rem;
+  text-align: center;
+  border-top: 1px solid #e6a682;
+  border-radius: 0.5rem;
+}
+
+.menu-container div:first-of-type {
+  border-top: none;
+}
+
+.menu-container div:hover {
+  background: rgba(27, 26, 26, 0.1);
+}
+
+
+.menu-container button {
+  text-decoration: none;
+  color: #F5F5F5;
+  font-size: 1rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-container button:last-of-type {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
