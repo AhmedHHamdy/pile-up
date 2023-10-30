@@ -56,7 +56,7 @@ export default function FolderView() {
   const folderId = folderData.find(folder => folder.id === +folderChange);
 
   const piles = folderId ? folderId.piles.map((pile, i) => (
-    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" />
+    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} />
   )) : null;
 
   console.log(piles)

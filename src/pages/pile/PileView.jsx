@@ -1,15 +1,21 @@
 import "../../App.css"
-import { NavLink, Link, Outlet, useLocation } from "react-router-dom"
+import { NavLink, Link, Outlet, useLocation, useParams } from "react-router-dom"
 import pileIcon  from "../../assets/Icon.png"
 import { IoIosArrowBack } from "react-icons/io"
 import { MdModeEdit } from "react-icons/md"
 import { AiFillCloseCircle } from "react-icons/ai"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import axios from "axios"
 
 export default function PileView() {
   const activeStyle = {
     borderBottom: "2px solid #EF6C4D"
   }
+
+  const [pileData, setPileData] = useState([])
+
+  const params = useParams()
+  console.log(params)
 
   const location = useLocation()
   let reportsPath = location.pathname.split('/')[location.pathname.split('/').length -1]
@@ -24,6 +30,17 @@ export default function PileView() {
   const closeEditPileForm = () => {
     setEditPileInfoForm(false)
   }
+
+  useEffect(() => {
+    axios.get(`https://main.mahmoud.social/api/v1/piles/${params.id}`)
+        .then(res => {
+          console.log(res)
+          setPileData(res.data.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+  }, [])
 
   return (
     <section className="pileview-container">
@@ -43,8 +60,8 @@ export default function PileView() {
         <div className="pile-container-info">
           <img src={pileIcon} alt="" />
           <div className="pile-info">
-            <h3>My Pile 01</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris rhoncus aenean vel elit.</p>
+            <h3>{pileData["name_en,"]}</h3>
+            <p>{pileData["content_en,"]}</p>
           </div>
           <button className="pile-info-edit-button" onClick={openEditPileForm}><MdModeEdit /></button>
         </div>
@@ -83,7 +100,7 @@ export default function PileView() {
         </div>
       </div>}
       
-      <Outlet />
+      <Outlet context={pileData} />
       
     </section>
   )

@@ -24,6 +24,7 @@ import ResetPassword from './pages/account/forgot/ResetPassword'
 import SendResetCode from './pages/account/forgot/sendResetCode'
 import VerifyResetCode from './pages/account/forgot/VerifyResetCode'
 import { useAuth } from './context/AuthProvider'
+import CartPage from './pages/cart/CartPage'
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
 
             </Route>
 
-            <Route path='folders/pileview' element={<PileView />}>
+            <Route path='folders/pileview/:id' element={<PileView />}>
               <Route index element={<ItemsView />} />
               <Route path='share' element={<ShareView />} />
               <Route path='managers' element={<ManagersView />} />
@@ -72,6 +73,8 @@ function App() {
         <Route path='profile' element={<AuthRequired />}>
           <Route index element={<Profile />}/>
         </Route>
+
+        <Route path='cart' element={<CartPage />} />
 
       </Route>
     </Routes>

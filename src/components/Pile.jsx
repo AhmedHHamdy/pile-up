@@ -11,7 +11,7 @@ export default function Pile(props) {
           <h4>{props.updated}</h4>
           <h4>Collected: {props.total}</h4>
         </div>
-        <Link to="pileview">Participate</Link>
+        <Link to={`pileview/${props.id}`}>Participate</Link>
       </div>
     </div>
   )

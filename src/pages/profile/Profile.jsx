@@ -25,9 +25,10 @@ export default function Profile() {
     last_name: '',
     email: '',
     phone: '',
-    password: '',
-    password_confirmation: ''
+    image: ''
   })
+
+  console.log(formData)
 
   const [formPassword, setFormPassword] = useState({
     old_password: '',
@@ -47,7 +48,21 @@ export default function Profile() {
 
   function handlePasswordFormSubmit(event) {
     event.preventDefault()
-
+    if (formPassword.password == formPassword.password_confirmation) {
+      axios.post("https://main.mahmoud.social/api/v1/profile/update-password", formPassword)
+          .then(res => {
+            console.log(res)
+            setFormPassword({
+              old_password: '',
+              password: '',
+              password_confirmation: ''
+            })
+            closePasswordForm()
+          })
+          .catch(err => console.log(err))
+    } else {
+      alert("password is not matching the confirmation")
+    }
   }
 
   function handleChange(event) {
@@ -64,22 +79,14 @@ export default function Profile() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    // if (!validMatch) {
-    //   setErrMsg('Passwords do not match')
-    //   return;
-    // }
-
-    if (!validPassword) {
-      setErrMsg('Password does not meet the requirements')
-    }
-
-    axios.post('https://main.mahmoud.social/api/v1/auth/register', formData)
+    axios.post('https://main.mahmoud.social/api/v1/profile', formData)
       .then(res => {
         console.log(res);
       })
       .catch(err => {
-        console.error(err.response.data.message);
-        setErrMsg(err.response.data.message)
+        console.error(err);
+        // console.error(err.response.data.message);
+        // setErrMsg(err.response.data.message)
       });
   }
 
@@ -90,6 +97,8 @@ export default function Profile() {
         </div>
         
         <form onSubmit={handleSubmit} className="profile-form">
+
+          <img src={formData.image} alt="" />
  
           <label htmlFor="first_name">First name</label>
           <input type="text" name="first_name" id="firstName" onChange={handleChange} value={formData.first_name} />
@@ -102,6 +111,9 @@ export default function Profile() {
 
           <label htmlFor="phone">phone</label>
           <input type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
+
+          {/* <label htmlFor="image">Image</label>
+          <input type="file" name="image" id="image" onChange={handleChange}  /> */}
 
           <button>Save Profile</button>
         </form>

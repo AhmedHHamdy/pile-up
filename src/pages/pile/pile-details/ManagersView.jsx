@@ -1,9 +1,14 @@
 import { useRef, useState } from "react"
 import "../../../App.css"
 import { AiOutlinePlus, AiFillCloseCircle } from "react-icons/ai"
+import { useOutletContext } from "react-router-dom"
+
 export default function ManagersView() {
   const [isManagerFormOpen, setIsManagerFormOpen] = useState(false)
   const modelRef = useRef(null)
+
+  const pileData = useOutletContext()
+  console.log(pileData)
 
   const openManagerForm = () => {
     setIsManagerFormOpen(true)
