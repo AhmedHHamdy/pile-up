@@ -1,10 +1,10 @@
 import { useRef, useState } from "react"
 import "../App.css"
 import { BiDotsHorizontalRounded } from "react-icons/bi"
-import Menu from "../components/menu/Menu"
-import MenuButton from "../components/menu/MenuButton"
-import MenuDropdown from "../components/menu/MenuDropdown"
-import MenuItem from "../components/menu/MenuItem"
+import Menu from "./menu/Menu"
+import MenuButton from "./menu/MenuButton"
+import MenuDropdown from "./menu/MenuDropdown"
+import MenuItem from "./menu/MenuItem"
 import axios from "axios"
 
 export default function File(props) {

@@ -74,7 +74,9 @@ function App() {
           <Route index element={<Profile />}/>
         </Route>
 
-        <Route path='cart' element={<CartPage />} />
+        <Route path='cart' element={<AuthRequired />}>
+          <Route index element={<CartPage />} />
+        </Route>
 
       </Route>
     </Routes>

@@ -1,7 +1,7 @@
 import "../../App.css"
 import { AiOutlinePlus, AiFillCloseCircle } from "react-icons/ai"
 import Pile from "../../components/Pile"
-import File from "../../components/file"
+import File from "../../components/File"
 import { useState, useRef, useEffect } from "react"
 import axios from "axios"
 import { useAuth } from "../../context/AuthProvider"

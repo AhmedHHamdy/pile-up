@@ -1,18 +1,47 @@
 import pileUp_logo from "../assets/pileup_logo.png";
 import { IoNotificationsOutline } from "react-icons/io5"
 import { FaUserCircle } from "react-icons/fa"
-import { BsArrowRight } from "react-icons/bs"
-import { BiSolidDownArrow } from "react-icons/bi"
+import { AiOutlineShoppingCart, AiFillCloseCircle } from "react-icons/ai"
 import { Link, useNavigate } from "react-router-dom";
 import "../App.css"
-// import useAuth from "../hooks/useAuth";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
+import Item from "./Item";
 
 export default function Header() {
 
   const { token, setToken } = useAuth()
   const navigate = useNavigate()
+
+  const [cartDialog, setCartDialog] = useState(false)
+  const modelRef = useRef(null)
+
+  const openCartDialog = (event) => {
+    event.stopPropagation();
+
+    setCartDialog(true)
+  }
+
+  const closeCartDialog = () => {
+    setCartDialog(false)
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modelRef.current && !modelRef.current.contains(event.target)) {
+        closeCartDialog()
+      }
+    }
+
+    if (cartDialog) {
+      document.addEventListener('click', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+    
+  }, [cartDialog])
 
   const handleLogout = () => {
     setToken()
@@ -50,6 +79,49 @@ export default function Header() {
       </Link>}
 
       {token && <Link className="logout-link" onClick={handleLogout}>Logout</Link>}
+
+      {token && <button className="cart-button" onClick={openCartDialog}><AiOutlineShoppingCart/> Cart</button>}
+
+      {cartDialog && 
+      <div className="model-overlay-cart">
+          <div className="model-cart" ref={modelRef}>
+            <div className="cart-dialog-container">
+              <h1>Cart</h1>
+              <button type="button" onClick={closeCartDialog}><AiFillCloseCircle /></button>
+            </div>
+
+            <div className="cart-dialog-container-items">
+              <Item />
+              <Item />
+              <Item />
+              <Item />
+            </div>
+
+
+            <div className="total-checkout-container">
+              <div className="sub-total">
+                <span>Sub-total</span>
+                <span>10000.0 EGP</span>
+              </div>
+
+              <div className="tax">
+                <span>Tax</span>
+                <span>60.0 EGP</span>
+              </div>
+
+              <div className="total">
+                <span>Total</span>
+                <span>10060.00 EGP</span>
+              </div>
+
+              <div className="cart-navigation">
+                <Link to="/cart">Continue to checkout</Link>
+                <button onClick={closeCartDialog}>Keep shopping</button>
+              </div>
+            </div>
+          </div>
+      </div>
+      }
     </header>
   )
 }

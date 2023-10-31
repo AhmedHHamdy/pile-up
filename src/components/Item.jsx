@@ -1,6 +1,18 @@
+import { useState } from "react"
 import "../App"
+import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai"
 
 export default function Item() {
+  const [state, setState] = useState(0)
+
+  function handleAdding() {
+    setState(previousValue => previousValue + 1)
+  }
+
+  function handleRemoving() {
+    setState(previousValue => previousValue - 1)
+  }
+
   return (
     <section className="item-component-container">
       <div>
@@ -9,6 +21,13 @@ export default function Item() {
         </svg>
         <h1>Item 02</h1>
       </div>
+
+      <div className="item-component-buttons">
+        <button onClick={handleRemoving}><AiOutlineMinusSquare /></button>
+        <span>{state}</span>
+        <button onClick={handleAdding}><AiOutlinePlusSquare /></button>
+      </div>
+
       <h2>EGP 500</h2>
     </section>
   )

@@ -56,15 +56,16 @@ header .link-img-logo {
   color: #1A181B;
   font-size: 1.8rem;
   align-self: center;
-  justify-self: center;
+  justify-self: end;
 }
 
 .profile-link {
-  grid-column: 11;
+  grid-column: 12;
+  grid-row: 1;
 }
 
 .notification-link {
-  grid-column: 10;
+  grid-column: 11;
 }
 
 .signup-link, .login-link {
@@ -101,10 +102,122 @@ header .link-img-logo {
 .logout-link {
   padding-bottom: 0.5rem;
   color: #EF6C4D;
-  grid-column: 12;
+  grid-column: 13;
   align-self: center;
   font-size: 1.2rem;
   justify-self: center;
+}
+
+
+/* Cart dialog */
+.cart-button {
+  padding: 0;
+  background: #008A781A;
+  border: 0;
+  color: #008A78;
+  font-size: 1.0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  align-self: center;
+  padding: 0.6rem 0.2rem;
+  border-radius: 0.4rem;
+  grid-column: 10;
+  grid-row: 1;
+  cursor: pointer;
+}
+
+.cart-button svg {
+  font-size: 1.5rem;
+  stroke-width: 0.8rem;
+  color: #008A78;
+}
+
+
+.model-overlay-cart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+}
+
+.model-cart {
+  background: white;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  width: 30%;
+  height: 100vh;
+  z-index: 1000;
+  position: relative;
+}
+
+/* Cart Dialog Styling */
+.cart-dialog-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-right: 0;
+}
+
+.cart-dialog-container h1 {
+  margin-top: 1rem;
+}
+
+.cart-dialog-container button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.cart-dialog-container button> svg {
+  font-size: 2rem;
+  color: #EF6C4D;
+}
+
+.model-cart .total-checkout-container {
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cart-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cart-navigation a {
+  text-decoration: none;
+  background: #EF6C4D;
+  color: white;
+  font-weight: 600;
+  padding: 1.1rem 7.5rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.cart-navigation button {
+  background: none;
+  color: white;
+  font-weight: 600;
+  padding: 1rem 8.9rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #1A181B;
+  cursor: pointer;
 }
 
 /* header nav {
@@ -3412,6 +3525,18 @@ tfoot {
   text-indent: 0.5rem;
 }
 
+.send-reset-code-container button {
+  background: #EF6C4D;
+  color: #F5F5F5;
+  border: 0;
+  border-radius: 0.3rem;
+  width: 100%;
+  cursor: pointer;
+  padding:0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
 /* Verify Reset Code page */
 
 .verify-reset-code-container {
@@ -3443,6 +3568,18 @@ tfoot {
   text-indent: 0.5rem;
 }
 
+.verify-reset-code-container button {
+  background: #EF6C4D;
+  color: #F5F5F5;
+  border: 0;
+  border-radius: 0.3rem;
+  width: 100%;
+  cursor: pointer;
+  padding:0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
 /* Reset Password page */
 
 .reset-password-container {
@@ -3472,6 +3609,18 @@ tfoot {
   border: 1px solid #CCCCCC;
   padding: 0.5rem 0;
   text-indent: 0.5rem;
+}
+
+.reset-password-container button {
+  background: #EF6C4D;
+  color: #F5F5F5;
+  border: 0;
+  border-radius: 0.3rem;
+  width: 100%;
+  cursor: pointer;
+  padding:0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
 }
 
 /* Menu Component */
@@ -3546,6 +3695,7 @@ tfoot {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  border-top: 0;
 }
 
 .item-component-container div {
@@ -3553,8 +3703,36 @@ tfoot {
   gap: 2rem;
 }
 
+.item-component-container  h1 {
+  font-size: 1rem;
+}
+
 .item-component-container  h2 {
   font-size: 1rem;
+}
+
+div.item-component-buttons {
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: center;
+}
+
+div.item-component-buttons span {
+  font-size: 1.3rem;
+}
+
+.item-component-buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  align-self: center;
+}
+
+.item-component-buttons button > svg {
+  font-size: 1.6rem;
 }
 
 /* Cart Page */
@@ -3725,6 +3903,8 @@ tfoot {
 .total span {
   font-weight: 600;
 }
+
+
 
 
 /* CollectionView Responsiveness */

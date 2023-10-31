@@ -44,12 +44,6 @@ export default function Login() {
       const data = response.data.data
       console.log(response)
       
-      // localStorage.setItem('token', data.token)
-      
-      // axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
-
-      // setAuth({ ...data })
-
       setToken(data.token)
   
       if (data.token) {
@@ -89,7 +83,7 @@ export default function Login() {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" onChange={handleChange} value={formData.password} required />
 
-          <Link>Forgot your password?</Link>
+          <Link to="/sendResetCode">Forgot your password?</Link>
 
           <button>Continue</button>
         </form>
