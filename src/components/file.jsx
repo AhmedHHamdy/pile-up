@@ -6,8 +6,11 @@ import MenuButton from "./menu/MenuButton"
 import MenuDropdown from "./menu/MenuDropdown"
 import MenuItem from "./menu/MenuItem"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function File(props) {
+
+  const navigate = useNavigate()
 
   console.log(props)
   function handleDelete() {
@@ -25,8 +28,13 @@ export default function File(props) {
       <Menu>
         <MenuButton><BiDotsHorizontalRounded /></MenuButton>
         <MenuDropdown>
-          <MenuItem >Edit</MenuItem>
-          <MenuItem handleDelete={handleDelete} >Delete</MenuItem>
+          <MenuItem>
+            <button>Edit</button>
+          </MenuItem>
+
+          <MenuItem>
+            <button onClick={handleDelete}>Delete</button>
+          </MenuItem>
         </MenuDropdown>
       </Menu>
     </div>

@@ -4,16 +4,34 @@ import { Link } from "react-router-dom"
 import React, { useState, useRef, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
+import { useOutletContext } from "react-router-dom";
+import axios from "axios";
+import { useAuth } from "../../../context/AuthProvider";
 
 export default function ItemsView() {
   const [value, setValue] = useState('');
+  const { token } = useAuth()
+
+  console.log(token)
+
+  const pileData = useOutletContext()
+  console.log(pileData)
 
   const modalRef = useRef(null)
   const modalCategoryRef = useRef(null)
 
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isCategoryFormVisible, setIsCategoryFormVisible] = useState(false)
+
+  useEffect(() => {
+    axios.get(`https://test.zauzat.net/api/v1/items/list?pile_id=${pileData.id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }, [])
 
   const openCategoryForm = () => {
     setIsCategoryFormVisible(true);
@@ -54,6 +72,7 @@ export default function ItemsView() {
       if (modalCategoryRef.current && !modalCategoryRef.current.contains(event.target)) {
         closeCategoryForm()
       }
+    }
 
       if (isCategoryFormVisible) {
         document.addEventListener('mousedown', handleClickOutsideCategory)
@@ -61,7 +80,6 @@ export default function ItemsView() {
 
       return () => {
         document.removeEventListener('mousedown', handleClickOutsideCategory)
-      }
     }
   }, [isCategoryFormVisible])
 

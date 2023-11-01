@@ -7,6 +7,10 @@ import "../App.css"
 import { useContext, useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import Item from "./Item";
+import Menu from "./menu/Menu";
+import MenuButton from "./menu/MenuButton";
+import MenuDropdown from "./menu/MenuDropdown";
+import MenuItem from "./menu/MenuItem";
 
 export default function Header() {
 
@@ -63,7 +67,23 @@ export default function Header() {
       <Link className="vendors-link">Vendors</Link>
 
       {token && <Link className="notification-link"><IoNotificationsOutline /></Link> }
-      {token && <Link to="/profile" className="profile-link"><FaUserCircle /></Link> }
+      {/* {token && <Link to="/profile" className="profile-link"><FaUserCircle /></Link> } */}
+
+      {token && 
+        <Menu>
+          <MenuButton><FaUserCircle /></MenuButton>
+          <MenuDropdown>
+            <MenuItem>
+              <Link className="profile-menu-link" to="/profile">Profile</Link>
+            </MenuItem>
+
+            <MenuItem>
+              <button className="logout-menu-link" onClick={handleLogout}>Logout</button>
+            </MenuItem>
+          </MenuDropdown>
+        </Menu>
+      }
+
       
       {!token && <Link className="login-link" to="/login">
         Log in 
@@ -78,7 +98,7 @@ export default function Header() {
         </svg>
       </Link>}
 
-      {token && <Link className="logout-link" onClick={handleLogout}>Logout</Link>}
+      {/* {token && <Link className="logout-link" onClick={handleLogout}>Logout</Link>} */}
 
       {token && <button className="cart-button" onClick={openCartDialog}><AiOutlineShoppingCart/> Cart</button>}
 

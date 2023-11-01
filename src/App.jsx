@@ -20,10 +20,7 @@ import ReportsView from "./pages/pile/pile-details/ReportsView"
 import SendInvitation from './pages/pile/SendInvitation'
 import AuthRequired from './components/AuthRequired'
 import Profile from './pages/profile/Profile'
-import ResetPassword from './pages/account/forgot/ResetPassword'
-import SendResetCode from './pages/account/forgot/sendResetCode'
-import VerifyResetCode from './pages/account/forgot/VerifyResetCode'
-import { useAuth } from './context/AuthProvider'
+import SendResetCode from './pages/account/forgot/SendResetCode'
 import CartPage from './pages/cart/CartPage'
 
 
@@ -66,9 +63,7 @@ function App() {
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<Signup/>} />
 
-        <Route path='resetPassword' element={<ResetPassword />} />
         <Route path='sendResetCode' element={<SendResetCode />} />
-        <Route path='verifyResetCode' element={<VerifyResetCode />} />
         
         <Route path='profile' element={<AuthRequired />}>
           <Route index element={<Profile />}/>

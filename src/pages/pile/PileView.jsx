@@ -58,10 +58,12 @@ export default function PileView() {
 
       <div className="pile-container">
         <div className="pile-container-info">
-          <img src={pileIcon} alt="" />
           <div className="pile-info">
-            <h3>{pileData["name_en,"]}</h3>
-            <p>{pileData["content_en,"]}</p>
+            <img src={pileIcon} alt="" />
+            <div>
+              <h3>{pileData["name_en,"]}</h3>
+              <p>{pileData["content_en,"]}</p>
+            </div>
           </div>
           <button className="pile-info-edit-button" onClick={openEditPileForm}><MdModeEdit /></button>
         </div>

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 
 export default function Signup() {
-  const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
+  const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -45,9 +45,8 @@ export default function Signup() {
     if (name === "password") {
       const isPasswordValid = PWD_REGEX.test(value);
       setValidPassword(isPasswordValid);
-      setValidMatch(isPasswordValid && value === formData.password_confirmation);
     } else if (name === "password_confirmation") {
-      setValidMatch(value === formData.password && validPassword);
+      setValidMatch(value === formData.password);
     }
   }
 
@@ -61,14 +60,17 @@ export default function Signup() {
 
     try {
 
+      if (!validPassword) {
+        setErrMsg('Password does not meet the requirements')
+        return
+      }
+
       if (!validMatch) {
         setErrMsg('Passwords do not match')
         return;
       }
 
-      if (!validPassword) {
-        setErrMsg('Password does not meet the requirements')
-      }
+
 
       const response = await axios.post('https://main.mahmoud.social/api/v1/auth/register', formData)
       const data = response.data.data

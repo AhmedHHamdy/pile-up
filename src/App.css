@@ -373,7 +373,7 @@ header > svg {
 .folder-container-top div {
   display: flex;
   justify-content: space-between;
-  width: 88vh;
+  grid-column: 1/-1;
 }
 
 /* Folder component Styling*/
@@ -498,12 +498,35 @@ header > svg {
   grid-column: 3/10;
   margin-left: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.5rem;
 }
 
+.pile-container .pile-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pileview-container .pile-info {
+  grid-column: 3/10;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row!important;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pile-container .pile-info div h3 {
+  text-transform: capitalize;
+}
+
+.pile-container .pile-info div  {
+  text-transform: capitalize;
+}
 
 .pile-container .pile-info h3, .pile-container .pile-info h4 {
   margin: 0;
@@ -2304,13 +2327,14 @@ main {
   display: flex;
 }
 
+
 .pileview-container .pile-container .pile-container-info {
   display: flex;
   padding: 1rem 1rem;
   border-bottom: 0;
   border-left: 0;
   border-right: 0;
-
+  justify-content: space-between;
   background: #FFFFFF;
 }
 
@@ -3373,12 +3397,16 @@ tfoot {
   flex-direction: column;
   background: #fff;
   border-top: 1px solid #CCCCCC;
-  height: 80vh;
   padding: 1rem;
 }
 
 .profile-header h1{
   font-family: "Poppins";
+}
+
+.profile-form img {
+  border-radius: 100rem;
+  align-self: center;
 }
 
 .profile-form {
@@ -3632,6 +3660,12 @@ tfoot {
   background-color: #EF6C4D;
   width: 10vh;
   border-radius: 0.5rem;
+ 
+}
+
+.menu {
+  grid-column: 13;
+  align-self: center;
 }
 
 .menu-button {
@@ -3644,6 +3678,16 @@ tfoot {
   padding-bottom: 0.3rem;
   border-radius: 0.5rem;
   cursor: pointer;
+}
+
+/* .menu-options {
+  display: flex;
+  flex-direction: column;
+} */
+
+.profile-menu-link {
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
 .menu-button > svg {

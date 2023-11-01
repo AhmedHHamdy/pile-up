@@ -17,7 +17,7 @@ export default function FolderView() {
 
   function createFolderHandler(event) {
     event.preventDefault();
-    axios.post("https://main.mahmoud.social/api/v1/folders/create-folder", createFolderForm)
+    axios.post(`https://main.mahmoud.social/api/v1/folders/create-folder`, createFolderForm)
       .then(res => {
         console.log(res);
         window.location.reload();
@@ -60,8 +60,6 @@ export default function FolderView() {
   )) : null;
 
   console.log(piles)
-  
-
   const modelRef = useRef(null)
   const [isFolderFormOpen, setIsFolderFormOpen] = useState(false)
 
@@ -170,14 +168,6 @@ export default function FolderView() {
             <Link className="create-pile-button" to="../createpile">Create a Pile</Link>
             <button className="quick-tour-button">Take a quick tour</button>
           </div>)}
-          {/* {!piles && <div className="no-pile-view">
-            <div>
-              <h2>This folder is empty</h2>
-              <p>Drag a pile into this folder or create a new pile</p>
-            </div>
-            <Link className="create-pile-button" to="createpile">Create a Pile</Link>
-            <button className="quick-tour-button">Take a quick tour</button>
-          </div>} */}
         </div>
       </section>
 
