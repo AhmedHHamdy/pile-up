@@ -8,7 +8,7 @@ import MenuItem from "./menu/MenuItem"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-function File(props) {
+const File = (props) => {
 
   const [successStatus, setSuccessStatus] = useState(false)
 
@@ -48,4 +48,4 @@ function File(props) {
   )
 }
 
-export default File
+export default  File

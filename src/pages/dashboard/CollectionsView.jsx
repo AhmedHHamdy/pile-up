@@ -56,9 +56,9 @@ export default function FolderView() {
     })
   }
 
-  const folders = folderData.map(f => {
-    return <File key={f.id} name={f.name_en} id={f.id} onclick={() => handleFolderChange("folder", f.id)} styling={`${folderChange == f.id ? 'selected' : ''}`} />
-  })
+  // const folders = folderData.map(f => {
+  //   return <File key={f.id} name={f.name_en} id={f.id} onclick={() => handleFolderChange("folder", f.id)} styling={`${folderChange == f.id ? 'selected' : ''}`} />
+  // })
 
   const folderId = folderData.find(folder => folder.id === +folderChange);
 
