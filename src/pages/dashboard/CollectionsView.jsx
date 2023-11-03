@@ -1,6 +1,6 @@
 import "../../App.css"
 import Pile from "../../components/Pile"
-import File from "../../components/File.jsx"
+// import File from "../../components/File.jsx"
 import { AiOutlinePlus, AiFillCloseCircle } from "react-icons/ai"
 import { useState, useRef, useEffect } from "react"
 import axios from "axios"
@@ -55,9 +55,9 @@ export default function FolderView() {
     })
   }
 
-  const folders = folderData.map(f => {
-    return <File key={f.id} name={f.name_en} id={f.id} onclick={() => handleFolderChange("folder", f.id)} styling={`${folderChange == f.id ? 'selected' : ''}`} />
-  })
+  // const folders = folderData.map(f => {
+  //   return <File key={f.id} name={f.name_en} id={f.id} onclick={() => handleFolderChange("folder", f.id)} styling={`${folderChange == f.id ? 'selected' : ''}`} />
+  // })
 
   const folderId = folderData.find(folder => folder.id === +folderChange);
 
@@ -157,7 +157,7 @@ export default function FolderView() {
           <input type="text" placeholder="Search for a folder or a pile" />
           <div className="create-folder-container">
             <h3>Create a Folder...</h3>
-            {folders}
+            {/* {folders} */}
           </div>
         </div>
       </section>
