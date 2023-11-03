@@ -5,7 +5,7 @@ import File from "../../components/File"
 import { useState, useRef, useEffect } from "react"
 import axios from "axios"
 import { useAuth } from "../../context/AuthProvider"
-import { useParams, useSearchParams, Link , useNavigate, useLocation } from "react-router-dom"
+import { useParams, useSearchParams, Link , useNavigate } from "react-router-dom"
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
