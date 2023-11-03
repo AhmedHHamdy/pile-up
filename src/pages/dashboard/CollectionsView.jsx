@@ -8,7 +8,7 @@ import { useAuth } from "../../context/AuthProvider"
 import { useParams, useSearchParams, Link , useNavigate } from "react-router-dom"
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import File from "../../components/File"
+// import File from "../../components/File"
 
 export default function FolderView() {
   const { token } = useAuth()
