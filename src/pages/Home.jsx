@@ -4,6 +4,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { AiOutlinePlus } from "react-icons/ai"
 import helpIcon from "../assets/Help.png"
+import moneyWalletPic from "../assets/pileup-wallet-orange 2.png"
 import { useState } from "react";
 
 export default function Home() {

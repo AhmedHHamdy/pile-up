@@ -962,7 +962,7 @@ main {
 }
 
 .first-section-bg {
-  background: url("../src/assets/pileup-illustration\ 1.png");
+  background: url("/pileup-illustration\ 1.png");
   height: 85vh;
   background-repeat: no-repeat;
   grid-column: 6/12;
@@ -977,7 +977,7 @@ main {
 }
 
 .second-section-bg {
-  background: url("../src/assets/pileup-illustration-02\ 1.png");
+  background: url("/pileup-illustration-02\ 1.png");
   height: 85vh;
   background-repeat: no-repeat;
   grid-column: 2/7;
@@ -1035,7 +1035,7 @@ main {
 }
 
 .third-section-bg {
-  background: url("../src/assets//pileup-wallet-orange\ 2.png");
+  background: url("/pileup-wallet-orange 2.png");
   height: 78vh;
   background-repeat: no-repeat;
   grid-column: 8/-1;

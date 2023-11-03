@@ -8,6 +8,7 @@ import { useAuth } from "../../context/AuthProvider"
 import { useParams, useSearchParams, Link , useNavigate } from "react-router-dom"
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import File from "../../components/File"
 
 export default function FolderView() {
   const { token } = useAuth()
@@ -55,9 +56,9 @@ export default function FolderView() {
     })
   }
 
-  // const folders = folderData.map(f => {
-  //   return <File key={f.id} name={f.name_en} id={f.id} onclick={() => handleFolderChange("folder", f.id)} styling={`${folderChange == f.id ? 'selected' : ''}`} />
-  // })
+  const folders = folderData.map(f => {
+    return <File key={f.id} name={f.name_en} id={f.id} onclick={() => handleFolderChange("folder", f.id)} styling={`${folderChange == f.id ? 'selected' : ''}`} />
+  })
 
   const folderId = folderData.find(folder => folder.id === +folderChange);
 
@@ -157,7 +158,7 @@ export default function FolderView() {
           <input type="text" placeholder="Search for a folder or a pile" />
           <div className="create-folder-container">
             <h3>Create a Folder...</h3>
-            {/* {folders} */}
+            {folders}
           </div>
         </div>
       </section>
