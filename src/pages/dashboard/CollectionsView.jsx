@@ -158,7 +158,7 @@ export default function FolderView() {
           <input type="text" placeholder="Search for a folder or a pile" />
           <div className="create-folder-container">
             <h3>Create a Folder...</h3>
-            {folders}
+            {/* {folders} */}
           </div>
         </div>
       </section>
