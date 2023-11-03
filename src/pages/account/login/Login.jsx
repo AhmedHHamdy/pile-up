@@ -40,7 +40,7 @@ export default function Login() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      const response = await axios.post('https://main.mahmoud.social/api/v1/auth/login', formData)
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/auth/login`, formData)
       const data = response.data.data
       console.log(response)
       

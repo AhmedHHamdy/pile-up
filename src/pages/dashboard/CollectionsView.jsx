@@ -6,6 +6,8 @@ import { useState, useRef, useEffect } from "react"
 import axios from "axios"
 import { useAuth } from "../../context/AuthProvider"
 import { useParams, useSearchParams, Link , useNavigate, useLocation } from "react-router-dom"
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export default function FolderView() {
   const { token } = useAuth()
@@ -15,25 +17,29 @@ export default function FolderView() {
   const [createFolderForm, setCreateFolderForm] = useState({ name: '' })
   const navigate = useNavigate()
 
+  const [loadingStatus, setLoadingStatus] = useState(false)
+  const [error, setError] = useState(null)
+
+
   function createFolderHandler(event) {
     event.preventDefault();
-    axios.post(`https://main.mahmoud.social/api/v1/folders/create-folder`, createFolderForm)
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/folders/create-folder`, createFolderForm)
       .then(res => {
         console.log(res);
+        closeFolderForm()
         window.location.reload();
       })
       .catch(err => {
         console.log(err);
+        setError(err.message)
       })
       .finally(() => {
         // This will be executed whether the request is successful or encounters an error.
-
       });
   }
   
 
   const folderChange = searchParams.get('folder')
-  console.log(folderChange)
 
 
   const params = useParams()
@@ -56,10 +62,9 @@ export default function FolderView() {
   const folderId = folderData.find(folder => folder.id === +folderChange);
 
   const piles = folderId ? folderId.piles.map((pile, i) => (
-    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} />
+    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} image={pile["image"]} status={pile.status} folderId={folderChange} />
   )) : null;
 
-  console.log(piles)
   const modelRef = useRef(null)
   const [isFolderFormOpen, setIsFolderFormOpen] = useState(false)
 
@@ -88,24 +93,28 @@ export default function FolderView() {
   }, [isFolderFormOpen])
 
   useEffect(() => {
-    axios.get('https://main.mahmoud.social/api/v1/folders/my-folders', {
+    setLoadingStatus(true)
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/folders/my-folders`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
     .then(res => {
+      setLoadingStatus(false)
       setFolderData(res.data.data);
       console.log(res.data.data); // Log the data received from the API
     })
     .catch(err => {
+      setLoadingStatus(false)
       console.log(err); // Log any errors that occur
+      setError(err.message)
     });
   }, []);
 
   useEffect(() => {
     const currentSearchParams = new URLSearchParams(window.location.search);
     const id = (folderData[0]?.id) + ''
-    console.log(id)
+
     currentSearchParams.set('folder', id )
     const newURL = new URL(window.location.href)
 
@@ -114,6 +123,21 @@ export default function FolderView() {
 
     setSearchParams(currentSearchParams)
   }, [folderData])
+
+
+  if (loadingStatus) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent:"center", gridColumn: "8", alignSelf: "center" }}>
+        <CircularProgress color="success"  />
+      </Box>
+    )
+  }
+
+  if (error) {
+    return (
+      <h1 style={{gridColumn: "2/-1", textAlign: "center" }}>{error} <br/> Please Refresh</h1>
+    )
+  }
 
   
   return (
@@ -165,7 +189,7 @@ export default function FolderView() {
               <h2>This folder is empty</h2>
               <p>Drag a pile into this folder or create a new pile</p>
             </div>
-            <Link className="create-pile-button" to="../createpile">Create a Pile</Link>
+            <Link className="create-pile-button" state={{folders: folderData}} to="../createpile">Create a Pile</Link>
             <button className="quick-tour-button">Take a quick tour</button>
           </div>)}
         </div>
@@ -189,7 +213,7 @@ export default function FolderView() {
             <button type="button" onClick={closeFolderForm}><AiFillCloseCircle /></button>
           </div>
 
-          <form onClick={createFolderHandler} >
+          <form onSubmit={createFolderHandler} >
             <label htmlFor="folder-name">Name <span>*</span></label>
             <input type="text" name="name" id="folder-name" placeholder="Enter a name" value={createFolderForm.name} onChange={(event) => setCreateFolderForm(previousData => ({...previousData, name: event.target.value}))} />
             <button>Save</button>

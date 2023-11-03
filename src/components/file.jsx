@@ -10,16 +10,23 @@ import { useNavigate } from "react-router-dom"
 
 export default function File(props) {
 
+  const [successStatus, setSuccessStatus] = useState(false)
+
   const navigate = useNavigate()
 
-  console.log(props)
   function handleDelete() {
-    axios.post("https://main.mahmoud.social/api/v1/folders/delete-folder", {'folder_id': props.id})
-          .then(res => console.log(res))
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/folders/delete-folder`, {'folder_id': props.id})
+          .then(res => {
+            console.log(res)
+            window.location.reload()
+            setSuccessStatus(true)
+          })
           .catch(err => {
             console.log(err)
-            window.location.reload()
           })
+          .finally(
+            setSuccessStatus(false)
+          )
   }
 
   return (

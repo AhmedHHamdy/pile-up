@@ -3,6 +3,8 @@ import "../../App.css"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { AiFillCloseCircle } from "react-icons/ai"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Profile() {
   const [passwordFormOpen, setPasswordFormOpen] = useState(false)
@@ -16,16 +18,24 @@ export default function Profile() {
   }
 
   useEffect(() => {
-    axios.get('https://main.mahmoud.social/api/v1/profile')
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/profile`)
           .then(res => setFormData(res.data.data))
   }, [])
+
+  // const [formData, setFormData] = useState({
+  //   first_name: '',
+  //   last_name: '',
+  //   email: '',
+  //   phone: '',
+  //   image: null
+  // })
+
 
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
     email: '',
     phone: '',
-    image: ''
   })
 
   console.log(formData)
@@ -49,7 +59,7 @@ export default function Profile() {
   function handlePasswordFormSubmit(event) {
     event.preventDefault()
     if (formPassword.password == formPassword.password_confirmation) {
-      axios.post("https://main.mahmoud.social/api/v1/profile/update-password", formPassword)
+      axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/profile/update-password`, formPassword)
           .then(res => {
             console.log(res)
             setFormPassword({
@@ -58,6 +68,7 @@ export default function Profile() {
               password_confirmation: ''
             })
             closePasswordForm()
+            toast.success("Password Changed")
           })
           .catch(err => console.log(err))
     } else {
@@ -73,15 +84,40 @@ export default function Profile() {
         [name]: value
       }
     })
+  }
 
+  function handleFileChange(event) {
+    const selectedFile = event.target.files[0]
+    setFormData((previousFormData) => ({
+      ...previousFormData,
+      image: selectedFile
+    }))
   }
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    axios.post('https://main.mahmoud.social/api/v1/profile', formData)
+    let inputNames = ["first_name", "last_name", "email", "phone"]
+    const formDataa = new FormData(); // Create a new FormData object
+  
+    // Append the fields from pileFormData
+    for (const key of inputNames) {
+      formDataa.append(key, formData[key]);
+    }
+  
+    // Append the file data
+    // formDataa.append("image", formData.image);
+
+    console.log(formDataa)
+
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/profile`, formDataa, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
       .then(res => {
         console.log(res);
+        toast.success('Saved')
       })
       .catch(err => {
         console.error(err);
@@ -92,6 +128,7 @@ export default function Profile() {
 
   return (
       <section className="profile-container">
+        <ToastContainer />
         <div className="profile-header">
           <h1>Edit Profile</h1>
         </div>
@@ -113,7 +150,7 @@ export default function Profile() {
           <input type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
 
           {/* <label htmlFor="image">Image</label>
-          <input type="file" name="image" id="image" onChange={handleChange}  /> */}
+          <input type="file" name="image" id="image" onChange={handleFileChange}  /> */}
 
           <button>Save Profile</button>
         </form>

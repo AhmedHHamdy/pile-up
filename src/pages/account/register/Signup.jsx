@@ -72,7 +72,7 @@ export default function Signup() {
 
 
 
-      const response = await axios.post('https://main.mahmoud.social/api/v1/auth/register', formData)
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/auth/register`, formData)
       const data = response.data.data
       console.log(data)
       

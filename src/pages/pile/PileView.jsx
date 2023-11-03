@@ -6,18 +6,28 @@ import { MdModeEdit } from "react-icons/md"
 import { AiFillCloseCircle } from "react-icons/ai"
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import { useAuth } from "../../context/AuthProvider"
 
 export default function PileView() {
   const activeStyle = {
     borderBottom: "2px solid #EF6C4D"
   }
 
+  const { token } = useAuth()
+
+  const [loadingStatus, setLoadingStatus] = useState(true)
+  const [error, setError] = useState(null)
+
+
   const [pileData, setPileData] = useState([])
 
   const params = useParams()
-  console.log(params)
+  console.log(params.id)
 
   const location = useLocation()
+  console.log(location)
   let reportsPath = location.pathname.split('/')[location.pathname.split('/').length -1]
 
   const [editPileInfoForm, setEditPileInfoForm] = useState(false)
@@ -32,15 +42,82 @@ export default function PileView() {
   }
 
   useEffect(() => {
-    axios.get(`https://main.mahmoud.social/api/v1/piles/${params.id}`)
-        .then(res => {
-          console.log(res)
-          setPileData(res.data.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/piles/${params.id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(res => {
+      console.log(res)
+      setLoadingStatus(false)
+      setPileData(res.data.data)
+    })
+    .catch(err => {
+      console.log(err)
+      setError(err.message)
+    })
   }, [])
+
+  const [pileInfoUpdateForm, setPileInfoUpdateForm] = useState({
+    name: '',
+    content: '',
+    folder_id: "", // Assuming you want to include these values
+    pile_id: "params.id",
+    status: ""
+  })
+
+
+  function handlePileInfoFormChange(event) {
+    const {name, value} = event.target
+    setPileInfoUpdateForm(previousValue => ({
+      ...pileData, ...previousValue, pile_id: params.id, folder_id: +location.state.id, status: location.state.status, [name]: value
+    }))
+  }
+  console.log(pileInfoUpdateForm)
+
+  function handleSubmitPileInfoUpdate(event) {
+    event.preventDefault()
+    console.log(pileInfoUpdateForm)
+
+
+    let inputNames = ["name", "content", "status", "pile_type", "dead_line", "event_date", "folder_id", "pile_id"]
+    const formData = new FormData(); // Create a new FormData object
+  
+    // Append the fields from pileFormData
+    for (const key of inputNames) {
+      console.log(key, pileInfoUpdateForm[key])
+      if (key == "pile_type") {
+        formData.append("pile_type_id", pileInfoUpdateForm[key].id);
+      } else {
+        formData.append(key, pileInfoUpdateForm[key]);
+      }
+    }
+  
+
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/piles/update`, formData)
+          .then(res => {
+            console.log(res)
+            window.location.reload();
+          })
+          .catch(err => {
+            console.log(err)
+          })
+  }
+
+  if (loadingStatus) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent:"center", gridColumn: "8", alignSelf: "center" }}>
+        <CircularProgress color="success"  />
+      </Box>
+    )
+  }
+
+  if (error) {
+    return (
+      <h1 style={{gridColumn: "2/-1", textAlign: "center" }}>{error} <br/> Please Refresh</h1>
+    )
+  }
+
 
   return (
     <section className="pileview-container">
@@ -59,10 +136,10 @@ export default function PileView() {
       <div className="pile-container">
         <div className="pile-container-info">
           <div className="pile-info">
-            <img src={pileIcon} alt="" />
+            <img src={pileData['image']} alt="pile-image" />
             <div>
-              <h3>{pileData["name_en,"]}</h3>
-              <p>{pileData["content_en,"]}</p>
+              <h3>{pileData["name_en"]}</h3>
+              <p>{pileData["content_en"]}</p>
             </div>
           </div>
           <button className="pile-info-edit-button" onClick={openEditPileForm}><MdModeEdit /></button>
@@ -91,12 +168,12 @@ export default function PileView() {
             <button type="button" onClick={closeEditPileForm}><AiFillCloseCircle /></button>
           </div>
 
-          <form >
-            <label htmlFor="">Name <span>*</span></label>
-            <input type="text" placeholder="Enter a name" />
+          <form onSubmit={handleSubmitPileInfoUpdate}>
+            <label htmlFor="name">Name <span>*</span></label>
+            <input type="text" placeholder="Enter a name" name="name" required id="name" value={pileInfoUpdateForm.name} onChange={handlePileInfoFormChange} />
 
-            <label htmlFor="">Description <span>*</span></label>
-            <textarea placeholder="Enter a Description" />
+            <label htmlFor="description">Description <span>*</span></label>
+            <textarea placeholder="Enter a Description" id="description" required name="content" value={pileInfoUpdateForm.content} onChange={handlePileInfoFormChange}/>
             <button>Save</button>
           </form>
         </div>

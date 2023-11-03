@@ -24,7 +24,7 @@ export default function SendResetCode() {
 
   function handleSubmit(event) {
     event.preventDefault()
-    axios.post('https://main.mahmoud.social/api/v1/auth/send-reset-code', emailForm)
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/auth/send-reset-code`, emailForm)
     .then(res => {
       console.log(res)
       if (res.status == 200) {
@@ -41,7 +41,7 @@ export default function SendResetCode() {
 
   function handleResetCodeSubmit(event) {
     event.preventDefault()
-    axios.post('https://main.mahmoud.social/api/v1/auth/send-reset-code', resetCodeForm)
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/auth/send-reset-code`, resetCodeForm)
     .then(res => {
       console.log(res)
       if (res.status == "200") {
@@ -94,7 +94,7 @@ export default function SendResetCode() {
 
 
     if (validMatch && validPassword) {
-      axios.post('https://main.mahmoud.social/api/v1/auth/reset-password', resetPasswordForm)
+      axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/auth/reset-password`, resetPasswordForm)
       .then(res => {
         console.log(res)
         if (res.status == "200") {

@@ -1,6 +1,6 @@
 import "../../App.css"
 import React, { useState } from 'react';
-import Item from "../../components/Item";
+import Item from "../../components/ItemCart";
 
 export default function CartPage() {
   const [creditCardForm, setCreditCardForm] = useState(true)

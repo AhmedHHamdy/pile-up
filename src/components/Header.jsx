@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../App.css"
 import { useContext, useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
-import Item from "./Item";
+import Item from "./ItemCart";
 import Menu from "./menu/Menu";
 import MenuButton from "./menu/MenuButton";
 import MenuDropdown from "./menu/MenuDropdown";
