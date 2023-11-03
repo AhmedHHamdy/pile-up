@@ -8,7 +8,7 @@ import MenuItem from "./menu/MenuItem"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-const File = (props) => {
+export default function FolderFile(props) {
 
   const [successStatus, setSuccessStatus] = useState(false)
 
@@ -47,5 +47,3 @@ const File = (props) => {
     </div>
   )
 }
-
-export default  File
