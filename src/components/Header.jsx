@@ -6,11 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 import "../App.css"
 import { useContext, useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
-import Item from "./ItemCart";
+import ItemCart from "./ItemCart";
 import Menu from "./menu/Menu";
 import MenuButton from "./menu/MenuButton";
 import MenuDropdown from "./menu/MenuDropdown";
 import MenuItem from "./menu/MenuItem";
+import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export default function Header() {
 
@@ -20,15 +23,37 @@ export default function Header() {
   const [cartDialog, setCartDialog] = useState(false)
   const modelRef = useRef(null)
 
+  const [loadingStatus, setLoadingStatus] = useState(true)
+  const [error, setError] = useState(null)
+
+
+  const [cartData, setCartData] = useState([])
+
+  const total = cartData.reduce((sum, item) => (item.total * item.quantity) + sum, 0)
+
   const openCartDialog = (event) => {
     event.stopPropagation();
 
     setCartDialog(true)
+
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/carts/cart`)
+          .then(res => {
+            setLoadingStatus(false)
+            console.log(res)
+            setCartData(res.data.data)
+          })
+          .catch(err => {
+            console.log(err)
+          })
   }
 
   const closeCartDialog = () => {
     setCartDialog(false)
   }
+
+  const cartElements = cartData.map(item => {
+    return (<ItemCart key={item.id} total={item["total"]} id={item["id"]} itemId={item["item_id"]} quantity={item["quantity"]} image={item["item_image"]} name={item["item_name"]} />)
+  })
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -51,6 +76,13 @@ export default function Header() {
     setToken()
     navigate("/", { replace: true })
   }
+
+  
+  // if (error) {
+  //   return (
+  //     <h1 style={{gridColumn: "2/-1", textAlign: "center" }}>{error} <br/> Please Refresh</h1>
+  //   )
+  // }
 
 
   return (
@@ -111,17 +143,17 @@ export default function Header() {
             </div>
 
             <div className="cart-dialog-container-items">
-              <Item />
-              <Item />
-              <Item />
-              <Item />
+              {!loadingStatus ? cartElements :      
+              <Box sx={{ display: 'flex', justifyContent:"center", gridColumn: "8", alignSelf: "center" }}>
+                <CircularProgress color="success"  />
+              </Box>}
             </div>
 
 
             <div className="total-checkout-container">
               <div className="sub-total">
                 <span>Sub-total</span>
-                <span>10000.0 EGP</span>
+                <span>{total} EGP</span>
               </div>
 
               <div className="tax">
@@ -131,7 +163,7 @@ export default function Header() {
 
               <div className="total">
                 <span>Total</span>
-                <span>10060.00 EGP</span>
+                <span>{total+60} EGP</span>
               </div>
 
               <div className="cart-navigation">

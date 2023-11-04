@@ -1,10 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, Navigate } from "react-router-dom"
 import pileupLogo from "../../../assets/pileup_logo.png"
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
+import { useAuth } from "../../../context/AuthProvider"
 
 export default function Signup() {
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/
+
+  const { token } = useAuth()
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -17,6 +20,13 @@ export default function Signup() {
 
   const navigate = useNavigate()
   
+
+  if (token) {
+    console.log(token)
+    return <Navigate to="/" />
+  }
+
+
   const [validPassword, setValidPassword] = useState(false);
   const [validMatch, setValidMatch] = useState(false)
 

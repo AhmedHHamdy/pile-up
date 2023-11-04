@@ -1,6 +1,45 @@
+import axios from "axios"
 import "../App.css"
+import { useState } from "react"
 
 export default function PileItem(props) {
+
+  const [addedToCart, setAddedtoCart] = useState(false)
+
+  function handleDelete() {
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/items/delete`, {item_id: props.id})
+          .then(res => {
+            console.log(res)
+            window.location.reload()
+          })
+          .catch(err => {
+            console.log(err)
+          })
+  }
+
+  function handleAddToCart() {
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carts/addtocart`, {item_id: props.id, price: props.price})
+          .then(res => {
+            setAddedtoCart(true)
+            console.log(res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+  }
+
+  // function handleRemoveFromCart() {
+  //   axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carts/removecart`, {cart_id: props.id})
+  //         .then(res => {
+  //           setAddedtoCart(false)
+  //           console.log(res)
+  //         })
+  //         .catch(err => {
+  //           console.log(err)
+  //         })
+  // }
+
+
   return (
     <div className="items-list-container-item">
       <div className="items-list-container-item-checkbox">
@@ -21,6 +60,12 @@ export default function PileItem(props) {
 
         <div className="item-info-total-collected">
           <h3>Collected: <span>EGP 500.00</span></h3>
+        </div>
+
+        <div className="pile-item-buttons">
+          <button className="add-to-cart-button" onClick={handleAddToCart}>{addedToCart ? "Added to Cart" : "Add to cart"}</button>
+          {/* {addedToCart && <button className="add-to-cart-button" onClick={handleRemoveFromCart}>Added to Cart</button>} */}
+          <button className="pile-item-delete-button" onClick={handleDelete}>Delete</button>
         </div>
       </div>
     </div>

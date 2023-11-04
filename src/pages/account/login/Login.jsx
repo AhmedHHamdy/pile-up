@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, Navigate } from "react-router-dom"
 import pileupLogo from "../../../assets/pileup_logo.png"
 import { useState, useRef, useEffect, useContext } from "react"
 import axios from "axios"
@@ -10,7 +10,14 @@ export default function Login() {
     password: ''
   })
 
-  const { setToken } = useAuth()
+  const { setToken, token } = useAuth()
+
+
+  if (token) {
+    console.log(token)
+    return <Navigate to="/" />
+  }
+
   const navigate = useNavigate()
 
   const userRef = useRef();
@@ -64,6 +71,7 @@ export default function Login() {
     }
 
   }
+
 
   return (
     <div className="login-section">
