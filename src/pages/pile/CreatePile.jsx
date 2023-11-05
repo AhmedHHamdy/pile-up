@@ -18,7 +18,7 @@ export default function CreatePile() {
   const [pileFormData, setPileFormData] = useState({
     name: '',
     content: '',
-    folder_id: `${location?.state?.folders[0].id}`,
+    folder_id: `${location?.state?.folderId}`,
     dead_line: '',
     event_date: '',
     pile_type_id: '1',
@@ -82,7 +82,7 @@ export default function CreatePile() {
       .then((res) => {
         if (res) {
           console.log(res);
-          navigate(`/dashboard/folders?folder=${pileFormData.folder_id}`);
+          navigate(`/dashboard/folders?folder=${formData.folder_id}`);
         }
       })
       .catch((err) => {

@@ -39,7 +39,7 @@ export default function FolderView() {
       });
   }
   
-
+// change const to let
   const folderChange = searchParams.get('folder')
 
 
@@ -115,6 +115,23 @@ export default function FolderView() {
   useEffect(() => {
     const currentSearchParams = new URLSearchParams(window.location.search);
     const id = (folderData[0]?.id) + ''
+    // let id = folderChange + ''
+    // console.log(id)
+
+    // if (id == null) {
+    //   id = (folderData[0]?.id)
+    // }
+
+    // console.log(id)
+
+    // if (folderChange == "null") {
+    //   folderChange = folderData[0].id
+    //   console.log('please')
+    // }
+
+    // let id = folderChange 
+
+    // console.log(folderChange)
 
     currentSearchParams.set('folder', id )
     const newURL = new URL(window.location.href)
@@ -145,7 +162,7 @@ export default function FolderView() {
     <section className="folder-view">
       <section className="folder-creation-section">
         <div className="create-pile-div">
-          <Link className="create-pile-button" state={{folders: folderData}} to="../createpile">Create a Pile</Link>
+          <Link className="create-pile-button" state={{folders: folderData, folderId: folderChange}} to="../createpile">Create a Pile</Link>
         </div>
 
         <div className="folders-section">
@@ -190,7 +207,7 @@ export default function FolderView() {
               <h2>This folder is empty</h2>
               <p>Drag a pile into this folder or create a new pile</p>
             </div>
-            <Link className="create-pile-button" state={{folders: folderData}} to="../createpile">Create a Pile</Link>
+            <Link className="create-pile-button" state={{folders: folderData, folderId: folderChange}} to="../createpile">Create a Pile</Link>
             <button className="quick-tour-button">Take a quick tour</button>
           </div>)}
         </div>
