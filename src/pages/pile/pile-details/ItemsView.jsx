@@ -113,7 +113,9 @@ export default function ItemsView() {
       .then((res) => {
         if (res) {
           console.log(res);
-          window.location.reload()
+          // window.location.reload()
+          setItemData(prevItemData => ([...prevItemData, res.data.data]))
+          closeForm()
         }
       })
       .catch((err) => {

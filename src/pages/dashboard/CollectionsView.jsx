@@ -27,7 +27,8 @@ export default function FolderView() {
       .then(res => {
         console.log(res);
         closeFolderForm()
-        window.location.reload();
+        // window.location.reload();
+        setFolderData((prevFolderData) => [...prevFolderData, res.data.data]);
       })
       .catch(err => {
         console.log(err);
