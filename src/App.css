@@ -2094,6 +2094,7 @@ main {
   border-radius: 0.3rem;
   align-self: center;
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 /* Responsiveness for Login Page */
@@ -2184,6 +2185,7 @@ main {
   align-items: flex-start;
   justify-content: center;
   grid-column: 8/-1;
+  width: 94%;
 }
 
 
@@ -2216,6 +2218,7 @@ main {
   border-radius: 0.3rem;
   align-self: center;
   margin: 1rem 0 1.4rem 0;
+  cursor: pointer;
 }
 
 .signup-section-form label span {
@@ -2262,7 +2265,7 @@ main {
   align-items: center;
   width: 100%;
   background: #03BCA4;
-  gap: 47rem;
+  gap: 46rem;
   padding: 2rem 0rem;
 }
 
@@ -3973,11 +3976,28 @@ tfoot {
   width: 10vh;
 }
 
+.remove-cart-Item {
+  background: none;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* margin-left: 5rem; */
+}
+
+.remove-cart-Item > svg {
+  font-size: 1.4rem;
+  color: #008A78;
+}
+
+
+
 .item-component-container div {
   display: flex;
   align-items: center;
   gap: 2rem;
-  width: 10vh;
+  width: 12vh;
 }
 
 
@@ -3992,6 +4012,10 @@ tfoot {
 
 .item-component-container  h2 {
   font-size: 1rem;
+}
+
+.cart-item-total {
+  margin-left: 3rem;
 }
 
 div.item-component-buttons {

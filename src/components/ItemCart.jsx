@@ -1,22 +1,23 @@
 import { useState } from "react"
 import "../App"
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai"
+import { MdOutlineDelete } from "react-icons/md"
 import axios from "axios"
 
 export default function Item(props) {
   const [state, setState] = useState(0)
 
-  function handleAdding() {
-    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carts/addtocart`, {item_id: props.itemId, price: props.total})
-    .then(res => {
-      console.log(res)
-      setState(previousValue => previousValue + 1)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+  // function handleAdding() {
+  //   axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carts/addtocart`, {item_id: props.itemId, price: props.total})
+  //   .then(res => {
+  //     console.log(res)
+  //     setState(previousValue => previousValue + 1)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
     
-  }
+  // }
 
   function handleRemoving() {
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carts/removecart`, {cart_id: props.id})
@@ -55,16 +56,18 @@ export default function Item(props) {
         <img className="item-component-container-cart-img" src={props.image} alt="cartItem-picture"/>
         <h1>{props.name}</h1>
       </div>
-
+{/* 
       <div className="item-component-buttons">
         <button onClick={handleRemoving}><AiOutlineMinusSquare /></button>
-        <span>{props.quantity}</span>
+        <span>{1}</span>
         <button onClick={handleAdding}><AiOutlinePlusSquare /></button>
-      </div>
+      </div> */}
 
-      <div>
+      <div className="cart-item-total">
         <h2>EGP {props.total}</h2>
       </div>
+      <button className="remove-cart-Item" onClick={handleRemoving}><MdOutlineDelete /></button>
+
     </section>
   )
 }

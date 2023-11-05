@@ -133,7 +133,7 @@ export default function Signup() {
           <label htmlFor="email">Email</label>
           <input type="email" name="email" id="email" onChange={handleChange} required value={formData.email} />
 
-          <label htmlFor="phone">phone</label>
+          <label htmlFor="phone">Phone</label>
           <input type="text" name="phone" id="phone" onChange={handleChange} required value={formData.phone} />
 
           <label htmlFor="password">Password <span>(min. 8 char)</span></label>

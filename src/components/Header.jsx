@@ -29,7 +29,7 @@ export default function Header() {
 
   const [cartData, setCartData] = useState([])
 
-  const total = cartData.reduce((sum, item) => (item.total * item.quantity) + sum, 0)
+  const total = cartData.reduce((sum, item) => item.total + sum, 0)
 
   const openCartDialog = (event) => {
     event.stopPropagation();
@@ -45,6 +45,10 @@ export default function Header() {
           .catch(err => {
             console.log(err)
           })
+  }
+
+  function handleRemoveElementFromCart() {
+
   }
 
   const closeCartDialog = () => {

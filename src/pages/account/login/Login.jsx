@@ -85,7 +85,7 @@ export default function Login() {
         <p ref={errRef} className={errMsg ? "err-msg" : "offscreen"} aria-live="assertive">{errMsg}</p>
         
         <form className="login-section-form" onSubmit={handleSubmit}>
-          <label htmlFor="userName">Username</label>
+          <label htmlFor="userName">Email</label>
           <input type="text" name="username" id="userName" onChange={handleChange} ref={userRef} value={formData.username} required />
 
           <label htmlFor="password">Password</label>
