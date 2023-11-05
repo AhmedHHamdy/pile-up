@@ -101,6 +101,19 @@ export default function Header() {
   // }
 
 
+  function placeHolderHandler() {
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/orders/placeorder`, {payment_method_id: 1})
+          .then(res => {
+            console.log(res)
+            closeCartDialog()
+            navigate("/cart")
+          })
+          .catch(err => {
+            console.log(err)
+          })
+  }
+
+
   return (
     <header>
       <a className="link-img-logo" href="/"><img src={pileUp_logo} alt="" /></a>
@@ -183,7 +196,7 @@ export default function Header() {
               </div>
 
               <div className="cart-navigation">
-                <Link to="/cart">Continue to checkout</Link>
+                <button onClick={placeHolderHandler}>Continue to checkout</button>
                 <button onClick={closeCartDialog}>Keep shopping</button>
               </div>
             </div>

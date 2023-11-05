@@ -64,7 +64,7 @@ export default function Item(props) {
       <div className="cart-item-total">
         <h2>EGP {props.total}</h2>
       </div>
-      <button className="remove-cart-Item" onClick={handleRemoving}><MdOutlineDelete /></button>
+      {!props.orderNumber && <button className="remove-cart-Item" onClick={handleRemoving}><MdOutlineDelete /></button>}
 
     </section>
   )

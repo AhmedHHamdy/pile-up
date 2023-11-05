@@ -1,13 +1,18 @@
 import "../../App.css"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Item from "../../components/ItemCart";
+import axios from "axios";
+import Order from "../../components/Order";
 
 export default function CartPage() {
   const [creditCardForm, setCreditCardForm] = useState(true)
-  const [cashcallForm, setCashcalldForm] = useState(true)
+  const [cashCallForm, setCashCallForm] = useState(true)
   const [vodafoneCashForm, setVodafoneCashForm] = useState(true)
   const [walletForm, setWalletForm] = useState(true)
 
+  const [ordersData, setOrdersData] = useState([])
+
+  console.log(ordersData)
 
   const [state, setState] = useState({
       cardNumber: '',
@@ -23,8 +28,27 @@ export default function CartPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
   }
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/orders`)
+    .then(res => {
+      // setLoadingStatus(false)
+      console.log(res)
+      setOrdersData(res.data.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
+
+  const OrderElements = ordersData.filter(order => order.total !== "0.00").map(order => {
+    return (
+      <Order orderNumber={order["order_number"]} total={order["total"]} items={order["items"]} />
+    )
+  })
+
+  const total = ordersData.reduce((sum, e) => sum + Number(e.total), 0)
 
   return (
     <section className="cart-container">
@@ -92,16 +116,13 @@ export default function CartPage() {
         </div>
         
         <div className="items-container-checkout">
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {OrderElements}
         </div>
 
         <div className="total-checkout-container">
           <div className="sub-total">
             <span>Sub-total</span>
-            <span>10000.0 EGP</span>
+            <span>{total} EGP</span>
           </div>
 
           <div className="tax">
@@ -111,7 +132,7 @@ export default function CartPage() {
 
           <div className="total">
             <span>Total</span>
-            <span>10060.00 EGP</span>
+            <span>{total + 60} EGP</span>
           </div>
         </div>
       </div>
