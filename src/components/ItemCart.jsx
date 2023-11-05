@@ -5,7 +5,7 @@ import { MdOutlineDelete } from "react-icons/md"
 import axios from "axios"
 
 export default function Item(props) {
-  const [state, setState] = useState(0)
+  const [itemRemovalStatus, setItemRemovalStatusState] = useState(false)
 
   // function handleAdding() {
   //   axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carts/addtocart`, {item_id: props.itemId, price: props.total})
@@ -23,17 +23,15 @@ export default function Item(props) {
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carts/removecart`, {cart_id: props.id})
       .then(res => {
         console.log(res)
-        setState(previousValue => {
-          if (previousValue == 1) {
-            state(0)
-          } else {
-            return  previousValue - 1
-          }
-        })
+        // setItemRemovalStatusState(true)
+        // console.log(itemRemovalStatus)
+        props.removeCartItemCheck(true)
       })
       .catch(err => {
         console.log(err)
+        props.removeCartItemCheck(false)
       })
+      .finally()
   }
 
     // function handleRemoveFromCart() {

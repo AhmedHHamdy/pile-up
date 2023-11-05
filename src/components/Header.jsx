@@ -47,8 +47,20 @@ export default function Header() {
           })
   }
 
-  function handleRemoveElementFromCart() {
-
+  function handleRemoveElementFromCart(status) {
+    console.log(status)
+    if (status) {
+      setLoadingStatus(true)
+      axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/carts/cart`)
+      .then(res => {
+        setLoadingStatus(false)
+        console.log(res)
+        setCartData(res.data.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
   }
 
   const closeCartDialog = () => {
@@ -56,7 +68,7 @@ export default function Header() {
   }
 
   const cartElements = cartData.map(item => {
-    return (<ItemCart key={item.id} total={item["total"]} id={item["id"]} itemId={item["item_id"]} quantity={item["quantity"]} image={item["item_image"]} name={item["item_name"]} />)
+    return (<ItemCart key={item.id} removeCartItemCheck={handleRemoveElementFromCart} total={item["total"]} id={item["id"]} itemId={item["item_id"]} quantity={item["quantity"]} image={item["item_image"]} name={item["item_name"]} />)
   })
 
   useEffect(() => {
@@ -148,7 +160,7 @@ export default function Header() {
 
             <div className="cart-dialog-container-items">
               {!loadingStatus ? cartElements :      
-              <Box sx={{ display: 'flex', justifyContent:"center", gridColumn: "8", alignSelf: "center" }}>
+              <Box sx={{ display: 'flex', justifyContent:"center", gridColumn: "8", alignSelf: "center", marginTop: "1rem"}}>
                 <CircularProgress color="success"  />
               </Box>}
             </div>
