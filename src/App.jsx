@@ -5,7 +5,7 @@ import Layout from './components/Layout'
 import CollectionsView from './pages/dashboard/CollectionsView'
 import SideNav from './components/SideNav'
 import HistoryView from './pages/dashboard/HistoryView'
-import ManagerView from './pages/dashboard/ManagerView'
+import ContactsView from './pages/dashboard/ContactsView'
 import ReportView from './pages/dashboard/ReportView'
 import AddressBookView from './pages/dashboard/AddressBookView'
 import CreatePile from './pages/pile/CreatePile'
@@ -48,7 +48,7 @@ function App() {
 
             
             <Route path='history' element={<HistoryView />} />
-            <Route path='managers' element={<ManagerView />} />
+            <Route path='contacts' element={<ContactsView />} />
             <Route path='reports' element={<ReportView />} />
             <Route path='addressBook' element={<AddressBookView />} />
             <Route path='createpile' element={<CreatePile />} />

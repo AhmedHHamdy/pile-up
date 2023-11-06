@@ -106,7 +106,7 @@ export default function Header() {
           .then(res => {
             console.log(res)
             closeCartDialog()
-            navigate("/cart")
+            navigate("/cart", {state: {cartOrder: res.data.data}})
           })
           .catch(err => {
             console.log(err)
@@ -185,14 +185,14 @@ export default function Header() {
                 <span>{total} EGP</span>
               </div>
 
-              <div className="tax">
+              {/* <div className="tax">
                 <span>Tax</span>
                 <span>60.0 EGP</span>
-              </div>
+              </div> */}
 
               <div className="total">
                 <span>Total</span>
-                <span>{total+60} EGP</span>
+                <span>{total} EGP</span>
               </div>
 
               <div className="cart-navigation">

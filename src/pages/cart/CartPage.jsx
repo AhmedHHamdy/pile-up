@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Item from "../../components/ItemCart";
 import axios from "axios";
 import Order from "../../components/Order";
+import { useLocation } from "react-router-dom";
 
 export default function CartPage() {
   const [creditCardForm, setCreditCardForm] = useState(true)
@@ -12,7 +13,11 @@ export default function CartPage() {
 
   const [ordersData, setOrdersData] = useState([])
 
+  const location = useLocation()
+  console.log(location)
+
   console.log(ordersData)
+  console.log(location.state.cartOrder)
 
   const [state, setState] = useState({
       cardNumber: '',
@@ -31,20 +36,23 @@ export default function CartPage() {
   }
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/orders`)
-    .then(res => {
-      // setLoadingStatus(false)
-      console.log(res)
-      setOrdersData(res.data.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    // axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/orders`)
+    // .then(res => {
+    //   // setLoadingStatus(false)
+    //   console.log(res)
+    //   setOrdersData(res.data.data)
+    // })
+    // .catch(err => {
+    //   console.log(err)
+    // })
+    setOrdersData([location.state.cartOrder])
+    console.log(ordersData)
+
   }, [])
 
   const OrderElements = ordersData.filter(order => order.total !== "0.00").map(order => {
     return (
-      <Order orderNumber={order["order_number"]} total={order["total"]} items={order["items"]} />
+      <Order key={order} orderNumber={order["order_number"]} total={order["total"]} items={order["items"]} />
     )
   })
 
@@ -125,14 +133,14 @@ export default function CartPage() {
             <span>{total} EGP</span>
           </div>
 
-          <div className="tax">
+          {/* <div className="tax">
             <span>Tax</span>
             <span>60.0 EGP</span>
-          </div>
+          </div> */}
 
           <div className="total">
             <span>Total</span>
-            <span>{total + 60} EGP</span>
+            <span>{total} EGP</span>
           </div>
         </div>
       </div>

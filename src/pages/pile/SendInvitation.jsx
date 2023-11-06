@@ -3,9 +3,13 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { IoIosArrowBack } from "react-icons/io"
+import { useLocation } from "react-router-dom";
 
 export default function sendInvitation() {
   const [value, setValue] = useState('');
+
+  const location = useLocation()
+  console.log(location)
 
   return (
     <section className="invitation-form-container">
