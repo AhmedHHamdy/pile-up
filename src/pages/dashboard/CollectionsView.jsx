@@ -172,7 +172,11 @@ export default function FolderView() {
               <AiOutlinePlus />
             </button>
           </div>
-          <input type="text" placeholder="Search for a folder or a pile" />
+
+          <form >
+            <input type="text" placeholder="Search for a folder or a pile" />
+          </form>
+
           <div className="create-folder-container">
             <h3>Create a Folder...</h3>
             {folders}

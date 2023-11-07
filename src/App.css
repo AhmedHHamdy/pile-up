@@ -247,8 +247,18 @@ header > svg {
   display: grid;
   grid-template-columns: repeat(14, minmax(0, 1fr));
   border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
-
 }
+
+.order-SVG {
+  width: 35px;
+  fill: white;
+}
+
+.user-profile {
+  font-size: 1.8rem;
+  fill: white;
+}
+
 
 .side-navigation nav {
   background-color: #03BCA4;
@@ -3627,6 +3637,7 @@ tfoot {
   background: #fff;
   border-top: 1px solid #CCCCCC;
   padding: 1rem;
+  height: 85vh;
 }
 
 .profile-header h1{
@@ -4285,6 +4296,10 @@ scrollbar-color: #333 #f1f1f1;  */
   border-bottom: 0;
   border-right: 0;
   background: white;
+  /* height: 110vh; */
+  width: 100%;
+  table-layout: fixed;
+  font-family: poppins;
 }
 
 .table-orders tr:nth-child(even) {
@@ -4300,12 +4315,37 @@ scrollbar-color: #333 #f1f1f1;  */
   background: #EF6C4D;
 }
 
+td {
+  border: 1px solid #CCCCCC;
+}
+
+td a {
+  text-decoration: none;
+  color: #008A78;
+}
+
+td a svg {
+  font-size: 2rem;
+}
+
+td:last-of-type {
+  text-align: center;
+}
+
+.send-invite svg {
+  font-size: 3rem;
+}
+
+.order-number-link {
+  text-decoration: underline;
+}
+
 /* Pagination Component Styling */
 .pagination-container {
   display: flex;
   list-style-type: none;
   position: relative;
-  left: 70vh;
+  left: 80vh;
   top: 0vh;  
 
   .pagination-item {

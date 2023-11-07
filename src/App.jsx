@@ -47,7 +47,7 @@ function App() {
             </Route>
 
             
-            <Route path='history' element={<HistoryView />} />
+            <Route path='orders' element={<HistoryView />} />
             <Route path='contacts' element={<ContactsView />} />
             <Route path='reports' element={<ReportView />} />
             <Route path='addressBook' element={<AddressBookView />} />
