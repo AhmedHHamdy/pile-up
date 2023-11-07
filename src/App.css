@@ -4307,6 +4307,10 @@ scrollbar-color: #333 #f1f1f1;  */
   /* text-transform: capitalize; */
 }
 
+tr {
+  height: 2vh;
+}
+
 /* .table-orders tr {
   text-transform :capitalize;
 } */
