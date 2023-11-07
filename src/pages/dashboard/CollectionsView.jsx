@@ -19,6 +19,23 @@ export default function FolderView() {
 
   const [loadingStatus, setLoadingStatus] = useState(false)
   const [error, setError] = useState(null)
+  
+
+  const [searchData, setSearchData] = useState([])
+  const [searchForm, setSearchForm] = useState({name: ''})
+
+  function handleSearchChange(event) {
+    const { name, value } = event.target
+    setSearchForm(prevSearchForm => {
+      return {name: value}
+    })
+  }
+
+  console.log(searchForm)
+
+  // useEffect(() => {
+
+  // }, [searchForm])
 
 
   function createFolderHandler(event) {
@@ -40,7 +57,7 @@ export default function FolderView() {
   }
   
 // change const to let
-  const folderChange = searchParams.get('folder')
+  let folderChange = searchParams.get('folder')
 
 
   const params = useParams()
@@ -65,6 +82,32 @@ export default function FolderView() {
   const piles = folderId ? folderId.piles.map((pile, i) => (
     <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} image={pile["image"]} status={pile.status} folderId={folderChange} />
   )) : null;
+
+
+  
+  function handleSearchFormSubmit(event) {
+    event.preventDefault()
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/piles/search?name=${searchForm.name.toLowerCase()}`)
+    .then(res => {
+      console.log(res)
+      // setSearchData(res.data)
+      console.log(folderData)
+      for (let folder of folderData) {
+        console.log(folder)
+        for (let pile of folder.piles){
+          console.log(pile.id)
+          if(pile.id == res.data.data[0].id) {
+            console.log(folder.id)
+            handleFolderChange("folder", folder.id)
+          }
+        }
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
 
   const modelRef = useRef(null)
   const [isFolderFormOpen, setIsFolderFormOpen] = useState(false)
@@ -173,8 +216,8 @@ export default function FolderView() {
             </button>
           </div>
 
-          <form >
-            <input type="text" placeholder="Search for a folder or a pile" />
+          <form onSubmit={handleSearchFormSubmit} >
+            <input type="text" placeholder="Search for a folder or a pile" value={searchForm.searchText} onChange={handleSearchChange} />
           </form>
 
           <div className="create-folder-container">
