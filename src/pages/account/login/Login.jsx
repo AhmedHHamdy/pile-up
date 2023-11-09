@@ -65,7 +65,7 @@ export default function Login() {
       } else if (err.response.status == 401) {
         setErrMsg('Unauthorized')
       } else {
-        setErrMsg('Login Failed')
+        setErrMsg('Wrong Password/ Email')
       }
       errRef.current.focus()
     }
