@@ -57,6 +57,7 @@ export default function ContactsView() {
             toast.success("Contact Deleted")
             console.log(res)
             setContactsData(res.data.data)
+            window.location.reload()
           })
           .catch(err => {
             console.log(err)
