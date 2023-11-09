@@ -56,8 +56,7 @@ export default function FolderView() {
       });
   }
   
-// change const to let
-  let folderChange = searchParams.get('folder')
+  const folderChange = searchParams.get('folder')
 
 
   const params = useParams()
@@ -158,23 +157,6 @@ export default function FolderView() {
   useEffect(() => {
     const currentSearchParams = new URLSearchParams(window.location.search);
     const id = (folderData[0]?.id) + ''
-    // let id = folderChange + ''
-    // console.log(id)
-
-    // if (id == null) {
-    //   id = (folderData[0]?.id)
-    // }
-
-    // console.log(id)
-
-    // if (folderChange == "null") {
-    //   folderChange = folderData[0].id
-    //   console.log('please')
-    // }
-
-    // let id = folderChange 
-
-    // console.log(folderChange)
 
     currentSearchParams.set('folder', id )
     const newURL = new URL(window.location.href)

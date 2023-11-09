@@ -41,26 +41,28 @@ export default function ManagersView() {
           </div>
           
           <div className="managers-list-container-manager-info">
-            <table>
-              <colgroup span="4"></colgroup>
-              <tbody>
+            <table className="table-orders">
+              <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Email</th>
+                  <th colSpan={2}>Name</th>
+                  <th colSpan={2}>Email</th>
                   <th>Date Added</th>
+                  <th>Role</th>
                 </tr>
+              </thead>
+              <tbody>
+                {[pileData].map(p => {
+                  return (
+                    <tr>
+                      <td colSpan={2}>{p.members[0].user.first_name} {p.members[0].user.first_name}</td>
+                      <td colSpan={2}>{p.members[0].user.email}</td>
+                      <td>{p.members[0].user.created_at.split('T')[0]}</td>
+                      <td>{p.members[0].is_manager == true ? "Manager" : "Participant"}</td>
+                    </tr>
+                  )
+                })}
+  
 
-                <tr>
-                  <td>May Kenawi</td>
-                  <td>name@example.com</td>
-                  <td>11/08/2023</td>
-                </tr>
-
-                <tr>
-                  <td>May Kenawi</td>
-                  <td>name@example.com</td>
-                <td>23/08/2023</td>
-              </tr>
               </tbody>
             
             </table>

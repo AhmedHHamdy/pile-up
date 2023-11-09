@@ -67,6 +67,7 @@ export default function HistoryView() {
       <h1 style={{gridColumn: "2/-1", textAlign: "center" }}>{error} <br/> Please Refresh</h1>
     )
   }
+
     
 
   return (
@@ -86,7 +87,7 @@ export default function HistoryView() {
       <tbody>
         {currentTableData.map(item => {
           return (
-            <tr>
+            <tr key={item.id}>
               <td>{item.id}</td>
               <td><Link className="order-number-link" to="../../cart" state={{ cartOrder: item }}>{item.order_number}</Link></td>
               <td>{item.date.split('T')[0]}</td>
