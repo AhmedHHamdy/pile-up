@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { IoIosArrowBack } from "react-icons/io"
@@ -18,6 +18,9 @@ import { display } from "@mui/system";
 export default function sendInvitation() {
   const [value, setValue] = useState()
 
+  const [pileList, setPileList] = useState([])
+  console.log(pileList)
+
   const location = useLocation()
   console.log(location)
 
@@ -31,11 +34,32 @@ export default function sendInvitation() {
 
   const [inviteDataForm, setInviteDataForm] = useState({
     pile_id: '',
-    message_type: '',
-    send_to: location?.state.email,
-    send_from: '',
-    subject: ''
+    title: '',
+    send_to: location?.state?.email,
+    content: ''
   })
+
+  console.log(inviteDataForm)
+
+  function handleInvitationDateChange(event) {
+    const { name, value } = event.target
+    setInviteDataForm(previousValue => {
+      return ({...previousValue, [name]: value})
+    })
+  }
+
+  function handleSendMessage(event) {
+    event.preventDefault()
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/piles/add-message`, inviteDataForm)
+        .then(res => {
+          console.log(res)
+          toast.success("Message Sent")
+        })
+        .catch(err => {
+          console.log(err)
+          toast.error(err.message)
+        })
+  }
 
   const [contactsData, setContactsData] = useState([''])
 
@@ -46,10 +70,7 @@ export default function sendInvitation() {
     })
   }
 
-  console.log(contactsFormData)
-
-
-
+  // console.log(contactsFormData)
 
 
   const [open, setOpen] = React.useState(false);
@@ -84,6 +105,21 @@ export default function sendInvitation() {
   })
   console.log(recipients)
 
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/piles/my-piles`)
+        .then(res => {
+          console.log(res)
+          setPileList(res.data.data)
+
+        })
+        .catch(err => {
+          console.log(TypeError)
+        })
+  }, [])
+
+  const pileOptions = pileList.map(p => {
+    return (<option key={p.id} value={p.id}>{p["name_en"]}</option>)
+  })
 
 
 
@@ -91,32 +127,35 @@ export default function sendInvitation() {
     <section className="invitation-form-container">
       <ToastContainer />
       <div className="invitation-back-button ">
-        <Link to="../pileview/share"><IoIosArrowBack /> Back to piles</Link>
+        <Link to={ location?.state?.pileId ? `../folders/pileview/${location?.state?.pileId}/share` : '../contacts'}><IoIosArrowBack /> Back to piles</Link>
       </div>
       <div className="invitation-form">
         <h1>Message Center</h1>
-          <form>
+          <form onSubmit={handleSendMessage}>
             <div className="invitation-from-elements-container">
 
-              <div className="title-input-container">
-                <label htmlFor="">Select Pile <span>*</span></label>
-                <input type="text" placeholder="My Pile 01" />
+              <div className="pile-select-input-container">
+                <label htmlFor="pile-selection">Select Pile <span>*</span></label>
+                <select name="pile_id" id="pile-selection" onChange={handleInvitationDateChange}>
+                  <option value=''>Select Pile</option>
+                  {pileOptions}
+                </select>
               </div>
-
+{/* 
               <div className="invite-input-container ">
                 <label htmlFor="invitation-selection">Message type <span>*</span></label>
                 <select name="invitation" id="invitation-selection">
                   <option value="Invitation 01">Invitation</option>
                 </select>
-              </div>
+              </div> */}
 
               <div className="invite-form-add-recipients-button-container">
-                <label htmlFor="">To <span>*</span></label>
+                <label htmlFor="send_to">To <span>*</span></label>
                 {/* <p>contact1, contact2, contact3, contact4, contact5, contact7، contact1, contact2, contact3, contact4, contact5, contact7، contact1, contact2, contact3, contact4, contact5, contact7</p> */}
                 {/* {recipients} */}
-                <input style={{display: "block", marginBottom: "1rem", width: "50%"}} type="text" name="send_to" id="" value={contactsData[contactsData.length-1].email || location?.state.email} disabled />
+                <input style={{display: "block", marginBottom: "1rem", width: "50%"}} type="text" name="email" id="send_to" onChange={handleInvitationDateChange} value={contactsData[contactsData.length-1].email || location?.state.email} />
+
                 <Button className="button" onClick={handleClickOpen}>Add recipient</Button>
-          
                 <Dialog open={open} onClose={handleClose}>
                   {/* <DialogTitle>Add recipients</DialogTitle> */}
                   <DialogContent>
@@ -185,25 +224,20 @@ export default function sendInvitation() {
               </div>
 
               <section className="invite-message-container">
-                <div className="invite-message-container-from-input">
-                  <label htmlFor="">From <span>*</span></label>
-                  <input type="text" placeholder="Email" />
-                </div>
-
-
                 <div className="invite-message-container-from-subject-input">
-                  <label htmlFor="invitation-selection">Subject <span>*</span></label>
-                  <input type="text" placeholder="Subject" />
+                  <label htmlFor="title">Subject <span>*</span></label>
+                  <input type="text" placeholder="Subject" name="title" id="title" onChange={handleInvitationDateChange}/>
                 </div>
 
-                <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} />
+                {/* <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} /> */}
+                <textarea className="editor" placeholder="Messge" name="content" id="content" cols="30" rows="10" onChange={handleInvitationDateChange}></textarea>
               </section>
 
             </div>
 
             <div className="form-buttons">
               <Link to="../contacts">Cancel</Link>
-              <button>Create</button>
+              <button>Send</button>
             </div>
           </form>
 

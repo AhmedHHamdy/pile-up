@@ -71,7 +71,7 @@ export default function HistoryView() {
     
 
   return (
-    <>
+    <section className="table-container">
     <table className="table-orders">
       <thead>
         <tr>
@@ -100,22 +100,22 @@ export default function HistoryView() {
                   ))}
                 </ul>
               </td>
-              <td>
+              <td className="order-history">
                  <Link to="../../cart" state={{ cartOrder: item }}><TbShoppingCartDollar /></Link>
               </td>
             </tr>
           );
         })}
       </tbody>
-      <Pagination
+ 
+    </table>
+    <Pagination
         className="pagination-bar"
         currentPage={currentPage}
         totalCount={paginationData.total_count}
         pageSize={PageSize}
         onPageChange={page => setCurrentPage(page)}
       />  
-    </table>
-
-    </>
+    </section>
   )
 }
