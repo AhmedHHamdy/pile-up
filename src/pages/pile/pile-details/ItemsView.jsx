@@ -217,10 +217,10 @@ export default function ItemsView() {
   return (
     <section className="items-container">
       <div className="items-buttons-container">
-        <div className="items-select-input">
+        {/* <div className="items-select-input">
           <input type="checkbox" name="" id="" />
           <label htmlFor="">Select all</label>
-        </div>
+        </div> */}
 
         <div className="items-create-buttons">
           <button onClick={openForm}><AiOutlinePlus /> Add item</button>

@@ -35,9 +35,9 @@ export default function FolderFile(props) {
       <Menu>
         <MenuButton><BiDotsHorizontalRounded /></MenuButton>
         <MenuDropdown>
-          <MenuItem>
+          {/* <MenuItem>
             <button>Edit</button>
-          </MenuItem>
+          </MenuItem> */}
 
           <MenuItem>
             <button onClick={handleDelete}>Delete</button>

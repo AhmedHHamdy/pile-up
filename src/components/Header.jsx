@@ -116,7 +116,7 @@ export default function Header() {
 
   return (
     <header>
-      <a className="link-img-logo" href="/"><img src={pileUp_logo} alt="" /></a>
+      <a className="link-img-logo" href="/"><img src={pileUp_logo} alt="PileUp-logo" /></a>
 
       <Link className="home-link" to="/">Home</Link>
       <span className="resources-link">
@@ -161,7 +161,8 @@ export default function Header() {
 
       {/* {token && <Link className="logout-link" onClick={handleLogout}>Logout</Link>} */}
 
-      {token && <button className="cart-button" onClick={openCartDialog}><AiOutlineShoppingCart/> Cart</button>}
+      {/* Deleted the cart word */}
+      {token && <button className="cart-button" onClick={openCartDialog}><AiOutlineShoppingCart/></button>}
 
       {cartDialog && 
       <div className="model-overlay-cart">

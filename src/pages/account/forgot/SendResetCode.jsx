@@ -113,7 +113,7 @@ export default function SendResetCode() {
   }
 
   return (
-    <section>
+    <section className="forgot-password-sections-container">
       <ToastContainer />
       {resetCodeFormContainer &&
         <section className="send-reset-code-container">

@@ -42,9 +42,9 @@ export default function PileItem(props) {
 
   return (
     <div className="items-list-container-item">
-      <div className="items-list-container-item-checkbox">
+      {/* <div className="items-list-container-item-checkbox">
         <input type="checkbox" name="" id="" />
-      </div>
+      </div> */}
       
       <div className="items-list-container-item-info">
         {/* <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">

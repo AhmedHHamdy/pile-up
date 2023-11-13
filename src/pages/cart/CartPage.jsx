@@ -17,7 +17,7 @@ export default function CartPage() {
   console.log(location)
 
   console.log(ordersData)
-  console.log(location.state.cartOrder)
+  console.log(location?.state?.cartOrder)
 
   const [state, setState] = useState({
       cardNumber: '',
@@ -45,7 +45,15 @@ export default function CartPage() {
     // .catch(err => {
     //   console.log(err)
     // })
-    setOrdersData([location.state.cartOrder])
+    if(location?.state?.cartOrder) {
+      setOrdersData([location?.state?.cartOrder])
+    } else {
+      setOrdersData([{
+        "order_number": "EA27197890811",
+        "total": 0,
+        "items": []
+    }])
+    }
     console.log(ordersData)
 
   }, [])

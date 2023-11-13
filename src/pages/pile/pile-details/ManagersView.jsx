@@ -82,10 +82,10 @@ export default function ManagersView() {
     <section className="managers-container">
       
       <div className="managers-buttons-container">
-        <div className="managers-select-input">
+        {/* <div className="managers-select-input">
           <input type="checkbox" name="" id="" />
           <label htmlFor="">Select all</label>
-        </div>
+        </div> */}
 
         <div className="managers-create-buttons">
           <button onClick={openManagerForm}><AiOutlinePlus /> Add a Participant</button>
@@ -96,36 +96,38 @@ export default function ManagersView() {
 
       <div className="managers-list-container">
         <div className="managers-list-container-manager">
-          <div className="managers-list-container-manager-checkbox">
+          {/* <div className="managers-list-container-manager-checkbox">
             <input type="checkbox" name="" id="" />
-          </div>
+          </div> */}
           
           <div className="managers-list-container-manager-info">
-            <table className="table-orders">
-              <thead>
-                <tr>
-                  <th colSpan={2}>Name</th>
-                  <th colSpan={2}>Email</th>
-                  <th>Date Added</th>
-                  <th>Role</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[pileData].map(p => p.members)[0].map((u, i) => {
-                  return (
-                    <tr key={u.i}>
-                      <td colSpan={2}>{u.user.first_name} {u.user.first_name}</td>
-                      <td colSpan={2}>{u.user.email}</td>
-                      <td>{u.user.created_at.split('T')[0]}</td>
-                      <td>{u.is_manager == true ? "Manager" : "Participant"}</td>
-                    </tr>
-                  )
-                })}
-  
+            <section className="table-container">
 
-              </tbody>
-            
-            </table>
+              <table className="table-orders">
+                <thead>
+                  <tr>
+                    <th colSpan={2}>Name</th>
+                    <th colSpan={2}>Email</th>
+                    <th>Date Added</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[pileData].map(p => p.members)[0].map((u, i) => {
+                    return (
+                      <tr key={u.i}>
+                        <td colSpan={2}>{u.user.first_name} {u.user.first_name}</td>
+                        <td colSpan={2}>{u.user.email}</td>
+                        <td>{u.user.created_at.split('T')[0]}</td>
+                        <td>{u.is_manager == true ? "Manager" : "Participant"}</td>
+                      </tr>
+                    )
+                  })}
+    
+
+                </tbody>
+              </table>
+            </section>
           </div>
           
         </div>

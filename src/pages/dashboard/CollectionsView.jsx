@@ -212,15 +212,15 @@ export default function FolderView() {
       <section className="folder-container">
         <section className="folder-container-top">
           <h1>{folderId?.name_en}</h1>
-          <div>
-            <section>
+          <div className="folder-select-input-container">
+            {/* <section>
               <input type="checkbox" id="selectAll" name="selectAll" />
               <label htmlFor="selectAll">Select all</label>
-            </section>
+            </section> */}
 
-            <section>
+            <section className="sort-piles-by-section">
               <label htmlFor="sort">Sort By:</label>
-              <select name="sort" id="sort">
+              <select name="sort" id="sort" className="">
                 <option value="name">Name</option>
                 <option value="date">Date</option>
               </select>

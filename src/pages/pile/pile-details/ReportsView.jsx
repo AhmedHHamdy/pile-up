@@ -16,9 +16,9 @@ export default function ReportsView() {
       </div>
 
       <div className="reports-list-container-manager-info">
-            <table>
-              <colgroup span="4"></colgroup>
-              <tbody>
+          <section className="table-container">
+            <table className="table-orders">
+              <thead>
                 <tr>
                   <th>Name</th>
                   <th>Email</th>
@@ -27,7 +27,8 @@ export default function ReportsView() {
                   <th>Method</th>
                   <th>Status</th>
                 </tr>
-
+              </thead>
+              <tbody>
                 <tr>
                   <td>May Kenawi</td>
                   <td>name@example.com</td>
@@ -44,13 +45,11 @@ export default function ReportsView() {
                   <td>EGP 1000</td>
                   <td>Method</td>
                   <td>Status</td>
-
                 </tr>
-
               </tbody>
-            
             </table>
-          </div>
-    </section>
+          </section>
+        </div>
+     </section>
   )
 }

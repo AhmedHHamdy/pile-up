@@ -70,9 +70,12 @@ export default function Profile() {
             closePasswordForm()
             toast.success("Password Changed")
           })
-          .catch(err => console.log(err))
+          .catch(err => {
+            console.log(err)
+            toast.error(err.message)
+          })
     } else {
-      alert("password is not matching the confirmation")
+      toast.error("Please make sure your passwords match")
     }
   }
 
@@ -121,6 +124,7 @@ export default function Profile() {
       })
       .catch(err => {
         console.error(err);
+        toast.error(err.message)
         // console.error(err.response.data.message);
         // setErrMsg(err.response.data.message)
       });
