@@ -127,7 +127,7 @@ export default function sendInvitation() {
     <section className="invitation-form-container">
       <ToastContainer />
       <div className="invitation-back-button ">
-        <Link to={ location?.state?.pileId ? `../folders/pileview/${location?.state?.pileId}/share` : '../contacts'}><IoIosArrowBack /> Back to piles</Link>
+        <Link to={location?.state?.pileId ? `../folders/pileview/${location?.state?.pileId}/managers` : '../contacts'}><IoIosArrowBack /> Back to piles</Link>
       </div>
       <div className="invitation-form">
         <h1>Message Center</h1>
@@ -136,7 +136,7 @@ export default function sendInvitation() {
 
               <div className="pile-select-input-container">
                 <label htmlFor="pile-selection">Select Pile <span>*</span></label>
-                <select name="pile_id" id="pile-selection" onChange={handleInvitationDateChange}>
+                <select name="pile_id" id="pile-selection" onChange={handleInvitationDateChange} required>
                   <option value=''>Select Pile</option>
                   {pileOptions}
                 </select>
@@ -226,17 +226,17 @@ export default function sendInvitation() {
               <section className="invite-message-container">
                 <div className="invite-message-container-from-subject-input">
                   <label htmlFor="title">Subject <span>*</span></label>
-                  <input type="text" placeholder="Subject" name="title" id="title" onChange={handleInvitationDateChange}/>
+                  <input type="text" placeholder="Subject" name="title" id="title" onChange={handleInvitationDateChange} required/>
                 </div>
 
                 {/* <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} /> */}
-                <textarea className="editor" placeholder="Messge" name="content" id="content" cols="30" rows="10" onChange={handleInvitationDateChange}></textarea>
+                <textarea className="editor" placeholder="Messge" name="content" id="content" cols="30" rows="10" onChange={handleInvitationDateChange} required></textarea>
               </section>
 
             </div>
 
             <div className="form-buttons">
-              <Link to="../contacts">Cancel</Link>
+              <Link to={location?.state?.pileId ? `../folders/pileview/${location?.state?.pileId}/managers` : '../contacts'}>Cancel</Link>
               <button>Send</button>
             </div>
           </form>

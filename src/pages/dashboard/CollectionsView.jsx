@@ -20,6 +20,10 @@ export default function FolderView() {
   const [loadingStatus, setLoadingStatus] = useState(false)
   const [error, setError] = useState(null)
   
+  const [sortingPile, setSortingPile] = useState({sort: 'name'})
+
+
+  console.log(sortingPile)
 
   const [searchData, setSearchData] = useState([])
   const [searchForm, setSearchForm] = useState({name: ''})
@@ -32,10 +36,6 @@ export default function FolderView() {
   }
 
   console.log(searchForm)
-
-  // useEffect(() => {
-
-  // }, [searchForm])
 
 
   function createFolderHandler(event) {
@@ -78,7 +78,17 @@ export default function FolderView() {
 
   const folderId = folderData.find(folder => folder.id === +folderChange);
 
-  const piles = folderId ? folderId.piles.map((pile, i) => (
+  function handleSortingChange(event) {
+    const { name, value } = event.target
+    setSortingPile(previousData => {
+      return {...previousData, [name]: value}
+    })
+  }
+
+
+  const piles = folderId ? sortingPile.sort === "name" ? folderId.piles.sort((a, b) => a["name_en"].localeCompare(b["name_en"])).map((pile, i) => (
+    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} image={pile["image"]} status={pile.status} folderId={folderChange} />
+  )) : folderId.piles.sort((a, b) => a["event_date"].split('T')[0].localeCompare(b["event_date"].split('T')[0])).map((pile, i) => (
     <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} image={pile["image"]} status={pile.status} folderId={folderChange} />
   )) : null;
 
@@ -220,7 +230,8 @@ export default function FolderView() {
 
             <section className="sort-piles-by-section">
               <label htmlFor="sort">Sort By:</label>
-              <select name="sort" id="sort" className="">
+              <select name="sort" id="sort" className="" value={sortingPile.sort} onChange={handleSortingChange}>
+                {/* <option value="">Sort By</option> */}
                 <option value="name">Name</option>
                 <option value="date">Date</option>
               </select>

@@ -137,6 +137,32 @@ export default function ContactsView() {
   return (
     <section className="table-container"> 
     <ToastContainer />
+
+    <section className="Add-contact-form">
+      <form>
+        <div>
+          <label htmlFor="first_name">First Name:</label>
+          <input type="text" name="first_name" id="first_name" placeholder="John" required />
+        </div>
+
+        <div>
+          <label htmlFor="last_name">Last Name:</label>
+          <input type="text" name="last_name" id="last_name" placeholder="Smith" required />
+        </div>
+
+        <div>
+          <label htmlFor="email" className="email-label">Email:</label>
+          <input type="email" name="email" id="email" placeholder="John@Smith.com" required />
+        </div>
+
+        <div>
+          <label htmlFor="phone" className="phone-label">Phone:</label>
+          <input type="tel" name="phone" id="phone" placeholder="555 5555 5555" required />
+        </div>
+        <button className="add-contact-button">Add</button>
+      </form>
+    </section>
+
     <table className="table-orders">
       <thead>
         <tr>
@@ -144,7 +170,7 @@ export default function ContactsView() {
           <th>Name</th>
           <th colSpan={2}>Email</th>
           <th>Phone</th>
-          <th>Send Invite</th>
+          <th>Send Message</th>
           <th>Edit Contact</th>
           <th>Delete Contact</th>
         </tr>

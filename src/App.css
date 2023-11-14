@@ -2973,7 +2973,7 @@ font-weight: 500;
   padding: 0.5rem;
   background: #EF6C4D;
   text-decoration: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 0.5rem;
   align-self: center;
   color: #FFFFFF;
@@ -5578,6 +5578,7 @@ div.item-component-buttons span {
     overflow-x: auto;
   }
   
+  /* Quil Legacy Stuff Remove my dude */
   /* Create Item Dialog */
 
   .item-form h1 {
@@ -5664,9 +5665,36 @@ div.item-component-buttons span {
   }
 }
 
-/* Forgot Page Responsiveness */
+/* Contracts Page Responsiveness */
 @media all and (min-width:320px) and (max-width:1000px) {
- 
+  .Add-contact-form form  {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Add-contact-form form div {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start!important;
+    width: 80%!important;
+  }
+
+  .Add-contact-form form div label {
+    width: 0;
+  }
+
+  .Add-contact-form form div input {
+    width: 90%!important;
+  }
+
+  .Add-contact-form form button.add-contact-button {
+    margin: 0.1rem 0 0.5rem 0;
+    padding: 0 2rem;
+    font-size: 1.4rem;
+  }
+
+
 }
 
 /* For WebKit-based browsers (Chrome, Safari) */
@@ -5700,6 +5728,53 @@ scrollbar-color: #333 #f1f1f1;  */
   background: #EF6C4D!important;
 }
 
+.Add-contact-form {
+  width: 100%;
+}
+
+.Add-contact-form form {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.Add-contact-form form div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  /* border: 1px solid #CCCCCC; */
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.Add-contact-form form div label {
+  font-family: poppins, inter;
+  width: 22vh;
+}
+
+.Add-contact-form form div .email-label, .Add-contact-form form div .phone-label {
+  width: 4rem;
+}
+
+.Add-contact-form form div input {
+  border: 1px solid #CCCCCC;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  border-radius: 0.1rem;
+}
+
+.Add-contact-form form button {
+  background: #EF6C4D;
+  color: white;
+  border: 0;
+  font-size: 1.2rem;
+  padding: 0.2rem 1rem;
+  border-radius: 0.2rem;
+  margin-right: 0.5rem;
+}
+
 .table-container {
   grid-column:2/-1;
   grid-row: 1;
@@ -5708,8 +5783,8 @@ scrollbar-color: #333 #f1f1f1;  */
 .table-orders {
   padding-left: 0;
   border: 1px solid #CCCCCC;
-  border-bottom: 0;
-  border-right: 0;
+  /* border-bottom: 0;
+  border-right: 0; */
   background: white;
   /* min-height: 89vh; */
   width: 100%;
@@ -5743,6 +5818,7 @@ td {
 
 td {
   border: 1px solid #CCCCCC;
+  padding: 0 1rem;
 }
 
 td a {
@@ -5756,7 +5832,6 @@ td a svg {
 
 td.link-invite, .button-edit, .button-delete {
   text-align: center;
-
 }
 
 .order-history {

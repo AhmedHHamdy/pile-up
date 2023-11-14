@@ -95,7 +95,7 @@ export default function CreatePile() {
 
 
   const options = location?.state?.folders.map(folder => {
-    return <option value={folder.id}>{folder.name_en}</option>
+    return <option key={folder.id} value={folder.id}>{folder.name_en}</option>
   })
 
   function getCurrentDate() {

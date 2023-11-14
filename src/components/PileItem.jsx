@@ -1,6 +1,8 @@
 import axios from "axios"
 import "../App.css"
 import { useState } from "react"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function PileItem(props) {
 
@@ -21,10 +23,12 @@ export default function PileItem(props) {
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carts/addtocart`, {item_id: props.id, price: props.price})
           .then(res => {
             setAddedtoCart(true)
+            toast.success("Added to Cart")
             console.log(res)
           })
           .catch(err => {
             console.log(err)
+            toast.error(err.message)
           })
   }
 
@@ -42,6 +46,7 @@ export default function PileItem(props) {
 
   return (
     <div className="items-list-container-item">
+      <ToastContainer />
       {/* <div className="items-list-container-item-checkbox">
         <input type="checkbox" name="" id="" />
       </div> */}

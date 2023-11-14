@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react"
 import "../../../App.css"
 import { AiOutlinePlus, AiFillCloseCircle } from "react-icons/ai"
-import { useOutletContext } from "react-router-dom"
+import { useOutletContext, Link } from "react-router-dom"
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FcInvite } from "react-icons/fc"
 
 export default function ManagersView() {
   const [isManagerFormOpen, setIsManagerFormOpen] = useState(false)
@@ -80,7 +81,6 @@ export default function ManagersView() {
 
   return (
     <section className="managers-container">
-      
       <div className="managers-buttons-container">
         {/* <div className="managers-select-input">
           <input type="checkbox" name="" id="" />
@@ -110,16 +110,18 @@ export default function ManagersView() {
                     <th colSpan={2}>Email</th>
                     <th>Date Added</th>
                     <th>Role</th>
+                    <th>Send Message</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[pileData].map(p => p.members)[0].map((u, i) => {
                     return (
-                      <tr key={u.i}>
+                      <tr key={i}>
                         <td colSpan={2}>{u.user.first_name} {u.user.first_name}</td>
                         <td colSpan={2}>{u.user.email}</td>
                         <td>{u.user.created_at.split('T')[0]}</td>
                         <td>{u.is_manager == true ? "Manager" : "Participant"}</td>
+                        <td className="link-invite"><Link className="send-invite" to="../../sendInvitation" state={{email: u.user.email, pileId: pileData.id}}><FcInvite /></Link></td>
                       </tr>
                     )
                   })}
