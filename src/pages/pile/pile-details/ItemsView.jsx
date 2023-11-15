@@ -250,13 +250,13 @@ export default function ItemsView() {
                     <div className="from-elements-container">
                     <div className="input-banner-container" style={{display: "flex", flexDirection: "column", gap: "0.8rem", marginBottom: "1rem", justifyContent: "flex-start", alignItems: "flex-start", paddingLeft: "2rem"}}>
                       <label for="image" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image <span style={{ color: "#EF6C4D" }}>*</span> </label>
-                      <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image" type="file" name="image" onChange={handleFileChange}  />
+                      <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image" type="file" name="image" onChange={handleFileChange}  required/>
                     </div>
 
 
                       <div className="title-input-container">
                         <label htmlFor="name">Title <span>*</span></label>
-                        <input type="text" placeholder="New Item 1" name="name" id="name" onChange={handleCreateItemChange} value={itemCreateForm.name} />
+                        <input type="text" placeholder="New Item 1" name="name" id="name" onChange={handleCreateItemChange} value={itemCreateForm.name} required/>
                       </div>
 
                       <div className="category-input-container">
@@ -267,12 +267,12 @@ export default function ItemsView() {
                       </div>
 
 
-                      <ReactQuill className="editor" theme="snow" value={itemCreateForm.description} onChange={handleContentChange} />
+                      <ReactQuill className="editor" theme="snow" value={itemCreateForm.description} onChange={handleContentChange} required />
 
                       <div className="item-price-input-container">
                         <div className="item-price-input-container-select">
                           <label htmlFor="price_type">Item price</label>
-                          <select name="price_type" id="price_type" value={itemCreateForm.price_type} onChange={handleCreateItemChange}>
+                          <select name="price_type" id="price_type" value={itemCreateForm.price_type} onChange={handleCreateItemChange} required>
                             <option value="total_amount">Total Amount</option>
                             <option value="any_amount">Any Amount</option>
                             <option value="recurring_amount">Recurring Amount</option>
@@ -281,27 +281,27 @@ export default function ItemsView() {
 
                         <div className="item-price-input-container-input">
                           <div><span>EGP</span></div>
-                          <input type="text" placeholder="500" name="price" value={itemCreateForm.price} onChange={handleCreateItemChange} />
+                          <input type="text" placeholder="500" name="price" value={itemCreateForm.price} onChange={handleCreateItemChange} required/>
                         </div>        
                       </div>
                     </div>
 
                     {itemCreateForm.price_type == "any_amount" && <div className="item-starting-price-input-container-input">
-                        <label htmlFor="starting_price">Starting Price </label>
+                        {/* <label htmlFor="starting_price">Starting Price </label> */}
                         <div><span>EGP</span></div>
-                        <input type="text" placeholder="500" id="starting_price" name="starting_price" value={itemCreateForm.starting_price} onChange={handleCreateItemChange} />
+                        <input type="text" placeholder="Starting Price" id="starting_price" name="starting_price" value={itemCreateForm.starting_price} onChange={handleCreateItemChange} required />
                     </div>}
 
                     <div className="quantity-status-container">
                       <div className="item-quantity-input-container-input">
                           <label htmlFor="quantity">Quantity</label>
-                          <input type="text" placeholder="5" name="quantity" id="quantity" value={itemCreateForm.quantity} onChange={handleCreateItemChange} />
+                          <input type="text" placeholder="5" name="quantity" id="quantity" value={itemCreateForm.quantity} onChange={handleCreateItemChange} required />
                       </div>        
     
 
                       <div className="status-input-container">
                           <label htmlFor="status-selection">Status</label>
-                          <select name="status" id="status-selection" value={itemCreateForm.status} onChange={handleCreateItemChange}>
+                          <select name="status" id="status-selection" value={itemCreateForm.status} onChange={handleCreateItemChange} required>
                             <option value="Active">Active</option>
                             <option value="Pending">Pending</option>
                           </select>

@@ -4505,10 +4505,11 @@ div.item-component-buttons span {
 
   .folder-container .pile-container > div img {
     /* display: none; */
+    grid-column: 1/4;
   }
 
   .folder-container .pile-container .pile-info {
-    grid-column: 3/10;
+    grid-column: 4/10;
     margin-left: 1rem;
   }
 
@@ -4623,7 +4624,7 @@ div.item-component-buttons span {
   }
 
   .create-pile-button {
-    padding: 0.3rem 2.2rem;
+    padding: 0.3rem 2rem;
     font-size: 1rem;
   }
 
@@ -4660,16 +4661,18 @@ div.item-component-buttons span {
   }
 
   .folder-container .pile-container > div img {
-    display: none;
+    /* display: none; */
+    grid-column: 1/4;
   }
 
   .folder-container .pile-container .pile-info {
-    grid-column: 1/2;
+    grid-column: 5/10;
     margin-left: 0;
   }
 
   .pile-container a {
-    padding: 0.3rem 0.8rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
   }
 
   .pile-container button {
@@ -5509,6 +5512,10 @@ div.item-component-buttons span {
 
   .category-form .category {
     margin-bottom: 21rem;
+  }
+
+  .item-form h1 {
+    width: 85%;
   }
 }
 
