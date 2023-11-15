@@ -115,6 +115,20 @@ export default function ItemsView() {
           console.log(res);
           // window.location.reload()
           setItemData(prevItemData => ([...prevItemData, res.data.data]))
+          setItemCreateForm({
+            name: '',
+            description: '',
+            status: 'active',
+            is_required: 1,
+            price: '',
+            price_type: 'total_amount',
+            quantity: '',
+            can_show_quantity: 1,
+            starting_price: '',
+            pile_id: pileData.id,
+            category_id: '1',
+            image: null
+          })
           closeForm()
         }
       })
