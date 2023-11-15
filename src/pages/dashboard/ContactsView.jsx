@@ -36,7 +36,44 @@ export default function ContactsView() {
     contact_id: '',
   });
 
-  
+  const [addContactForm, setAddContactForm] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: ''
+  })
+
+  function handleAddContactFormChange(event) {
+    const { name, value } = event.target
+    setAddContactForm(previousValue => {
+      return ({...previousValue, [name]: value})
+    })
+  }
+
+  function handleAddContactSubmission(event) {
+    event.preventDefault()
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/contacts/create`, addContactForm)
+    .then(res => {
+      console.log(res)
+      setAddContactForm({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: ''
+      })
+      window.location.reload()
+      // toast.success("Contact Added")
+    })
+    .catch(err => {
+      console.log(err)
+      toast.error(err.message)
+    })
+  }
+
+  function handleLinkClick(event) {
+    event.preventDefault()
+  }
+
   function handleContactFormChange(event) {
     const { name, value } = event.target
     setContactFormData(previousValue => {
@@ -62,6 +99,11 @@ export default function ContactsView() {
             console.log(res)
             setContactsData(res.data.data)
             toast.success("Contact Edited")
+            setContactFormData({
+              first_name: '',
+              last_name: '',
+              contact_id: '',
+            })
             setOpen(false);
           })
           .catch(err => {
@@ -106,10 +148,10 @@ export default function ContactsView() {
   function handleDeleteContact(id) {
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/contacts/delete`, {contact_id: id} )
           .then(res => {
-            toast.success("Contact Deleted")
             console.log(res)
             setContactsData(res.data.data)
             window.location.reload()
+            // toast.success("Contact Deleted")
           })
           .catch(err => {
             console.log(err)
@@ -139,25 +181,25 @@ export default function ContactsView() {
     <ToastContainer />
 
     <section className="Add-contact-form">
-      <form>
+      <form onSubmit={handleAddContactSubmission}>
         <div>
           <label htmlFor="first_name">First Name:</label>
-          <input type="text" name="first_name" id="first_name" placeholder="John" required />
+          <input type="text" name="first_name" id="first_name" placeholder="John" value={addContactForm.first_name} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
           <label htmlFor="last_name">Last Name:</label>
-          <input type="text" name="last_name" id="last_name" placeholder="Smith" required />
+          <input type="text" name="last_name" id="last_name" placeholder="Smith" value={addContactForm.last_name} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
           <label htmlFor="email" className="email-label">Email:</label>
-          <input type="email" name="email" id="email" placeholder="John@Smith.com" required />
+          <input type="email" name="email" id="email" placeholder="John@Smith.com" value={addContactForm.email} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
           <label htmlFor="phone" className="phone-label">Phone:</label>
-          <input type="tel" name="phone" id="phone" placeholder="555 5555 5555" required />
+          <input type="tel" name="phone" id="phone" placeholder="555 5555 5555" value={addContactForm.phone} onChange={handleAddContactFormChange} required />
         </div>
         <button className="add-contact-button">Add</button>
       </form>
@@ -183,9 +225,9 @@ export default function ContactsView() {
               <td>{contact.name}</td>
               <td colSpan={2}>{contact.email}</td>
               <td>{contact.phone}</td>
-              <td className="link-invite"><Link className="send-invite" to="../sendInvitation" state={{email: contact.email}}><FcInvite /></Link></td>
-              <td className="button-edit" onClick={() => handleClickOpen(contact.id)}><button><FiEdit /></button></td>
-              <td className="button-delete"><button onClick={() => handleDeleteContact(contact.id)}><MdOutlineDeleteOutline /></button></td>
+              <td className="link-invite"><Link onContextMenu={handleLinkClick} className="send-invite" to="../sendInvitation" state={{email: contact.email}}><FcInvite /></Link></td>
+              <td className="button-edit" onContextMenu={handleLinkClick} onClick={() => handleClickOpen(contact.id)}><button><FiEdit /></button></td>
+              <td className="button-delete"><button onContextMenu={handleLinkClick} onClick={() => handleDeleteContact(contact.id)}><MdOutlineDeleteOutline /></button></td>
             </tr>
           );
         })}

@@ -249,7 +249,7 @@ export default function ItemsView() {
                   <form onSubmit={handleCreateItemSubmit}>
                     <div className="from-elements-container">
                     <div className="input-banner-container" style={{display: "flex", flexDirection: "column", gap: "0.8rem", marginBottom: "1rem", justifyContent: "flex-start", alignItems: "flex-start", paddingLeft: "2rem"}}>
-                      <label for="image" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image * </label>
+                      <label for="image" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image <span style={{ color: "#EF6C4D" }}>*</span> </label>
                       <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image" type="file" name="image" onChange={handleFileChange}  />
                     </div>
 

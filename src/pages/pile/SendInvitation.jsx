@@ -24,6 +24,9 @@ export default function sendInvitation() {
   const location = useLocation()
   console.log(location)
 
+  const [contactsData, setContactsData] = useState([''])
+
+
   const [contactsFormData, setContactFormData] = useState({
     first_name: '',
     last_name: '',
@@ -33,9 +36,9 @@ export default function sendInvitation() {
 
 
   const [inviteDataForm, setInviteDataForm] = useState({
-    pile_id: '',
+    pile_id: location?.state?.pileId || '',
     title: '',
-    send_to: location?.state?.email,
+    email: location?.state.email ,
     content: ''
   })
 
@@ -53,6 +56,12 @@ export default function sendInvitation() {
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/piles/add-message`, inviteDataForm)
         .then(res => {
           console.log(res)
+          setInviteDataForm({
+            pile_id: location?.state?.pileId || '',
+            title: '',
+            email: location?.state?.email,
+            content: ''
+          })
           toast.success("Message Sent")
         })
         .catch(err => {
@@ -61,7 +70,6 @@ export default function sendInvitation() {
         })
   }
 
-  const [contactsData, setContactsData] = useState([''])
 
   function handleContactFormChange(event) {
     const { name, value } = event.target
@@ -84,6 +92,15 @@ export default function sendInvitation() {
           .then(res => {
             console.log(res)
             setContactsData(res.data.data)
+            setContactFormData({
+              first_name: '',
+              last_name: '',
+              email: '',
+              phone: ''
+            })
+            setInviteDataForm(previousValue => {
+              return {...previousValue, email:res.data.data[res.data.data.length-1].email }
+            })
             toast.success("Contact Added")
             setOpen(false);
           })
@@ -136,7 +153,7 @@ export default function sendInvitation() {
 
               <div className="pile-select-input-container">
                 <label htmlFor="pile-selection">Select Pile <span>*</span></label>
-                <select name="pile_id" id="pile-selection" onChange={handleInvitationDateChange} required>
+                <select name="pile_id" id="pile-selection" onChange={handleInvitationDateChange} value={inviteDataForm.pile_id} required>
                   <option value=''>Select Pile</option>
                   {pileOptions}
                 </select>
@@ -153,7 +170,7 @@ export default function sendInvitation() {
                 <label htmlFor="send_to">To <span>*</span></label>
                 {/* <p>contact1, contact2, contact3, contact4, contact5, contact7، contact1, contact2, contact3, contact4, contact5, contact7، contact1, contact2, contact3, contact4, contact5, contact7</p> */}
                 {/* {recipients} */}
-                <input style={{display: "block", marginBottom: "1rem", width: "50%"}} type="text" name="email" id="send_to" onChange={handleInvitationDateChange} value={contactsData[contactsData.length-1].email || location?.state.email} />
+                <input style={{display: "block", marginBottom: "1rem", width: "50%"}} type="email" name="email" id="send_to" onChange={handleInvitationDateChange} value={inviteDataForm.email} required />
 
                 <Button className="button" onClick={handleClickOpen}>Add recipient</Button>
                 <Dialog open={open} onClose={handleClose}>
@@ -226,11 +243,11 @@ export default function sendInvitation() {
               <section className="invite-message-container">
                 <div className="invite-message-container-from-subject-input">
                   <label htmlFor="title">Subject <span>*</span></label>
-                  <input type="text" placeholder="Subject" name="title" id="title" onChange={handleInvitationDateChange} required/>
+                  <input type="text" placeholder="Subject" name="title" id="title" onChange={handleInvitationDateChange} value={inviteDataForm.title} required/>
                 </div>
 
                 {/* <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} /> */}
-                <textarea className="editor" placeholder="Messge" name="content" id="content" cols="30" rows="10" onChange={handleInvitationDateChange} required></textarea>
+                <textarea className="editor" placeholder="Messge" name="content" value={inviteDataForm.content} id="content" cols="30" rows="10" onChange={handleInvitationDateChange} required></textarea>
               </section>
 
             </div>

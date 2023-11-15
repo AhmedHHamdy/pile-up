@@ -119,12 +119,12 @@ export default function Header() {
       <a className="link-img-logo" href="/"><img src={pileUp_logo} alt="PileUp-logo" /></a>
 
       <Link className="home-link" to="/">Home</Link>
-      <span className="resources-link">
-        Recourses 
-        <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <Link to={"/dashboard/folders"} className="dashboard-link">
+        Dashboard 
+        {/* <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1.08926 0.304275C1.23024 0.163335 1.42143 0.0841594 1.62077 0.0841593C1.82012 0.0841593 2.01131 0.163335 2.15229 0.304275L5.87368 4.02566L9.59506 0.304275C9.73685 0.167329 9.92676 0.0915523 10.1239 0.0932651C10.321 0.0949779 10.5096 0.174043 10.6489 0.313432C10.7883 0.452821 10.8674 0.641381 10.8691 0.838499C10.8708 1.03562 10.795 1.22552 10.6581 1.36731L6.4052 5.62022C6.26422 5.76116 6.07303 5.84033 5.87368 5.84033C5.67433 5.84033 5.48314 5.76116 5.34216 5.62022L1.08926 1.36731C0.948316 1.22633 0.86914 1.03514 0.86914 0.835793C0.86914 0.636445 0.948316 0.445257 1.08926 0.304275Z" fill="#1A181B"/>
-        </svg>
-      </span>
+        </svg> */}
+      </Link>
       <Link className="vendors-link">Vendors</Link>
 
       {token && <Link className="notification-link"><IoNotificationsOutline /></Link> }

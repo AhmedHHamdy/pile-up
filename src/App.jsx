@@ -22,6 +22,7 @@ import AuthRequired from './components/AuthRequired'
 import Profile from './pages/profile/Profile'
 import SendResetCode from './pages/account/forgot/SendResetCode'
 import CartPage from './pages/cart/CartPage'
+import NotFound from './pages/404'
 
 
 function App() {
@@ -72,6 +73,8 @@ function App() {
         <Route path='cart' element={<AuthRequired />}>
           <Route index element={<CartPage />} />
         </Route>
+
+        <Route path='*' element={<NotFound />} />
 
       </Route>
     </Routes>

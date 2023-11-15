@@ -28,6 +28,10 @@ export default function FolderView() {
   const [searchData, setSearchData] = useState([])
   const [searchForm, setSearchForm] = useState({name: ''})
 
+  function handleLinkClick(event) {
+    event.preventDefault()
+  }
+
   function handleSearchChange(event) {
     const { name, value } = event.target
     setSearchForm(prevSearchForm => {
@@ -197,7 +201,7 @@ export default function FolderView() {
     <section className="folder-view">
       <section className="folder-creation-section">
         <div className="create-pile-div">
-          <Link className="create-pile-button" state={{folders: folderData, folderId: folderChange}} to="../createpile">Create a Pile</Link>
+          <Link className="create-pile-button" onContextMenu={handleLinkClick} state={{folders: folderData, folderId: folderChange}} to="../createpile">Create a Pile</Link>
         </div>
 
         <div className="folders-section">
@@ -247,7 +251,7 @@ export default function FolderView() {
               <h2>This folder is empty</h2>
               <p>Drag a pile into this folder or create a new pile</p>
             </div>
-            <Link className="create-pile-button" state={{folders: folderData, folderId: folderChange}} to="../createpile">Create a Pile</Link>
+            <Link className="create-pile-button" onContextMenu={handleLinkClick} state={{folders: folderData, folderId: folderChange}} to="../createpile">Create a Pile</Link>
             <button className="quick-tour-button">Take a quick tour</button>
           </div>)}
         </div>

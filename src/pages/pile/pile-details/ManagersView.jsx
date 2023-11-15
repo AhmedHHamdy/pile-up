@@ -30,6 +30,10 @@ export default function ManagersView() {
 
   console.log(participantData)
 
+  function handleLinkClick(event) {
+    event.preventDefault()
+  }
+
   function handleParticipantDataChange(event) {
     const { name, value } = event.target
     setParticipantData(previousData => {
@@ -121,7 +125,7 @@ export default function ManagersView() {
                         <td colSpan={2}>{u.user.email}</td>
                         <td>{u.user.created_at.split('T')[0]}</td>
                         <td>{u.is_manager == true ? "Manager" : "Participant"}</td>
-                        <td className="link-invite"><Link className="send-invite" to="../../sendInvitation" state={{email: u.user.email, pileId: pileData.id}}><FcInvite /></Link></td>
+                        <td className="link-invite"><Link className="send-invite" onContextMenu={handleLinkClick} to="../../sendInvitation" state={{email: u.user.email, pileId: pileData.id}}><FcInvite /></Link></td>
                       </tr>
                     )
                   })}

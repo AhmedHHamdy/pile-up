@@ -10,6 +10,9 @@ export default function ShareView() {
   const pileData = useOutletContext()
   console.log(pileData)
 
+  function handleLinkClick(event) {
+    event.preventDefault()
+  }
 
   return (
     <section className="share-page-container">
@@ -38,7 +41,7 @@ export default function ShareView() {
       <div className="share-page-email">
         <h2><AiOutlineMail /> Share via email</h2>
         <p>Send invitations and track payments and responses</p>
-        <Link state={{pileId: pileData.id}} to="../../sendInvitation">Send a custom invitation</Link>
+        <Link onContextMenu={handleLinkClick} state={{pileId: pileData.id}} to="../../sendInvitation">Send a custom invitation</Link>
       </div>
 
     </section>

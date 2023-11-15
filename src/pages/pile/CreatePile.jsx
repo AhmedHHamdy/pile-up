@@ -116,8 +116,9 @@ export default function CreatePile() {
           <form onSubmit={handleSubmit}>
             <div className="from-elements-container">
               <div className="input-banner-container" style={{display: "flex", flexDirection: "column", gap: "0.8rem", marginBottom: "1rem", justifyContent: "flex-start", alignItems: "flex-start", paddingLeft: "2rem"}}>
-                <label for="file-input" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image * </label>
-                <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image" type="file" name="file-input" onChange={handleFileChange} />
+                <label for="file-input" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image <span style={{ color: "#EF6C4D" }}>*</span></label>
+                <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image"  type="file" name="file-input" onChange={handleFileChange} />
+                
               </div>
 
               <div className="title-input-container">

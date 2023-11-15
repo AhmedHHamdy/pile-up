@@ -22,6 +22,9 @@ export default function HistoryView() {
 
   const { token } = useAuth()
 
+  function handleLinkClick(event) {
+    event.preventDefault()
+  }
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/orders?page=${currentPage}`, {
@@ -89,7 +92,7 @@ export default function HistoryView() {
           return (
             <tr key={item.id}>
               <td>{item.id}</td>
-              <td><Link className="order-number-link" to="../../cart" state={{ cartOrder: item }}>{item.order_number}</Link></td>
+              <td><Link className="order-number-link" onContextMenu={handleLinkClick} to="../../cart" state={{ cartOrder: item }}>{item.order_number}</Link></td>
               <td>{item.date.split('T')[0]}</td>
               <td>EGP {item.total}</td>
               <td>{item.status}</td>
@@ -101,7 +104,7 @@ export default function HistoryView() {
                 </ul>
               </td>
               <td className="order-history">
-                 <Link to="../../cart" state={{ cartOrder: item }}><TbShoppingCartDollar /></Link>
+                 <Link onContextMenu={handleLinkClick} to="../../cart" state={{ cartOrder: item }}><TbShoppingCartDollar /></Link>
               </td>
             </tr>
           );
