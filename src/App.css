@@ -818,6 +818,15 @@ header > svg {
    height: 25vh;
 }
 
+  .upload-image-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+
 .form-buttons {
   grid-column: 1/-1;
   margin-top: 1rem;

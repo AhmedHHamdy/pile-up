@@ -4,7 +4,7 @@ import pileIcon  from "../../assets/Icon.png"
 import { IoIosArrowBack } from "react-icons/io"
 import { MdModeEdit } from "react-icons/md"
 import { AiFillCloseCircle } from "react-icons/ai"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import axios from "axios"
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -28,6 +28,30 @@ export default function PileView() {
 
   const location = useLocation()
   console.log(location)
+
+  const [cachedValue, setCachedValue] = useState(() => {
+    // Try to retrieve the cached value from localStorage
+    const storedValue = localStorage.getItem('cachedValue');
+    return storedValue ? JSON.parse(storedValue) : {
+      status: location?.state?.status,
+      folderId: location?.state?.id,
+    };
+  });
+
+  // Update the cached value whenever the location changes
+  useEffect(() => {
+    const newValue = {
+      status: location?.state?.status,
+      folderId: location?.state?.id,
+    };
+    setCachedValue(newValue);
+
+    // Store the new value in localStorage
+    localStorage.setItem('cachedValue', JSON.stringify(newValue));
+  }, []);
+
+  console.log(cachedValue)
+
   let reportsPath = location.pathname.split('/')[location.pathname.split('/').length -1]
 
   const [editPileInfoForm, setEditPileInfoForm] = useState(false)
@@ -62,7 +86,7 @@ export default function PileView() {
     name: '',
     content: '',
     folder_id: "", // Assuming you want to include these values
-    pile_id: "params.id",
+    pile_id: params.id,
     status: ""
   })
 
@@ -70,7 +94,7 @@ export default function PileView() {
   function handlePileInfoFormChange(event) {
     const {name, value} = event.target
     setPileInfoUpdateForm(previousValue => ({
-      ...pileData, ...previousValue, pile_id: params.id, folder_id: +location.state.id, status: location.state.status, [name]: value
+      ...pileData, ...previousValue, pile_id: params.id, folder_id: +cachedValue.folderId, status: cachedValue.status, [name]: value
     }))
   }
   console.log(pileInfoUpdateForm)
@@ -97,7 +121,9 @@ export default function PileView() {
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/piles/update`, formData)
           .then(res => {
             console.log(res)
-            window.location.reload();
+            // window.location.reload();
+            setPileData(res.data.data)
+            closeEditPileForm()
           })
           .catch(err => {
             console.log(err)

@@ -197,7 +197,7 @@ export default function Header() {
               </div>
 
               <div className="cart-navigation">
-                <button onClick={placeHolderHandler}>Continue to checkout</button>
+                {cartData.length !== 0 && <button onClick={placeHolderHandler}>Continue to checkout</button>}
                 <button onClick={closeCartDialog}>Keep shopping</button>
               </div>
             </div>

@@ -72,7 +72,8 @@ export default function ManagersView() {
             email: ''
           })
           closeManagerForm()
-          toast.success(res.data.message)
+          // toast.success(res.data.message)
+          window.location.reload()
         })
         .catch(err => {
           console.log(err)

@@ -7,6 +7,7 @@ import { AiOutlinePlus } from "react-icons/ai"
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CircularWithValueLabel from "../../components/CircularProgressWithLabel"
 
 
 export default function CreatePile() {
@@ -14,6 +15,12 @@ export default function CreatePile() {
   console.log(location)
 
   const navigate = useNavigate()
+
+  const [LoadingStatus, setLoadingStatus] = useState(false)
+  const [typingTimeout, setTypingTimeout] = useState(0);
+
+  const [uploadProgress, setUploadProgress] = useState(0)
+  console.log(uploadProgress, typeof uploadProgress)
 
   const [pileFormData, setPileFormData] = useState({
     name: '',
@@ -27,7 +34,17 @@ export default function CreatePile() {
   });
 
   function handleContentChange(value) {
+    setLoadingStatus(true)
     const text = value
+
+    clearTimeout(typingTimeout)
+
+    const timeout = setTimeout(() => {
+      setLoadingStatus(false)
+    }, 1000)
+
+    setTypingTimeout(timeout)
+    
     if (pileFormData.content !== text) { // Check if the content has changed
       setPileFormData((prevFormData) => ({
         ...prevFormData,
@@ -37,6 +54,16 @@ export default function CreatePile() {
   }
 
   function handleFileChange(event) {
+    setLoadingStatus(true)
+
+    clearTimeout(typingTimeout)
+
+    const timeout = setTimeout(() => {
+      setLoadingStatus(false)
+    }, 1000)
+
+    setTypingTimeout(timeout)
+
     const selectedFile = event.target.files[0];
     setPileFormData((prevFormData) => ({
       ...prevFormData,
@@ -45,6 +72,16 @@ export default function CreatePile() {
   }
 
   function handleChange(event) {
+    setLoadingStatus(true)
+
+    clearTimeout(typingTimeout)
+
+    const timeout = setTimeout(() => {
+      setLoadingStatus(false)
+    }, 1000)
+
+    setTypingTimeout(timeout)
+
     const {name, value, type, checked} = event.target
     setPileFormData(prevFormData => {
       return {
@@ -71,21 +108,32 @@ export default function CreatePile() {
   
     // Append the file data
     formData.append("image", pileFormData.image);
+
+    const config = {
+      onUploadProgress: (progressEvent) => {
+        const percentCompleted = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        setUploadProgress(percentCompleted)
+        console.log(`Upload Progress: ${percentCompleted}%`);
+        // You can update your UI with the upload percentage here
+      },
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
   
     axios
-      .post(`${import.meta.env.VITE_BACKEND_API_URL}/piles/create`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data", // Set the content type to multipart/form-data
-          // Include any other necessary headers, such as authorization
-        },
-      })
+      .post(`${import.meta.env.VITE_BACKEND_API_URL}/piles/create`, formData, config)
       .then((res) => {
         if (res) {
+          setLoadingStatus(false)
           console.log(res);
           navigate(`/dashboard/folders?folder=${formData.folder_id}`);
         }
       })
       .catch((err) => {
+        setLoadingStatus(false)
         console.log(err);
         toast.error(err.response.data.message)
       });
@@ -115,10 +163,12 @@ export default function CreatePile() {
         <div className="form-container">
           <form onSubmit={handleSubmit}>
             <div className="from-elements-container">
-              <div className="input-banner-container" style={{display: "flex", flexDirection: "column", gap: "0.8rem", marginBottom: "1rem", justifyContent: "flex-start", alignItems: "flex-start", paddingLeft: "2rem"}}>
-                <label for="file-input" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image <span style={{ color: "#EF6C4D" }}>*</span></label>
-                <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image"  type="file" name="file-input" onChange={handleFileChange} />
-                
+              <div className="input-banner-container" style={{display: "flex", flexDirection: "row", gap: "0.8rem", marginBottom: "1rem", justifyContent: "space-between", alignItems: "center", paddingLeft: "2rem"}}>
+                <section className="upload-image-section">
+                  <label for="file-input" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image <span style={{ color: "#EF6C4D" }}>*</span></label>
+                  <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image"  type="file" name="file-input" onChange={handleFileChange} required />
+                </section>
+                 <CircularWithValueLabel value={uploadProgress} />
               </div>
 
               <div className="title-input-container">
@@ -169,7 +219,7 @@ export default function CreatePile() {
 
             <div className="form-buttons">
               <Link to="../folders">Cancel</Link>
-              <button className="create-button">Create</button>
+              <button className="create-button" style={uploadProgress !== 0 ? { background: "#CCCCCC" } : null} disabled={LoadingStatus || uploadProgress !== 0}>{ LoadingStatus == true ? "Typing..." : "Create" }</button>
             </div>
           </form>
         </div>

@@ -16,6 +16,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CircularWithValueLabel from "../../../components/CircularProgressWithLabel"
 
 export default function ItemsView() {
   const [value, setValue] = useState('');
@@ -23,6 +24,11 @@ export default function ItemsView() {
 
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
+
+  const [typingStatus, setTypingStatus] = useState(false)
+  const [typingTimeout, setTypingTimeout] = useState(0)
+
+  const [uploadProgress, setUploadProgress] = useState(0)
 
   const pileData = useOutletContext()
   console.log(pileData)
@@ -56,6 +62,17 @@ export default function ItemsView() {
 
   function handleContentChange(value) {
     const text = value
+        
+    setTypingStatus(true)
+
+    clearTimeout(typingTimeout)
+
+    const timeout = setTimeout(() => {
+      setTypingStatus(false)
+    }, 1000)
+
+    setTypingTimeout(timeout)
+    
     if (itemCreateForm.description !== text) { // Check if the content has changed
       setItemCreateForm((prevFormData) => ({
         ...prevFormData,
@@ -66,6 +83,17 @@ export default function ItemsView() {
 
   function handleFileChange(event) {
     const selectedFile = event.target.files[0];
+        
+    setTypingStatus(true)
+
+    clearTimeout(typingTimeout)
+
+    const timeout = setTimeout(() => {
+      setTypingStatus(false)
+    }, 1000)
+
+    setTypingTimeout(timeout)
+
     setItemCreateForm((prevFormData) => ({
       ...prevFormData,
       image: selectedFile, // Store the selected file in your state
@@ -74,6 +102,17 @@ export default function ItemsView() {
 
   function handleCreateItemChange(event) {
     const {name, value} = event.target
+    
+    setTypingStatus(true)
+
+    clearTimeout(typingTimeout)
+
+    const timeout = setTimeout(() => {
+      setTypingStatus(false)
+    }, 1000)
+
+    setTypingTimeout(timeout)
+
     setItemCreateForm(prevFormData => {
       return {
         ...prevFormData,
@@ -102,16 +141,26 @@ export default function ItemsView() {
   
     // Append the file data
     // formData.append("image", itemCreateForm.image);
+
+    const config = {
+      onUploadProgress: (progressEvent) => {
+        const percentCompleted = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        setUploadProgress(percentCompleted)
+        console.log(`Upload Progress: ${percentCompleted}%`);
+        // You can update your UI with the upload percentage here
+      },
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
   
     axios
-      .post(`${import.meta.env.VITE_BACKEND_API_URL}/items/create`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data", // Set the content type to multipart/form-data
-          // Include any other necessary headers, such as authorization
-        },
-      })
+      .post(`${import.meta.env.VITE_BACKEND_API_URL}/items/create`, formData, config)
       .then((res) => {
         if (res) {
+          setTypingStatus(false)
           console.log(res);
           // window.location.reload()
           setItemData(prevItemData => ([...prevItemData, res.data.data]))
@@ -133,6 +182,7 @@ export default function ItemsView() {
         }
       })
       .catch((err) => {
+        setTypingStatus(false)
         console.log(err);
         toast.error(err.response.data.message)
       });
@@ -262,9 +312,12 @@ export default function ItemsView() {
                 <div className="form-container">
                   <form onSubmit={handleCreateItemSubmit}>
                     <div className="from-elements-container">
-                    <div className="input-banner-container" style={{display: "flex", flexDirection: "column", gap: "0.8rem", marginBottom: "1rem", justifyContent: "flex-start", alignItems: "flex-start", paddingLeft: "2rem"}}>
-                      <label for="image" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image <span style={{ color: "#EF6C4D" }}>*</span> </label>
-                      <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image" type="file" name="image" onChange={handleFileChange}  required/>
+                    <div className="input-banner-container" style={{display: "flex", flexDirection: "row", gap: "0.8rem", marginBottom: "1rem", justifyContent: "space-between", alignItems: "flex-start", paddingLeft: "2rem"}}>
+                      <section className="upload-image-section">
+                        <label for="image" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image <span style={{ color: "#EF6C4D" }}>*</span> </label>
+                        <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image" type="file" name="image" onChange={handleFileChange}  required/>
+                      </section>
+                      <CircularWithValueLabel value={uploadProgress} />
                     </div>
 
 
@@ -325,7 +378,7 @@ export default function ItemsView() {
 
                     <div className="form-buttons">
                       <button type="button" onClick={closeForm}>Cancel</button>
-                      <button>save</button>
+                      <button style={uploadProgress !== 0 ? { background: "#CCCCCC" } : null} disabled={typingStatus || uploadProgress !== 0}>{ typingStatus == true ? "Typing..." : "Create" }</button>
                     </div>
                   </form>
                 </div>
