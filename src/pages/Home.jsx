@@ -6,9 +6,12 @@ import { AiOutlinePlus } from "react-icons/ai"
 import helpIcon from "../assets/Help.png"
 import moneyWalletPic from "../assets/pileup-wallet-orange 2.png"
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const [openStates, setOpenStates] = useState(Array(4).fill(false)); // 4 items, all initially closed
+
+  const { t } = useTranslation()
 
   function handleClick(index) {
     const updatedOpenStates = [...openStates];

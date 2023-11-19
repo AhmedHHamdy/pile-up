@@ -40,14 +40,23 @@ export default function PileView() {
 
   // Update the cached value whenever the location changes
   useEffect(() => {
-    const newValue = {
-      status: location?.state?.status,
-      folderId: location?.state?.id,
-    };
-    setCachedValue(newValue);
+    const storedValue = localStorage.getItem('cachedValue');
 
-    // Store the new value in localStorage
-    localStorage.setItem('cachedValue', JSON.stringify(newValue));
+    if (Object.keys(storedValue).length !== 0 && location.state == null) {
+      const parsedValue = JSON.parse(storedValue);
+      localStorage.setItem('cachedValue', JSON.stringify(parsedValue));
+
+    } else {
+      const newValue = {
+        status: location?.state?.status,
+        folderId: location?.state?.id,
+      };
+      setCachedValue(newValue);
+  
+      // Store the new value in localStorage
+      localStorage.setItem('cachedValue', JSON.stringify(newValue));
+    }
+    
   }, []);
 
   console.log(cachedValue)

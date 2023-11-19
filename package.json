@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-rtl": "rtlcss src/App.css > src/build/styles/app-rtl.css",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -16,18 +17,21 @@
     "axios": "^1.5.1",
     "classnames": "^2.3.2",
     "dotenv": "^16.3.1",
+    "i18next": "^23.7.6",
     "jsonwebtoken": "^9.0.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-credit-cards-2": "^1.0.1",
     "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
     "react-icons": "^4.11.0",
     "react-multi-carousel": "^2.8.4",
     "react-paginate": "^8.2.0",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.16.0",
     "react-toastify": "^9.1.3",
+    "rtlcss": "^4.1.1",
     "sort-by": "^0.0.2"
   },
   "devDependencies": {

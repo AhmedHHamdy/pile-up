@@ -9,7 +9,7 @@ export default function Pile(props) {
   }
 
   function handleDelete() {
-    const value = prompt("Are you sure you want to delete this pile? (Yes, No)", "yes")
+    const value = prompt("Are you sure you want to delete this pile? (Yes, No)", "Yes")
     if (value.toLowerCase() == "yes") {
       axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/piles/delete-pile`, {pile_id: props.id})
       .then(res => {
