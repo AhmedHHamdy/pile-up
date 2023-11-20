@@ -16,6 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
+// import styles from '../App.rtl.css'; // Import styles as a module
 
 
 
@@ -25,6 +26,23 @@ export default function Header() {
 
   useEffect(() => {
     document.documentElement.dir = i18n.dir();
+
+    
+    if (i18n.language === 'ar') {
+      import('../App.rtl.css').then((module) => {
+        // Apply styles dynamically
+        const styleElement = document.createElement('style');
+        styleElement.textContent = module.default;
+        document.head.appendChild(styleElement);
+      });
+    } else {
+      import('../App.css').then((module) => {
+        // Apply styles dynamically
+        const styleElement = document.createElement('style');
+        styleElement.textContent = module.default;
+        document.head.appendChild(styleElement);
+      });
+    }
 
   }, [i18n.language])
 
