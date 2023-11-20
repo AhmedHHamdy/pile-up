@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build-rtl": "rtlcss src/App.css > src/build/styles/app-rtl.css",
+    "build-rtl": "rtlcss src/App.css > src/app-rtl.css",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

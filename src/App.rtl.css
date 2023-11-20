@@ -74,6 +74,7 @@ header .link-img-logo {
 
 .notification-link {
   grid-column: 11;
+  justify-self: center;
 }
 
 .signup-link, .login-link {
@@ -133,7 +134,7 @@ header .link-img-logo {
   padding: 0.6rem 0.2rem;
   border-radius: 0.4rem;
   grid-column: 10;
-  justify-self: center;
+  justify-self: start;
   grid-row: 1;
   cursor: pointer;
   width: 7vh;
@@ -413,6 +414,9 @@ header > svg {
 
 .create-folder-container {
   width: 100%;
+  height: 50vh;
+  overflow-y: auto;
+  margin-top: 0.7rem;
 }
 
 .sort-piles-by-section {
@@ -447,6 +451,7 @@ header > svg {
   border-bottom-left-radius: 1rem;
   padding: 0.8rem;
   cursor: pointer;
+  width: 89%;
 }
 
 .selected {
@@ -463,6 +468,12 @@ header > svg {
 .folder > svg {
   font-size: 2rem;
 }
+
+.pile-section-container {
+  height: 80vh;
+  overflow-y: auto;
+}
+
 
 .model-overlay-folder-form {
   position: fixed;
@@ -4040,8 +4051,9 @@ tfoot {
 }
 
 .menu {
-  grid-column: 13;
+  grid-column: 12;
   align-self: center;
+  justify-self: end;
 }
 
 .menu-button {
@@ -4447,6 +4459,21 @@ div.item-component-buttons span {
   cursor: pointer;
 }
 
+.languageSelector {
+  border: 1px solid #CCCCCC;
+  border-radius: 0.3rem;
+  padding: 0.45rem 0.5rem 0.45rem 0.5rem;
+  align-self: center;
+  justify-self: center;
+  font-family: poppins, inter;
+  grid-column:3;
+}
+
+.languageSelector:focus {
+  outline: 2px solid #03BCA4; /* You can customize the color and style */
+}
+
+
 /* System Responsiveness */
 @media all and (min-width:900px) and (max-width:1450px) {
   /* Cart */
@@ -4572,6 +4599,11 @@ div.item-component-buttons span {
     justify-self: start;
     grid-row: 1;
   }
+
+  .languageSelector {
+    grid-column: 3;
+    justify-self: end;
+  }
 }
 
 
@@ -4600,6 +4632,12 @@ div.item-component-buttons span {
 
   .menu {
     grid-column: 10;
+  }
+
+  .languageSelector {
+    grid-column: 3;
+    justify-self: start;
+    margin: 0 0.5rem;
   }
 
   /* Cart */
@@ -4748,6 +4786,12 @@ div.item-component-buttons span {
 
   .menu-container {
     left: 1rem;
+  }
+
+  .languageSelector {
+    grid-column: 3;
+    justify-self: start;
+    margin: 0 0.5rem;
   }
 
   /* Cart */
@@ -4936,10 +4980,18 @@ div.item-component-buttons span {
   .menu {
     grid-column: 10;
     margin-left: 1.5rem;
+    justify-self: start;
   }
 
   .menu-container {
     left: 1rem;
+  }
+
+  .languageSelector {
+    grid-column: 3;
+    justify-self: start;
+    margin: 0 0.8rem;
+    text-transform: uppercase;
   }
 
   /* Cart */
@@ -4985,6 +5037,8 @@ div.item-component-buttons span {
 
   .folder-creation-section .create-folder-container {
     width: 100%;
+    height: 29vh;
+    overflow-y: auto;
   }
 
   .create-folder-section {
@@ -4996,7 +5050,7 @@ div.item-component-buttons span {
   }
 
   .folders-section input {
-    width: 92%;
+    width: 87%;
   }
 
   .create-pile-button {
@@ -5035,6 +5089,12 @@ div.item-component-buttons span {
   .no-pile-view {
     margin-bottom: 2rem;
   }
+
+  .pile-section-container {
+    height: 40vh;
+    overflow-y: auto;
+  }
+  
 
   .folder-container .pile-container > div img {
  
