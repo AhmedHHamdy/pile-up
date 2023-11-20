@@ -26,29 +26,31 @@ export default function Header() {
 
   useEffect(() => {
     document.documentElement.dir = i18n.dir();
+    // Create a style element outside the condition
+    const styleElement = document.createElement('style');
 
-    
     if (i18n.language === 'ar') {
       import('../App.rtl.css').then((module) => {
         // Apply styles dynamically
-        document.head.removeChild(styleElement);
-
-        const styleElement = document.createElement('style');
         styleElement.textContent = module.default;
         document.head.appendChild(styleElement);
       });
     } else if (i18n.language === 'en') {
       import('../App.css').then((module) => {
         // Apply styles dynamically
-        document.head.removeChild(styleElement);
-
-        const styleElement = document.createElement('style');
         styleElement.textContent = module.default;
         document.head.appendChild(styleElement);
       });
     }
 
-  }, [i18n.language])
+    // Remove old styles (this will remove the previous styles on each language change)
+    return () => {
+      if (styleElement.parentNode) {
+        document.head.removeChild(styleElement);
+      }
+    };
+  }, [i18n.language]);
+
 
   const { token, setToken } = useAuth()
   const navigate = useNavigate()

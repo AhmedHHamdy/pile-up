@@ -1220,12 +1220,12 @@ main {
 
 .react-multiple-carousel__arrow--right {
   background: #EF6C4D!important;
-  left: calc(2.5% + 1px)!important;
+  right: calc(2.5% + 1px)!important;
 }
 
 .react-multiple-carousel__arrow--left {
   background: #EF6C4D!important;
-  right: calc(3% + 1px)!important;
+  left: calc(3% + 1px)!important;
 }
 
 .fifth-section {
@@ -1319,12 +1319,12 @@ main {
 .sixth-section-carousel .react-multiple-carousel__arrow--right {
   background: none!important;
   color: #92C8C0!important;
-  left: calc(10% + 1px)!important;
+  right: calc(10% + 1px)!important;
 }
 
 .sixth-section-carousel .react-multiple-carousel__arrow--left {
   background: none!important;
-  right: calc(10% + 1px)!important;
+  left: calc(10% + 1px)!important;
 }
 
 .sixth-section-carousel .react-multiple-carousel__arrow::before {
