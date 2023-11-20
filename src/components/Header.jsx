@@ -16,27 +16,16 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
-// import Content from "./Content"
-// import Sidebar from './components/Sidebar';
+
+
 
 export default function Header() {
 
   const { i18n, t } = useTranslation()
 
-  // useEffect(() => {
-  //   console.log(i18n.dir())
-  //   document.documentElement.dir = i18n.dir();
-
-  // }, [])
-  
   useEffect(() => {
     document.documentElement.dir = i18n.dir();
 
-    // if (i18n.language === 'ar') {
-    //   import('../build/styles/app-rtl.css').then((module) => {
-    //     // Use the styles from the imported module
-    //   });
-    // }
   }, [i18n.language])
 
   const { token, setToken } = useAuth()
