@@ -244,7 +244,7 @@ export default function FolderView() {
         </section>
 
 
-        <div>
+        <div className="pile-section-container">
           {piles && piles.length > 0 ? piles : 
           (<div className="no-pile-view">
             <div>

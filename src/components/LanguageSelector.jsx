@@ -11,7 +11,7 @@ const LanguageSelector = () => {
   }
 
   return (
-    <select defaultValue={selectedLanguage} onChange={chooseLanguage}>
+    <select className="languageSelector" defaultValue={selectedLanguage} onChange={chooseLanguage}>
       <option value="ar">Arabic</option>
       <option value="en">English</option>
     </select>

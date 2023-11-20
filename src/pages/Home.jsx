@@ -67,9 +67,11 @@ export default function Home() {
         <div className="background-color-two"></div>
 
         <section className="first-section-info">
-          <h1>Money Collec<span>t</span>ion, Simplified with PileUp!</h1>
+          {/* <h1>Money Collec<span>t</span>ion, Simplified with PileUp!</h1> */}
+          <h1>{t("Money Collection, Simplified with PileUp!")}</h1>
+
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
-          <Link to="/dashboard/folders">Get Started</Link>
+          <Link to="/dashboard/folders">{t("Get Started")}</Link>
         </section>
 
         <div className="first-section-bg"></div>
@@ -98,7 +100,7 @@ export default function Home() {
       </section>
 
       <section className="fourth-section">
-        <h2>Ways to Use</h2>
+        <h2>{t("Ways to Use")}</h2>
 
         
         <div className="background-color-one"></div>
@@ -106,32 +108,32 @@ export default function Home() {
 
         <Carousel className="fourth-section-carousel" responsive={responsive}>
           <div>
-            <h3>Birthdays</h3>
+            <h3>{t("Birthdays")}</h3>
             <p>Blow out the candles and stack up the smiles. Collecting birthday bash funds with PileUp is a piece of cake!</p>
           </div>
 
           <div>
-            <h3>Gifts</h3>
+            <h3>{t("Gifts")}</h3>
             <p>Share the love, not the confusion—use PileUp to effortlessly pool resources for that perfect group gift.</p>
           </div>
 
           <div>
-            <h3>Weddings</h3>
+            <h3>{t("Weddings")}</h3>
             <p>Wedding bells are ringing, and so is PileUp—let us harmonize your money collection for the big day.</p>
           </div>
 
           <div>
-            <h3>New Baby</h3>
+            <h3>{t("New Baby")}</h3>
             <p>From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.</p>
           </div>
 
           <div>
-            <h3>New Baby</h3>
+            <h3>{t("New Baby")}</h3>
             <p>From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.</p>
           </div>
 
           <div>
-            <h3>New Baby</h3>
+            <h3>{t("New Baby")}</h3>
             <p>From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.</p>
           </div>
         </Carousel>
@@ -143,7 +145,8 @@ export default function Home() {
       </section>
 
       <section className="sixth-section">
-        <h1>Tes<span>t</span>imonials</h1>
+        {/* <h1>{t("Tes<span>t</span>imonials")}</h1> */}
+        <h1>{t("Testimonials")}</h1>
         <Carousel className="sixth-section-carousel" responsive={testimonialsResponsive}>
           <div>
             <svg width="73" height="59" viewBox="0 0 73 59" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -179,7 +182,7 @@ export default function Home() {
       </section>
 
       <section className="seventh-section">
-        <h2>Frequently Asked Questions</h2>
+        <h2>{t("Frequently Asked Questions")}</h2>
 
         <div className="background-color-one"></div>
         <div className="background-color-two"></div>
@@ -199,56 +202,56 @@ export default function Home() {
       
       <footer className="eighth-section">
         <div>
-          <h4>Resources</h4>
+          <h4>{t("Resources")}</h4>
           <div>
-            <Link>How it works</Link>
-            <Link>Knowledge Center</Link>
-            <Link>Video Tutorial</Link>
-            <Link>See example</Link>
+            <Link>{t("How it works")}</Link>
+            <Link>{t("Knowledge Center")}</Link>
+            <Link>{t("Video Tutorial")}</Link>
+            <Link>{t("See example")}</Link>
           </div>
         </div>
 
         <div>
-          <h4>Product</h4>
+          <h4>{t("Product")}</h4>
           <div>
-            <Link>Features</Link>
-            <Link>Your Loyalty program points</Link>
-            <Link>User Stories</Link>
+            <Link>{t("Features")}</Link>
+            <Link>{t("Your Loyalty program points")}</Link>
+            <Link>{t("User Stories")}</Link>
           </div>
         </div>
 
         <div>
-          <h4>About</h4>
+          <h4>{t("About")}</h4>
           <div>
-            <Link>About Us</Link>
-            <Link>Partner With Us</Link>
-            <Link>Become an Affiliate</Link>
-            <Link>Contact Us</Link>
+            <Link>{t("About Us")}</Link>
+            <Link>{t("Partner With Us")}</Link>
+            <Link>{t("Become an Affiliate")}</Link>
+            <Link>{t("Contact Us")}</Link>
           </div>
         </div>
 
         <div>
-          <h4>Legal</h4>
+          <h4>{t("Legal")}</h4>
           <div>
-            <Link>Terms and conditions</Link>
-            <Link>Privacy Policy</Link>
-            <Link>Video Tutorial</Link>
-            <Link>Cookies</Link>
+            <Link>{t("Terms and conditions")}</Link>
+            <Link>{t("Privacy Policy")}</Link>
+            <Link>{t("Video Tutorial")}</Link>
+            <Link>{t("Cookies")}</Link>
           </div>
         </div>
 
         <div>
-          <h4>Ways to use</h4>
+          <h4>{t("Ways to use")}</h4>
           <div>
-            <Link>Birthday</Link>
-            <Link>Gifts for teaches or coaches</Link>
-            <Link>Leaving the Team</Link>
-            <Link>Show Someone You Care</Link>
+            <Link>{t("Birthday")}</Link>
+            <Link>{t("Gifts for teaches or coaches")}</Link>
+            <Link>{t("Leaving the Team")}</Link>
+            <Link>{t("Show Someone You Care")}</Link>
           </div>
         </div>
 
         <div className="eighth-section-download">
-          <span>Download</span>
+          <span>{t("Download")}</span>
           <section className="">
             <Link>
               <svg width="170" height="50" viewBox="0 0 170 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -301,7 +304,7 @@ export default function Home() {
         </div>
 
         <div className="eighth-section-social-media">
-          <span>Social Media</span>
+          <span>{t("Social Media")}</span>
           <ul>
               <li>
                 <Link>

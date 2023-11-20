@@ -1,14 +1,18 @@
 {
   "English": "انجليزى",
   "Arabic": "عربى",
+
   "Email": "البريد الالكترونى",
   "Password": "كلمه السر",
   "Confirm Password": "تاكيد كلمه السر",
-  "Login": "تسجيل الدخول",
+
+  "Log in": "تسجيل الدخول",
+  "Sign up": "انشاء حساب جديد؟",
+
   "First Name": "الاسم الاول",
   "Last Name": "الاسم الاخير",
-  "Sign Up": "انشاء حساب جديد؟  ",
   "Number phone": "رقم الهاتف",
+
   "You don't have account?": " لا يوجد لديك اكونت؟ ",
   "Do you have account?": "هل يوجد لديك اكونت؟ ",
   "please enter your email address": "من فضلك ادخل الايميل",
@@ -19,6 +23,7 @@
   "please Enter Confirm Pass": "من فضلك اكد الباسورد",
   "pass Didn't Same  pass": "الباسورد الذى ادخلته لا يتطابق ",
   "Forgot your Password?": "هل نسيت الباسورد؟",
+
 
   "Home": "الشاشه الرئيسيه",
   "Dashboard": "لوحة التحكم",
@@ -33,7 +38,7 @@
   "About Us": "من نحن",
   "Partner With Us": "تشارك معنا",
   "Become an Affiliate": "انضم",
-  "Contact Us": "اتصل بنا",
+  "Contact Us": "تواصل معنا",
   "Terms and conditions": "الشروط والأحكام",
   "Privacy Policy": "سياسة الخصوصية",
   "Video Tutorial": "دروس فيديو",
@@ -42,14 +47,15 @@
   "Gifts for teaches or coaches": "هدايا للمعلمين أو المدربين",
   "Leaving the Team": "ترك الفريق",
   "Show Someone You Care": "أظهر لشخص ما تهتم به",
-  "Download": "تحميل",
-  "Social Media": "وسائل التواصل الاجتماعي",
+  "Frequently Asked Questions": "الأسئلة المتداولة",
+  "Testimonials": "آراء عملائنا",
+
   "Resources": "الموارد",
   "Product": "المنتج",
   "About": "حول",
   "Legal": "قانوني",
   "Ways to use": "طرق الاستخدام",
-  "Money Collection, Simplified with PileUp!": "جمع الأموال، مبسطة مع بايل اب!",
+  "Money Collection, Simplified with PileUp!": "جمع الأموال, مبسطة مع بايل اب!",
   "Get Started": "ابدأ",
   "Ways to Use": "طرق الاستخدام",
   "Birthdays": "اعياد ميلاد",
