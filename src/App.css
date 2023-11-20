@@ -4599,6 +4599,11 @@ div.item-component-buttons span {
     justify-self: start;
     grid-row: 1;
   }
+
+  .languageSelector {
+    grid-column: 3;
+    justify-self: end;
+  }
 }
 
 
@@ -4627,6 +4632,12 @@ div.item-component-buttons span {
 
   .menu {
     grid-column: 10;
+  }
+
+  .languageSelector {
+    grid-column: 3;
+    justify-self: start;
+    margin: 0 0.5rem;
   }
 
   /* Cart */
@@ -4775,6 +4786,12 @@ div.item-component-buttons span {
 
   .menu-container {
     right: 1rem;
+  }
+
+  .languageSelector {
+    grid-column: 3;
+    justify-self: start;
+    margin: 0 0.5rem;
   }
 
   /* Cart */
@@ -4963,10 +4980,18 @@ div.item-component-buttons span {
   .menu {
     grid-column: 10;
     margin-right: 1.5rem;
+    justify-self: start;
   }
 
   .menu-container {
     right: 1rem;
+  }
+
+  .languageSelector {
+    grid-column: 3;
+    justify-self: start;
+    margin: 0 0.8rem;
+    text-transform: uppercase;
   }
 
   /* Cart */
