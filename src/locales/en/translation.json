@@ -24,6 +24,12 @@
   "pass Didn't Same  pass": "pass Didn't Same  pass",
   "Forgot your Password?": "Forgot your Password?",
 
+  "Cart": "Cart",
+  "Sub-total": "Sub-total",
+  "Total": "Total",
+  "Keep shopping": "Keep shopping",
+  "Continue to checkout": "Continue to checkout",
+
   "Home": "Home",
   "Dashboard": "Dashboard",
   "Vendors": "Vendors",
@@ -60,6 +66,24 @@
   "New Baby": "New Baby",
   "Frequently Asked Questions": "Frequently Asked Questions",
   "Testimonials": "Testimonials",
+  "Blow out the candles and stack up the smiles. Collecting birthday bash funds with PileUp is a piece of cake!": "Blow out the candles and stack up the smiles. Collecting birthday bash funds with PileUp is a piece of cake!",
+  "Share the love, not the confusion—use PileUp to effortlessly pool resources for that perfect group gift.": "Share the love, not the confusion—use PileUp to effortlessly pool resources for that perfect group gift.",
+  "Wedding bells are ringing, and so is PileUp—let us harmonize your money collection for the big day.": "Wedding bells are ringing, and so is PileUp—let us harmonize your money collection for the big day.",
+  "From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.": "From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.",
+
+
+  "My Folders": "My Folders",
+  "Create a Folder": "Create a Folder",
+  "Create a Pile": "Create a Pile",
+  "Sort By": "Sort By",
+  "Name": "Name",
+  "Date": "Date",
+  "Total Collected": "Total Collected",
+  "Redeem": "Redeem",
+  "Participate": "Participate",
+  "Delete": "Delete",
+  "Collected": "Collected",
+
 
   "Contacts": "Contacts",
   "Orders": "Orders",
@@ -118,15 +142,13 @@
   "enter text to search": "enter text to search",
   "Search for a pile": "Search for a pile",
   "Items sold": "Items sold",
-  "Collected": "Collected",
+
   "Category": "Category",
   "Description": "Description",
   "Title": "Title",
   "Item details": "Item details",
 
   "Status : ": "Status : ",
-  "Participate": "Participate",
-  "Redeem": "Redeem",
   "Close Pile": "Close Pile",
   "AVAILABLE TO REDEEM": "AVAILABLE TO REDEEM",
   "Add member": "Add member",
@@ -171,7 +193,6 @@
 
   "please enter your name": "please enter your name",
   "Add a Payment Method": "Add a Payment Method",
-  "Name": "Name",
   "ENTER CARD INFORMATION": "ENTER CARD INFORMATION",
   "CVV": "CVV",
   "2026": "2026",

@@ -1,8 +1,11 @@
 import axios from "axios"
 import pileIcon  from "../assets/Icon.png"
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 export default function Pile(props) {
+
+  const { t } = useTranslation()
 
   function handleLinkClick(event) {
     event.preventDefault()
@@ -33,12 +36,12 @@ export default function Pile(props) {
         <div className="pile-info">
           <h3>{props.name} {props.status == "closed" ? `- “${props.status}”` : ''}</h3>
           <h4 className="updated-data">Updated: <span className="updated-data-span">{props.updated}</span></h4>
-          <h4 className="collected-data">Collected: <span className="collected-data-total">EGP {props.total}</span></h4>
+          <h4 className="collected-data">{t("Collected")}: <span className="collected-data-total"> {props.total} {t("EGP")}</span></h4>
         </div>
 
         <div className="pile-buttons">
-          <Link onContextMenu={handleLinkClick} state={{id: props.folderId, status: props.status}} to={`pileview/${props.id}`}>Participate</Link>
-          <button onContextMenu={handleLinkClick} onClick={handleDelete}>Delete</button>
+          <Link onContextMenu={handleLinkClick} state={{id: props.folderId, status: props.status}} to={`pileview/${props.id}`}>{t("Participate")}</Link>
+          <button onContextMenu={handleLinkClick} onClick={handleDelete}>{t("Delete")}</button>
         </div>
       </div>
     </div>

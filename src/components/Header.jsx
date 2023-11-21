@@ -205,7 +205,7 @@ export default function Header() {
       <div className="model-overlay-cart">
           <div className="model-cart" ref={modelRef}>
             <div className="cart-dialog-container">
-              <h1>Cart</h1>
+              <h1>{t("Cart")}</h1>
               <button type="button" onClick={closeCartDialog}><AiFillCloseCircle /></button>
             </div>
 
@@ -219,8 +219,8 @@ export default function Header() {
 
             <div className="total-checkout-container">
               <div className="sub-total">
-                <span>Sub-total</span>
-                <span>{total} EGP</span>
+                <span>{t("Sub-total")}</span>
+                <span>{total} {t("EGP")}</span>
               </div>
 
               {/* <div className="tax">
@@ -229,13 +229,13 @@ export default function Header() {
               </div> */}
 
               <div className="total">
-                <span>Total</span>
-                <span>{total} EGP</span>
+                <span>{t("Total")}</span>
+                <span>{total} {t("EGP")}</span>
               </div>
 
               <div className="cart-navigation">
-                {cartData.length !== 0 && <button onClick={placeHolderHandler}>Continue to checkout</button>}
-                <button onClick={closeCartDialog}>Keep shopping</button>
+                {cartData.length !== 0 && <button onClick={placeHolderHandler}>{t("Continue to checkout")}</button>}
+                <button onClick={closeCartDialog}>{t("Keep shopping")}</button>
               </div>
             </div>
           </div>

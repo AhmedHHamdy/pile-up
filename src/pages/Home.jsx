@@ -109,32 +109,32 @@ export default function Home() {
         <Carousel className="fourth-section-carousel" responsive={responsive}>
           <div>
             <h3>{t("Birthdays")}</h3>
-            <p>Blow out the candles and stack up the smiles. Collecting birthday bash funds with PileUp is a piece of cake!</p>
+            <p>{t("Blow out the candles and stack up the smiles. Collecting birthday bash funds with PileUp is a piece of cake!")}</p>
           </div>
 
           <div>
             <h3>{t("Gifts")}</h3>
-            <p>Share the love, not the confusion—use PileUp to effortlessly pool resources for that perfect group gift.</p>
+            <p>{t("Share the love, not the confusion—use PileUp to effortlessly pool resources for that perfect group gift.")}</p>
           </div>
 
           <div>
             <h3>{t("Weddings")}</h3>
-            <p>Wedding bells are ringing, and so is PileUp—let us harmonize your money collection for the big day.</p>
+            <p>{t("Wedding bells are ringing, and so is PileUp—let us harmonize your money collection for the big day.")}</p>
           </div>
 
           <div>
             <h3>{t("New Baby")}</h3>
-            <p>From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.</p>
+            <p>{t("From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.")}</p>
           </div>
 
           <div>
             <h3>{t("New Baby")}</h3>
-            <p>From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.</p>
+            <p>{t("From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.")}</p>
           </div>
 
           <div>
             <h3>{t("New Baby")}</h3>
-            <p>From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.</p>
+            <p>{t("From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.")}</p>
           </div>
         </Carousel>
       </section>

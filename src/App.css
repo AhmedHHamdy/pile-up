@@ -1043,6 +1043,7 @@ main {
   justify-content: center;
   color: #FFFFFF;
   border-radius: 0.1rem;
+  font-size: 1rem;
 }
 
 .first-section-bg {
@@ -1214,8 +1215,13 @@ main {
   width: 22vh;
 }
 
+.fourth-section-carousel div h3 {
+  text-align: left;
+}
+
 .fourth-section-carousel div p {
   font-weight: 900;
+  text-align: left;
 }
 
 .react-multiple-carousel__arrow--right {

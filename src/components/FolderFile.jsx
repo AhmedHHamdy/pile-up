@@ -7,8 +7,11 @@ import MenuDropdown from "./menu/MenuDropdown"
 import MenuItem from "./menu/MenuItem"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 export default function FolderFile(props) {
+
+  const { t } = useTranslation()
 
   const [successStatus, setSuccessStatus] = useState(false)
 
@@ -40,7 +43,7 @@ export default function FolderFile(props) {
           </MenuItem> */}
 
           <MenuItem>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleDelete}>{t("Delete")}</button>
           </MenuItem>
         </MenuDropdown>
       </Menu>

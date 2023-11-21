@@ -25,6 +25,24 @@
   "Forgot your Password?": "هل نسيت الباسورد؟",
 
 
+  "Cart": "عربة التسوق",
+  "Sub-total": "الإجمالي الفرعي",
+  "Total": "الإجمالي",
+  "Keep shopping": "استمر في التسوق",
+  "Continue to checkout": "المتابعة إلى السداد",
+
+  "My Folders": "مجلداتي",
+  "Create a Folder": "إنشاء مجلد",
+  "Create a Pile": "إنشاء كومة",
+  "Sort By": "ترتيب حسب",
+  "Name": "الاسم",
+  "Date": "التاريخ",
+  "Total Collected": "المجموع المحصل",
+  "Redeem": "استرداد",
+  "Participate": "شارك",
+  "Delete": "حذف",
+  "Collected": "تم جمع",
+
   "Home": "الشاشه الرئيسيه",
   "Dashboard": "لوحة التحكم",
   "Vendors": "البائعين",
@@ -49,6 +67,11 @@
   "Show Someone You Care": "أظهر لشخص ما تهتم به",
   "Frequently Asked Questions": "الأسئلة المتداولة",
   "Testimonials": "آراء عملائنا",
+  "Blow out the candles and stack up the smiles. Collecting birthday bash funds with PileUp is a piece of cake!": "انفخ الشموع وابني الابتسامات. جمع تبرعات حفلة عيد الميلاد باستخدام بايل اب! أمر سهل كالقطعة الأولى!",
+  "Share the love, not the confusion—use PileUp to effortlessly pool resources for that perfect group gift.": "شارك المحبة، لا الالتباس - استخدم  بايل اب! لتجميع الموارد بسهولة لهدية جماعية مثالية.",
+  "Wedding bells are ringing, and so is PileUp—let us harmonize your money collection for the big day.": "أجراس الزفاف ترن، وكذلك  بايل اب! - دعونا نوفق تجميع الأموال الخاص بك لليوم الكبير.",
+  "From tiny socks to huge grins, welcome the new bundle of joy while PileUp keeps the gifting chaos in check.": "من الجوارب الصغيرة إلى الابتسامات الكبيرة، استقبل الحزمة الجديدة من الفرح بينما يحتفظ  بايل اب! بفوضى الهدايا تحت السيطرة.",
+
 
   "Resources": "الموارد",
   "Product": "المنتج",
@@ -120,14 +143,13 @@
   "enter text to search": "أدخل النص للبحث",
   "Search for a pile": "ابحث عن جمعيه",
   "Items sold": "العناصر المباعه",
-  "Collected": "تم جمعها",
+
   "Category": "المنتج",
   "Description": "الوصف",
   "Title": "العنوان",
   "Item details": "تفاصيل العنصر",
 
   "Status : ": "الحاله  ",
-  "Participate": "المشاركين",
   "Redeem": "الاسترداد",
   "Close Pile": "اغلاق الجمعيه",
   "AVAILABLE TO REDEEM": "متاح للاسترداد",

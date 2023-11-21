@@ -8,11 +8,14 @@ import { useParams, useSearchParams, Link , useNavigate } from "react-router-dom
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import FolderFile from "../../components/FolderFile"
+import { useTranslation } from "react-i18next"
 
 export default function FolderView() {
   const { token } = useAuth()
   const [folderData, setFolderData] = useState([])
   const [searchParams, setSearchParams] = useSearchParams()
+
+  const { t } = useTranslation()
 
   const [createFolderForm, setCreateFolderForm] = useState({ name: '' })
   const navigate = useNavigate()
@@ -201,12 +204,12 @@ export default function FolderView() {
     <section className="folder-view">
       <section className="folder-creation-section">
         <div className="create-pile-div">
-          <Link className="create-pile-button" onContextMenu={handleLinkClick} state={{folders: folderData, folderId: folderChange}} to="../createpile">Create a Pile</Link>
+          <Link className="create-pile-button" onContextMenu={handleLinkClick} state={{folders: folderData, folderId: folderChange}} to="../createpile">{t("Create a Pile")}</Link>
         </div>
 
         <div className="folders-section">
           <div className="create-folder-section">
-            <h2>My Folders</h2>
+            <h2>{t("My Folders")}</h2>
             <button onClick={openFolderForm}>
               <AiOutlinePlus />
             </button>
@@ -217,7 +220,7 @@ export default function FolderView() {
           </form>
 
           <div className="create-folder-container">
-            <h3>Create a Folder...</h3>
+            <h3>{t("Create a Folder")}...</h3>
             {folders}
           </div>
         </div>
@@ -233,11 +236,11 @@ export default function FolderView() {
             </section> */}
 
             <section className="sort-piles-by-section">
-              <label htmlFor="sort">Sort By:</label>
+              <label htmlFor="sort">{t("Sort By")}:</label>
               <select name="sort" id="sort" className="" value={sortingPile.sort} onChange={handleSortingChange}>
                 {/* <option value="">Sort By</option> */}
-                <option value="name">Name</option>
-                <option value="date">Date</option>
+                <option value="name">{t("Name")}</option>
+                <option value="date">{t("Date")}</option>
               </select>
             </section>
           </div>
@@ -259,11 +262,11 @@ export default function FolderView() {
 
       <section className="total-container">
         <div>
-          <span>Total Collected</span>
-          <h2>2550.0 EGP</h2>
+          <span>{t("Total Collected")}</span>
+          <h2>2550.0 {t("EGP")}</h2>
         </div>
         <div className="buttonReedem-container">
-          <button>Redeem</button>
+          <button>{t("Redeem")}</button>
         </div>
       </section>
 
