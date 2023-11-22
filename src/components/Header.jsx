@@ -17,7 +17,6 @@ import Box from '@mui/material/Box';
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
 // import '../App.rtl.css'; // Import styles as a module
-import '../App.css?inline'; // Import the CSS file without automatic injection
 
 
 
@@ -28,60 +27,28 @@ export default function Header() {
   useEffect(() => {
     document.documentElement.dir = i18n.dir();
     // Create a style element outside the condition
-    // const styleElement = document.createElement('style');
+    const styleElement = document.createElement('style');
 
-    // if (i18n.language === 'ar') {
-    //   import('../App.rtl.css').then((module) => {
-    //     // Apply styles dynamically
-    //     styleElement.textContent = module.default;
-    //     document.head.appendChild(styleElement);
-    //   });
-    // } else if (i18n.language === 'en') {
-    //   import('../App.css').then((module) => {
-    //   //   // Apply styles dynamically
-    //     styleElement.textContent = module.default;
-    //     document.head.appendChild(styleElement);
-    //   });
-    // }
-
-    // // Remove old styles (this will remove the previous styles on each language change)
-    // return () => {
-    //   if (styleElement.parentNode) {
-    //     document.head.removeChild(styleElement);
-    //   }
-    // };
-
-    const isRtlLanguage = i18n.dir() === 'rtl';
-    const stylesheetLink = document.getElementById('main-stylesheet');
-
-    // Ensure that the stylesheetLink element exists before updating its href
-    if (stylesheetLink) {
-      if (isRtlLanguage) {
-        stylesheetLink.href = '../../src/App.rtl.css';
-      } else {
-        stylesheetLink.href = '../../src/App.css';
-      }
-    } else {
-      // Create a new link element if it doesn't exist
-      const newStylesheetLink = document.createElement('link');
-      newStylesheetLink.rel = 'stylesheet';
-      newStylesheetLink.id = 'main-stylesheet';
-
-      if (isRtlLanguage) {
-        newStylesheetLink.href = '../../src/App.rtl.css';
-      } else {
-        newStylesheetLink.href = '../../src/App.css';
-      }
-
-      // Append the new link element to the document head
-      document.head.appendChild(newStylesheetLink);
+    if (i18n.language === 'ar') {
+      import('../App.rtl.css').then((module) => {
+        // Apply styles dynamically
+        styleElement.textContent = module.default;
+        document.head.appendChild(styleElement);
+      });
+    } else if (i18n.language === 'en') {
+      import('../App.css').then((module) => {
+      //   // Apply styles dynamically
+        styleElement.textContent = module.default;
+        document.head.appendChild(styleElement);
+      });
     }
 
-    // Remove the injected style tag with the specific data-vite-dev-id attribute
-    const devStyleTag = document.querySelector('style[data-vite-dev-id="C:/Users/Hamdy/Desktop/pile-up/pileup/src/App.css"]');
-    if (devStyleTag) {
-      devStyleTag.remove();
-    }
+    // Remove old styles (this will remove the previous styles on each language change)
+    return () => {
+      if (styleElement.parentNode) {
+        document.head.removeChild(styleElement);
+      }
+    };
   }, [i18n.language]);
 
 
