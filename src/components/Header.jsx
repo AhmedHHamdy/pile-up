@@ -26,39 +26,41 @@ export default function Header() {
 
   useEffect(() => {
     document.documentElement.dir = i18n.dir();
-    
-    const styleElement = document.createElement('style');
-    styleElement.setAttribute('data-dynamic-style', 'true');
-    document.head.appendChild(styleElement);
+// Create new style elements for each language
+const styleElementAr = document.createElement('style');
+const styleElementEn = document.createElement('style');
 
-    // Function to set or remove styles
-    const applyStyles = (cssText) => {
-      // Clear existing styles
-      styleElement.innerHTML = '';
-      
-      // Apply new styles
-      styleElement.sheet.insertRule(cssText, 0);
-    };
+// Remove existing style elements
+document.querySelectorAll('style[data-dynamic-style]').forEach((element) => {
+  element.parentNode.removeChild(element);
+});
 
-    if (i18n.language === 'ar') {
-      import('../App.rtl.css').then((module) => {
-        // Apply styles dynamically
-        applyStyles(module.default);
-      });
-    } else if (i18n.language === 'en') {
-      import('../App.css').then((module) => {
-        // Apply styles dynamically
-        applyStyles(module.default);
-      });
-    }
+if (i18n.language === 'ar') {
+  import('../App.rtl.css').then((module) => {
+    // Apply styles dynamically
+    styleElementAr.textContent = module.default;
+    styleElementAr.setAttribute('data-dynamic-style', 'true');
+    document.head.appendChild(styleElementAr);
+  });
+} else if (i18n.language === 'en') {
+  import('../App.css').then((module) => {
+    // Apply styles dynamically
+    styleElementEn.textContent = module.default;
+    styleElementEn.setAttribute('data-dynamic-style', 'true');
+    document.head.appendChild(styleElementEn);
+  });
+}
 
-    // Remove the current style element when the component is unmounted or when the language changes
-    return () => {
-      if (styleElement.parentNode) {
-        styleElement.parentNode.removeChild(styleElement);
-      }
-    };
-  }, [i18n.language]);
+// Remove the current style elements when the component is unmounted or when the language changes
+return () => {
+  if (styleElementAr.parentNode) {
+    styleElementAr.parentNode.removeChild(styleElementAr);
+  }
+  if (styleElementEn.parentNode) {
+    styleElementEn.parentNode.removeChild(styleElementEn);
+  }
+};
+}, [i18n.language]);
 
 
   const { token, setToken } = useAuth()
