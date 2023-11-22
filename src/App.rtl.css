@@ -781,10 +781,18 @@ header > svg {
 
 }
 
+.MuiBox-root  {
+  padding-left: 2rem;
+}
+
 .from-elements-container .input-banner-container {
   grid-column: 1/-1;
   padding: 0 4rem;
   margin-bottom: 1rem;
+}
+
+.from-elements-container .input-banner-container input {
+  padding: 0 0rem;
 }
 
 .from-elements-container .title-input-container  {
