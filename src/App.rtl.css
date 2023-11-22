@@ -976,26 +976,28 @@ main {
   position: relative;
 }
 
-.first-section .background-color-one {
+[dir = "rtl"] .first-section .background-color-one {
   background: #FAD4CBright 4 top 50%D;
   position: absolute;
   z-index: 0;
   width: 140vh;
   height: 34vh;
   top: 60px;
-  left: 0;
+  right: 35vh;
   border-top-right-radius: 10rem;
+  border-top-left-radius: 0;
 }
 
-.first-section .background-color-two {
+[dir = "rtl"] .first-section .background-color-two {
   background: #03BCA4right 26 top 50%;
   position: absolute;
   z-index: 0;
   width: 100vh;
   height: 18vh;
   bottom: 240px;
-  left: 0;
+  right: 75vh;
   border-top-right-radius: 10rem;
+  border-top-left-radius: 0;
 }
 
 .first-section-info {
@@ -1048,12 +1050,13 @@ main {
   font-size: 1.8rem;
 }
 
-.first-section-bg {
+[dir = "rtl"] .first-section-bg {
   background: url("/pileup-illustration\ 1.png");
   height: 85vh;
   background-repeat: no-repeat;
   grid-column: 6/12;
   z-index: 1;
+  transform: scaleX(-1);
 }
 
 .second-section {
@@ -1121,11 +1124,11 @@ main {
   grid-template-columns: repeat(13, minmax(0, 1fr));
 }
 
-.third-section-bg {
+[dir = "rtl"] .third-section-bg {
   background: url("/pileup-wallet-orange 2.png");
   height: 78vh;
   background-repeat: no-repeat;
-  grid-column: 8/-1;
+  grid-column: 7/13;
 }
 
 .third-section-info {
@@ -1182,7 +1185,7 @@ main {
   z-index: 1;
 }
 
-.fourth-section .background-color-one {
+[dir = "rtl"] .fourth-section .background-color-one {
   background: #FAD4CBright 4 top 50%D;
   position: absolute;
   z-index: 0;
@@ -1190,9 +1193,10 @@ main {
   height: 12vh;
   bottom: 220px;
   border-top-left-radius: 10rem;
+  border-top-right-radius: 0;
 }
 
-.fourth-section .background-color-two {
+[dir = "rtl"] .fourth-section .background-color-two {
   background: #03BCA4right 26 top 50%;
   position: absolute;
   z-index: 0;
@@ -1200,6 +1204,7 @@ main {
   height: 10vh;
   bottom: 190px;
   border-top-left-radius: 10rem;
+  border-top-right-radius: 0;
 }
 
 
@@ -1358,26 +1363,28 @@ main {
   z-index: 1;
 }
 
-.seventh-section .background-color-one {
+[dir = "rtl"] .seventh-section .background-color-one {
   background: #FAD4CBright 4 top 50%D;
   position: absolute;
   z-index: 0;
-  width: 110.5vh;
+  width: 120.5vh;
   height: 14vh;
   top: 100px;
-  left: 0;
-  border-top-right-radius: 10rem;
+  right: -20vh;
+  border-top-left-radius: 10rem;
+  border-top-right-radius: 0;
 }
 
-.seventh-section .background-color-two {
+[dir = "rtl"] .seventh-section .background-color-two {
   background: #03BCA4right 26 top 50%;
   position: absolute;
   z-index: 0;
-  width: 45vh;
+  width: 75vh;
   height: 10vh;
   top: 150px;
-  left: 0;
-  border-top-right-radius: 10rem;
+  right: -20vh;
+  border-top-left-radius: 10rem;
+  border-top-right-radius: 0;
 }
 
 .seventh-section-faq {
