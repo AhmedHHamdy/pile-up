@@ -37,7 +37,7 @@ export default function Header() {
       });
     } else if (i18n.language === 'en') {
       import('../App.css').then((module) => {
-        // Apply styles dynamically
+      //   // Apply styles dynamically
         styleElement.textContent = module.default;
         document.head.appendChild(styleElement);
       });
@@ -172,11 +172,11 @@ export default function Header() {
           <MenuButton><FaUserCircle /></MenuButton>
           <MenuDropdown>
             <MenuItem>
-              <Link className="profile-menu-link" to="/profile">Profile</Link>
+              <Link className="profile-menu-link" to="/profile">{t("Profile")}</Link>
             </MenuItem>
 
             <MenuItem>
-              <button className="logout-menu-link" onClick={handleLogout}>Logout</button>
+              <button className="logout-menu-link" onClick={handleLogout}>{t("Logout")}</button>
             </MenuItem>
           </MenuDropdown>
         </Menu>

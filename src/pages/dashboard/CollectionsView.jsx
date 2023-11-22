@@ -216,7 +216,7 @@ export default function FolderView() {
           </div>
 
           <form onSubmit={handleSearchFormSubmit} >
-            <input type="text" placeholder="Search for a folder or a pile" value={searchForm.searchText} onChange={handleSearchChange} />
+            <input type="text" placeholder={t("Search for a folder or a pile")} value={searchForm.searchText} onChange={handleSearchChange} />
           </form>
 
           <div className="create-folder-container">

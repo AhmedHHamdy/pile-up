@@ -42,6 +42,7 @@
   "Participate": "شارك",
   "Delete": "حذف",
   "Collected": "تم جمع",
+  "Search for a folder or a pile": "البحث عن مجلد أو كومة",
 
   "Home": "الشاشه الرئيسيه",
   "Dashboard": "لوحة التحكم",
@@ -88,7 +89,7 @@
   
   "Contacts": "جهات الاتصال",
   "Orders": "الطلبات",
-  "Profile": "الملف الشحصى",
+  "Profile": "الملف الشخصى",
   "Language": "اللغه",
   "Change Password": "تغيير الباسورد",
   "Old Password": "الباسورد القديم",
