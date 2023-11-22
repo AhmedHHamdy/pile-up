@@ -52,6 +52,10 @@ export default function Header() {
   // Remove the current style element when the component is unmounted or when the language changes
   return () => {
     if (styleElement.parentNode) {
+      const lastStyleElement = document.head.lastElementChild;
+      const prevStyleElement = lastStyleElement.previousElementSibling;
+      document.head.removeChild(prevStyleElement);
+
       styleElement.parentNode.removeChild(styleElement);
     }
   };
