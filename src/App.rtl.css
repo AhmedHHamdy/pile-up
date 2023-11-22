@@ -1033,7 +1033,7 @@ main {
   margin-bottom: 2rem;
 }
 
-.first-section-info a {
+[dir = "rtl"] .first-section-info a {
   grid-row: 5;
   grid-column: 1/4;
   height: 5vh;

@@ -30,13 +30,13 @@ export default function Header() {
     const styleElement = document.createElement('style');
 
     if (i18n.language === 'ar') {
-      import('../App.rtl.css').then((module) => {
+      import('../../src/App.rtl.css').then((module) => {
         // Apply styles dynamically
         styleElement.textContent = module.default;
         document.head.appendChild(styleElement);
       });
     } else if (i18n.language === 'en') {
-      import('../App.css').then((module) => {
+      import('../../src/App.css').then((module) => {
       //   // Apply styles dynamically
         styleElement.textContent = module.default;
         document.head.appendChild(styleElement);
