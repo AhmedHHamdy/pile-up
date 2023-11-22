@@ -53,6 +53,10 @@ export default function Header() {
     return () => {
       if (styleElement.parentNode) {
         styleElement.parentNode.removeChild(styleElement);
+        const devStyleTag = document.querySelector('style[data-vite-dev-id="C:/Users/Hamdy/Desktop/pile-up/pileup/src/App.rtl.css"]');
+        if (devStyleTag) {
+          devStyleTag.remove();
+        }
       }
     };
   }, [i18n.language]);
