@@ -26,29 +26,26 @@ export default function Header() {
 
   useEffect(() => {
     document.documentElement.dir = i18n.dir();
-    // Create a style element
-    const styleElement = document.createElement('style');
-    styleElement.setAttribute('data-dynamic-style', 'true');
-    document.head.appendChild(styleElement);
+    // Remove existing style elements
+    document.querySelectorAll('style[data-dynamic-style]').forEach((element) => {
+      element.parentNode.removeChild(element);
+    });
 
-    // Function to set or remove styles
-    const applyStyles = (cssText) => {
-      // Clear existing styles
-      styleElement.innerHTML = '';
-      
-      // Apply new styles
-      styleElement.sheet.insertRule(cssText, 0);
-    };
+    // Create a new style element
+    const styleElement = document.createElement('style');
+    styleElement.setAttribute('data-dynamic-style', 'true'); // Set a data attribute to identify dynamic styles
 
     if (i18n.language === 'ar') {
       import('../App.rtl.css').then((module) => {
         // Apply styles dynamically
-        applyStyles(module.default);
+        styleElement.textContent = module.default;
+        document.head.appendChild(styleElement);
       });
     } else if (i18n.language === 'en') {
       import('../App.css').then((module) => {
         // Apply styles dynamically
-        applyStyles(module.default);
+        styleElement.textContent = module.default;
+        document.head.appendChild(styleElement);
       });
     }
 
