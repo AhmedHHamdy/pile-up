@@ -51,21 +51,36 @@ export default function Header() {
     //   }
     // };
 
-    const devStyleTag = document.querySelector('style[data-vite-dev-id="C:/Users/Hamdy/Desktop/pile-up/pileup/src/App.css"]');
-    if (devStyleTag) {
-      devStyleTag.remove();
-    }
-
-
-    // Determine which stylesheet to use based on language direction
     const isRtlLanguage = i18n.dir() === 'rtl';
     const stylesheetLink = document.getElementById('main-stylesheet');
 
-    // Update the href attribute to switch between RTL and LTR styles
-    if (isRtlLanguage) {
-      stylesheetLink.href = '../../src/App.rtl.css';
+    // Ensure that the stylesheetLink element exists before updating its href
+    if (stylesheetLink) {
+      if (isRtlLanguage) {
+        stylesheetLink.href = '../../src/App.rtl.css';
+      } else {
+        stylesheetLink.href = '../../src/App.css';
+      }
     } else {
-      stylesheetLink.href = '../../src/App.css';
+      // Create a new link element if it doesn't exist
+      const newStylesheetLink = document.createElement('link');
+      newStylesheetLink.rel = 'stylesheet';
+      newStylesheetLink.id = 'main-stylesheet';
+
+      if (isRtlLanguage) {
+        newStylesheetLink.href = '../../src/App.rtl.css';
+      } else {
+        newStylesheetLink.href = '../../src/App.css';
+      }
+
+      // Append the new link element to the document head
+      document.head.appendChild(newStylesheetLink);
+    }
+
+    // Remove the injected style tag with the specific data-vite-dev-id attribute
+    const devStyleTag = document.querySelector('style[data-vite-dev-id="C:/Users/Hamdy/Desktop/pile-up/pileup/src/App.css"]');
+    if (devStyleTag) {
+      devStyleTag.remove();
     }
   }, [i18n.language]);
 
