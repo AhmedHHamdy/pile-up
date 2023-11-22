@@ -27,21 +27,17 @@ export default function Header() {
   useEffect(() => {
     document.documentElement.dir = i18n.dir();
     // Create a style element outside the condition
-    // const styleElement = document.createElement('style');
     const styleElement = document.createElement('style');
 
     if (i18n.language === 'ar') {
-      import('../../src/App.rtl.css').then((module) => {
+      import('../App.rtl.css').then((module) => {
         // Apply styles dynamically
         styleElement.textContent = module.default;
         document.head.appendChild(styleElement);
-        console.log(module)
       });
     } else if (i18n.language === 'en') {
       import('../../src/App.css').then((module) => {
         // Apply styles dynamically
-              // document.head.removeChild(styleElement);
-
         styleElement.textContent = module.default;
         document.head.appendChild(styleElement);
       });
@@ -51,9 +47,6 @@ export default function Header() {
     return () => {
       if (styleElement.parentNode) {
         document.head.removeChild(styleElement);
-        // const lastStyleElement = document.head.lastElementChild;
-        // document.head.removeChild(lastStyleElement);
-
       }
     };
   }, [i18n.language]);

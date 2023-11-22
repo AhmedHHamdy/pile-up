@@ -753,7 +753,7 @@ header > svg {
   border-left: 0;
 }
 
-.pile-form-container h1 {
+[dir = "rtl"] .pile-form-container h1 {
   text-align: right;
   font-size: 1.5rem;
   padding: 0rem 2rem;
