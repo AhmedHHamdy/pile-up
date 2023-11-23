@@ -3,8 +3,12 @@ import "../App"
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai"
 import { MdOutlineDelete } from "react-icons/md"
 import axios from "axios"
+import { useTranslation } from "react-i18next"
 
 export default function Item(props) {
+
+  const { t } = useTranslation()
+
   const [itemRemovalStatus, setItemRemovalStatusState] = useState(false)
 
   // function handleAdding() {
@@ -62,7 +66,7 @@ export default function Item(props) {
       </div> */}
 
       <div className="cart-item-total">
-        <h2>EGP {props.total}</h2>
+        <h2>{props.total} {t("EGP")}</h2>
       </div>
       {!props.orderNumber && <button className="remove-cart-Item" onClick={handleRemoving}><MdOutlineDelete /></button>}
 

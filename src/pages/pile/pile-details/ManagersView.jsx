@@ -6,10 +6,13 @@ import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FcInvite } from "react-icons/fc"
+import { useTranslation } from "react-i18next"
 
 export default function ManagersView() {
   const [isManagerFormOpen, setIsManagerFormOpen] = useState(false)
   const modelRef = useRef(null)
+
+  const { t } = useTranslation()
 
   const [contactList, setContactList] = useState([])
   console.log(contactList)
@@ -93,8 +96,8 @@ export default function ManagersView() {
         </div> */}
 
         <div className="managers-create-buttons">
-          <button onClick={openManagerForm}><AiOutlinePlus /> Add a Participant</button>
-          <input type="search" placeholder="Search for a manager" />
+          <button onClick={openManagerForm}><AiOutlinePlus /> {t("Add a Participant")}</button>
+          <input type="search" placeholder={t("Search For a Participant")} />
         </div>
       </div>
 
@@ -111,11 +114,11 @@ export default function ManagersView() {
               <table className="table-orders">
                 <thead>
                   <tr>
-                    <th colSpan={2}>Name</th>
-                    <th colSpan={2}>Email</th>
-                    <th>Date Added</th>
-                    <th>Role</th>
-                    <th>Send Message</th>
+                    <th colSpan={2}>{t("Name")}</th>
+                    <th colSpan={2}>{t("Email")}</th>
+                    <th>{t("Date Added")}</th>
+                    <th>{t("Role")}</th>
+                    <th>{t("Send Message")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -143,21 +146,21 @@ export default function ManagersView() {
       { isManagerFormOpen && <div className="model-overlay-manager-form">
         <div className="model-manager-form" ref={modelRef}>
           <div className="manager-form-header">
-            <h1>Add a Participant</h1>
+            <h1>{t("Add a Participant")}</h1>
             <button type="button" onClick={closeManagerForm}><AiFillCloseCircle /></button>
           </div>
 
           <form onSubmit={handleAddingParticipant}>
-            <label htmlFor="">Pile Name</label>
+            <label htmlFor="">{t("Pile Name")}</label>
             <input type="text" placeholder="Enter a name" disabled value={pileData.name_en}/>
 
-            <label htmlFor="select-participant">Email <span>*</span></label>
+            <label htmlFor="select-participant">{t("Email")} <span>*</span></label>
             <select name="email" id="select-participant" onChange={handleParticipantDataChange} value={participantData.email}>
-              <option value=''>Select Contact</option>
+              <option value=''>{t("Select Contact")}</option>
               {contactsOptions}
             </select>
 
-            <button>Add</button>
+            <button>{t("Add")}</button>
           </form>
         </div>
       </div>}

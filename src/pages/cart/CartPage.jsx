@@ -4,6 +4,7 @@ import Item from "../../components/ItemCart";
 import axios from "axios";
 import Order from "../../components/Order";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function CartPage() {
   const [creditCardForm, setCreditCardForm] = useState(true)
@@ -12,6 +13,8 @@ export default function CartPage() {
   const [walletForm, setWalletForm] = useState(true)
 
   const [ordersData, setOrdersData] = useState([])
+
+  const { t } = useTranslation()
 
   const location = useLocation()
   console.log(location)
@@ -128,7 +131,7 @@ export default function CartPage() {
 
       <div className="order-summary-container">
         <div className="order-summary-container-header">
-          <h1>Order summary</h1>
+          <h1>{t("Order Summary")}</h1>
         </div>
         
         <div className="items-container-checkout">
@@ -137,8 +140,8 @@ export default function CartPage() {
 
         <div className="total-checkout-container">
           <div className="sub-total">
-            <span>Sub-total</span>
-            <span>{total} EGP</span>
+            <span>{t("Sub-total")}</span>
+            <span>{total} {t("EGP")}</span>
           </div>
 
           {/* <div className="tax">
@@ -147,8 +150,8 @@ export default function CartPage() {
           </div> */}
 
           <div className="total">
-            <span>Total</span>
-            <span>{total} EGP</span>
+            <span>{t("Total")}</span>
+            <span>{total} {t("EGP")}</span>
           </div>
         </div>
       </div>

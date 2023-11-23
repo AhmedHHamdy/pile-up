@@ -4,6 +4,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from "react-i18next";
 
 export default function SendResetCode() {
   const [resetCodeFormContainer, setResetCodeFormContainer] = useState(true) 
@@ -17,6 +18,8 @@ export default function SendResetCode() {
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/
   const [validPassword, setValidPassword] = useState(false);
   const [validMatch, setValidMatch] = useState(false)
+
+  const { t } = useTranslation()
 
   const navigate = useNavigate()
 
@@ -117,39 +120,39 @@ export default function SendResetCode() {
       <ToastContainer />
       {resetCodeFormContainer &&
         <section className="send-reset-code-container">
-          <h1>Reset Your Password</h1>
+          <h1>{t("Reset Your Password")}</h1>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t("Email")}</label>
             <input type="email" name="username" id="email" placeholder="Email" required value={emailForm.username} onChange={(event) => setEmailForm({...emailForm, username: event.target.value})}/>
-            <button>Continue</button>
+            <button>{t("Continue")}</button>
           </form>
         </section> 
       }
 
       {resetPasswordFormContainer && 
         <section className="verify-reset-code-container">
-          <h1>Enter Code</h1>
+          <h1>{t("Enter Code")}</h1>
           <form onSubmit={handleResetCodeSubmit}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t("Email")}</label>
             <input type="username" name="username" id="email" placeholder="email" required value={resetCodeForm.username} onChange={(event) => setResetCodeForm({...resetCodeForm, username: event.target.value})}/>
 
-            <label htmlFor="reset_code">Code</label>
+            <label htmlFor="reset_code">{t("Code")}</label>
             <input type="text" name="reset_code" id="reset_code" placeholder="####" required value={resetCodeForm.reset_code} onChange={(event) => setResetCodeForm({...resetCodeForm, reset_code: event.target.value})} />
-            <button>Continue</button>
+            <button>{t("Continue")}</button>
           </form>
         </section>
       }
 
       {enterResetCodeFormContainer && 
         <section className="reset-password-container">
-          <h1>Reset Your Password</h1>
+          <h1>{t("Reset Your Password")}</h1>
           <form onSubmit={handleResetPasswordSubmit}>
-            <label htmlFor="password">New Password</label>
+            <label htmlFor="password">{t("New Password")}</label>
             <input type="password" name="password" id="password" placeholder="Enter new password" value={resetPasswordForm.password} onChange={handlePasswordChange} required />
 
-            <label htmlFor="password_confirmation">Password Confirmation</label>
+            <label htmlFor="password_confirmation">{t("Password Confirmation")}</label>
             <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm new password" value={resetPasswordForm.password_confirmation} onChange={handlePasswordChange} required />
-            <button>Save</button>
+            <button>{t("Save")}</button>
           </form>
         </section>
       }

@@ -1,13 +1,17 @@
+import { useTranslation } from "react-i18next"
 import "../../../App.css"
 import { HiDownload } from "react-icons/hi"
 
 export default function ReportsView() {
+
+  const { t } = useTranslation()
+
   return (
     <section className="reports-container">
       <div className="reports-buttons-container">
 
         <div className="reports-download-button">
-          <button><HiDownload /> Download</button>
+          <button><HiDownload /> {t("Download")}</button>
 
           <select name="payment" id="payment">
             <option value="">Payments</option>
@@ -20,12 +24,12 @@ export default function ReportsView() {
             <table className="table-orders">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Date</th>
-                  <th>Amount</th>
-                  <th>Method</th>
-                  <th>Status</th>
+                  <th>{t("Name")}</th>
+                  <th>{t("Email")}</th>
+                  <th>{t("Date")}</th>
+                  <th>{t("Amount")}</th>
+                  <th>{t("Method")}</th>
+                  <th>{t("Status")}</th>
                 </tr>
               </thead>
               <tbody>

@@ -14,9 +14,12 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { display } from "@mui/system";
+import { useTranslation } from "react-i18next";
 
 export default function sendInvitation() {
   const [value, setValue] = useState()
+
+  const { t } = useTranslation()
 
   const [pileList, setPileList] = useState([])
   console.log(pileList)
@@ -144,15 +147,15 @@ export default function sendInvitation() {
     <section className="invitation-form-container">
       <ToastContainer />
       <div className="invitation-back-button ">
-        <Link to={location?.state?.pileId ? `../folders/pileview/${location?.state?.pileId}/managers` : '../contacts'}><IoIosArrowBack /> Back to piles</Link>
+        <Link to={location?.state?.pileId ? `../folders/pileview/${location?.state?.pileId}/managers` : '../contacts'}><IoIosArrowBack /> {t("Back to Piles")}</Link>
       </div>
       <div className="invitation-form">
-        <h1>Message Center</h1>
+        <h1>{t("Message Center")}</h1>
           <form onSubmit={handleSendMessage}>
             <div className="invitation-from-elements-container">
 
               <div className="pile-select-input-container">
-                <label htmlFor="pile-selection">Select Pile <span>*</span></label>
+                <label htmlFor="pile-selection">{t("Select Pile")} <span>*</span></label>
                 <select name="pile_id" id="pile-selection" onChange={handleInvitationDateChange} value={inviteDataForm.pile_id} required>
                   <option value=''>Select Pile</option>
                   {pileOptions}
@@ -167,12 +170,12 @@ export default function sendInvitation() {
               </div> */}
 
               <div className="invite-form-add-recipients-button-container">
-                <label htmlFor="send_to">To <span>*</span></label>
+                <label htmlFor="send_to">{t("To")} <span>*</span></label>
                 {/* <p>contact1, contact2, contact3, contact4, contact5, contact7، contact1, contact2, contact3, contact4, contact5, contact7، contact1, contact2, contact3, contact4, contact5, contact7</p> */}
                 {/* {recipients} */}
                 <input style={{display: "block", marginBottom: "1rem", width: "50%"}} type="email" name="email" id="send_to" onChange={handleInvitationDateChange} value={inviteDataForm.email} required />
 
-                <Button className="button" onClick={handleClickOpen}>Add recipient</Button>
+                <Button className="button" onClick={handleClickOpen}>{t("Add Recipient")}</Button>
                 <Dialog open={open} onClose={handleClose}>
                   {/* <DialogTitle>Add recipients</DialogTitle> */}
                   <DialogContent>
@@ -242,7 +245,7 @@ export default function sendInvitation() {
 
               <section className="invite-message-container">
                 <div className="invite-message-container-from-subject-input">
-                  <label htmlFor="title">Subject <span>*</span></label>
+                  <label htmlFor="title">{t("Subject")} <span>*</span></label>
                   <input type="text" placeholder="Subject" name="title" id="title" onChange={handleInvitationDateChange} value={inviteDataForm.title} required/>
                 </div>
 
@@ -253,8 +256,8 @@ export default function sendInvitation() {
             </div>
 
             <div className="form-buttons">
-              <Link to={location?.state?.pileId ? `../folders/pileview/${location?.state?.pileId}/managers` : '../contacts'}>Cancel</Link>
-              <button>Send</button>
+              <Link to={location?.state?.pileId ? `../folders/pileview/${location?.state?.pileId}/managers` : '../contacts'}>{t("Cancel")}</Link>
+              <button>{t("Send")}</button>
             </div>
           </form>
 

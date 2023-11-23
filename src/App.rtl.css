@@ -42,6 +42,14 @@ header .link-img-logo {
   justify-content: center;
 }
 
+[dir = "rtl"] .login-link svg {
+  transform: scaleX(-1);
+}
+
+[dir = "rtl"]  .signup-link svg {
+  transform: scaleX(-1);
+}
+
 .home-link:hover, .dashboard-link:hover, .vendors-link:hover {
   border-bottom: 1px solid #1A181B;
 }
@@ -2379,6 +2387,10 @@ main {
   margin-right: 1rem;
 }
 
+[dir = "rtl"] .pileview-container-buttons a svg {
+  transform: scaleX(-1);
+}
+
 .pileview-container .pile-container .pile-info-edit-button {
   background: none;
   border: 0;
@@ -3680,6 +3692,10 @@ tfoot {
   padding-right: 1.7rem;
 }
 
+[dir = "rtl"] .invitation-back-button a svg {
+  transform: scaleX(-1);
+}
+
 
 .invite-message-container {
   grid-row: 3;
@@ -3763,6 +3779,7 @@ tfoot {
   border-radius: 0.3rem;
   font-weight: 600;
   cursor: pointer;
+  text-transform: capitalize;
 }
 
 

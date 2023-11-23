@@ -251,11 +251,11 @@ export default function FolderView() {
           {piles && piles.length > 0 ? piles : 
           (<div className="no-pile-view">
             <div>
-              <h2>This folder is empty</h2>
-              <p>Drag a pile into this folder or create a new pile</p>
+              <h2>{t("This folder is empty")}</h2>
+              <p>{t("create a new pile")}</p>
             </div>
-            <Link className="create-pile-button" onContextMenu={handleLinkClick} state={{folders: folderData, folderId: folderChange}} to="../createpile">Create a Pile</Link>
-            <button className="quick-tour-button">Take a quick tour</button>
+            <Link className="create-pile-button" onContextMenu={handleLinkClick} state={{folders: folderData, folderId: folderChange}} to="../createpile">{t("Create a Pile")}</Link>
+            {/* <button className="quick-tour-button">Take a quick tour</button> */}
           </div>)}
         </div>
       </section>
@@ -274,14 +274,14 @@ export default function FolderView() {
       { isFolderFormOpen && <div className="model-overlay-folder-form">
         <div className="model-folder-form" ref={modelRef}>
           <div className="folder-form-header">
-            <h1>New Folder</h1>
+            <h1>{t("New Folder")}</h1>
             <button type="button" onClick={closeFolderForm}><AiFillCloseCircle /></button>
           </div>
 
           <form onSubmit={createFolderHandler} >
-            <label htmlFor="folder-name">Name <span>*</span></label>
+            <label htmlFor="folder-name">{t("Name")} <span>*</span></label>
             <input type="text" name="name" id="folder-name" placeholder="Enter a name" value={createFolderForm.name} onChange={(event) => setCreateFolderForm(previousData => ({...previousData, name: event.target.value}))} />
-            <button>Save</button>
+            <button>{t("Save")}</button>
           </form>
         </div>
       </div>}

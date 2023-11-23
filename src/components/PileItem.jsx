@@ -3,10 +3,13 @@ import "../App.css"
 import { useState } from "react"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from "react-i18next";
 
 export default function PileItem(props) {
 
   const [addedToCart, setAddedtoCart] = useState(false)
+
+  const { t } = useTranslation()
 
   function handleDelete() {
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/items/delete`, {item_id: props.id})
@@ -60,17 +63,17 @@ export default function PileItem(props) {
 
         <div className="item-info-name">
           <h3>{props.name}</h3>
-          <span>EGP {props.price}</span>
+          <span>{props.price} {t("EGP")}</span>
         </div>
 
         <div className="item-info-total-collected">
-          <h3>Collected: <span>EGP 500.00</span></h3>
+          <h3>{t("Collected")}: <span>500.00 {t("EGP")}</span></h3>
         </div>
 
         <div className="pile-item-buttons">
-          <button className="add-to-cart-button" onClick={handleAddToCart}>{addedToCart ? "Added to Cart" : "Add to cart"}</button>
+          <button className="add-to-cart-button" onClick={handleAddToCart}>{addedToCart ? `${t("Added to Cart")}` : `${t("Add to cart")}`}</button>
           {/* {addedToCart && <button className="add-to-cart-button" onClick={handleRemoveFromCart}>Added to Cart</button>} */}
-          <button className="pile-item-delete-button" onClick={handleDelete}>Delete</button>
+          <button className="pile-item-delete-button" onClick={handleDelete}>{t("Delete")}</button>
         </div>
       </div>
     </div>

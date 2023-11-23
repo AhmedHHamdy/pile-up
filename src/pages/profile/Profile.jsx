@@ -5,9 +5,12 @@ import { Link } from "react-router-dom"
 import { AiFillCloseCircle } from "react-icons/ai"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from "react-i18next"
 
 export default function Profile() {
   const [passwordFormOpen, setPasswordFormOpen] = useState(false)
+
+  const { t } = useTranslation()
 
   const openPasswordForm = () => {
     setPasswordFormOpen(true)
@@ -134,51 +137,51 @@ export default function Profile() {
       <section className="profile-container">
         <ToastContainer />
         <div className="profile-header">
-          <h1>Edit Profile</h1>
+          <h1>{t("Edit Profile")}</h1>
         </div>
         
         <form onSubmit={handleSubmit} className="profile-form">
 
           <img src={formData.image} alt="" />
  
-          <label htmlFor="first_name">First name</label>
+          <label htmlFor="first_name">{t("First Name")}</label>
           <input type="text" name="first_name" id="firstName" onChange={handleChange} value={formData.first_name} />
 
-          <label htmlFor="last_name">Last name</label>
+          <label htmlFor="last_name">{t("Last Name")}</label>
           <input type="text" name="last_name" id="lastName" onChange={handleChange} value={formData.last_name} />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t("Email")}</label>
           <input type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
 
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone">{t("Phone")}</label>
           <input type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
 
           {/* <label htmlFor="image">Image</label>
           <input type="file" name="image" id="image" onChange={handleFileChange}  /> */}
 
-          <button>Save Profile</button>
+          <button>{t("Save Profile")}</button>
         </form>
 
-        <button className="change-password" onClick={openPasswordForm}>Change Password</button>
+        <button className="change-password" onClick={openPasswordForm}>{t("Change Password")}</button>
         
         {passwordFormOpen && 
         <div className="model-overlay-password-form">
           <div className="model-password-form password-form">
             <div className="password-form-header">
-              <h1>Change Password</h1>
+              <h1>{t("Change Password")}</h1>
               <button type="button" onClick={closePasswordForm}><AiFillCloseCircle /></button>
             </div>
 
             <form onSubmit={handlePasswordFormSubmit}>
-              <label htmlFor="old_password">Old Password</label>
+              <label htmlFor="old_password">{t("Old Password")}</label>
               <input type="password" name="old_password" id="old_password" onChange={handleChangePassword} required value={formPassword.old_password} />
 
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">{t("Password")}</label>
               <input type="password" name="password" id="password" onChange={handleChangePassword} required value={formPassword.password} />
 
-              <label htmlFor="password_confirmation">Confirm Password</label>
+              <label htmlFor="password_confirmation">{t("Confirm Password")}</label>
               <input type="password" name="password_confirmation" id="password_confirmation" required onChange={handleChangePassword} value={formPassword.password_confirmation} />
-              <button>Save</button>
+              <button>{t("Save")}</button>
             </form>
           </div>
         </div>}

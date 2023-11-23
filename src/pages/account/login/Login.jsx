@@ -3,6 +3,7 @@ import pileupLogo from "../../../assets/pileup_logo.png"
 import { useState, useRef, useEffect, useContext } from "react"
 import axios from "axios"
 import { useAuth } from "../../../context/AuthProvider"
+import { useTranslation } from "react-i18next"
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ export default function Login() {
 
   const { setToken, token } = useAuth()
 
+  const { t } = useTranslation()
 
   if (token) {
     console.log(token)
@@ -78,22 +80,22 @@ export default function Login() {
       <img src={pileupLogo} alt="pileup-logo" />
       <section className="login-section-container">
         <div className="login-section-text">
-          <h1>Welcome Back!</h1>
-          <p>Don't have an account? <Link to="/signup">Create one</Link></p>
+          <h1>{t("Welcome Back!")}</h1>
+          <p>{t("Don't have an account?")} <Link to="/signup">{t("Create one")}</Link></p>
         </div>
 
         <p ref={errRef} className={errMsg ? "err-msg" : "offscreen"} aria-live="assertive">{errMsg}</p>
         
         <form className="login-section-form" onSubmit={handleSubmit}>
-          <label htmlFor="userName">Email</label>
+          <label htmlFor="userName">{t("Email")}</label>
           <input type="text" name="username" id="userName" onChange={handleChange} ref={userRef} value={formData.username} required />
 
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("Password")}</label>
           <input type="password" name="password" id="password" onChange={handleChange} value={formData.password} required />
 
-          <Link to="/sendResetCode">Forgot your password?</Link>
+          <Link to="/sendResetCode">{t("Forgot your password?")}</Link>
 
-          <button>Continue</button>
+          <button>{t("Continue")}</button>
         </form>
       </section>
     </div>

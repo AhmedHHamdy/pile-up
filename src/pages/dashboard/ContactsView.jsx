@@ -18,6 +18,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { MdOutlineDeleteOutline } from "react-icons/md"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from "react-i18next";
 
 export default function ContactsView() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,6 +30,8 @@ export default function ContactsView() {
   const [error, setError] = useState(null)
 
   const { token } = useAuth()
+
+  const { t } = useTranslation()
 
   const [contactsFormData, setContactFormData] = useState({
     first_name: '',
@@ -183,25 +186,25 @@ export default function ContactsView() {
     <section className="Add-contact-form">
       <form onSubmit={handleAddContactSubmission}>
         <div>
-          <label htmlFor="first_name">First Name:</label>
+          <label htmlFor="first_name">{t("First Name")}:</label>
           <input type="text" name="first_name" id="first_name" placeholder="John" value={addContactForm.first_name} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
-          <label htmlFor="last_name">Last Name:</label>
+          <label htmlFor="last_name">{t("Last Name")}:</label>
           <input type="text" name="last_name" id="last_name" placeholder="Smith" value={addContactForm.last_name} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
-          <label htmlFor="email" className="email-label">Email:</label>
+          <label htmlFor="email" className="email-label">{t("Email")}:</label>
           <input type="email" name="email" id="email" placeholder="John@Smith.com" value={addContactForm.email} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
-          <label htmlFor="phone" className="phone-label">Phone:</label>
+          <label htmlFor="phone" className="phone-label">{t("Phone")}:</label>
           <input type="tel" name="phone" id="phone" placeholder="555 5555 5555" value={addContactForm.phone} onChange={handleAddContactFormChange} required />
         </div>
-        <button className="add-contact-button">Add</button>
+        <button className="add-contact-button">{t("Add")}</button>
       </form>
     </section>
 
@@ -209,12 +212,12 @@ export default function ContactsView() {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th colSpan={2}>Email</th>
-          <th>Phone</th>
-          <th>Send Message</th>
-          <th>Edit Contact</th>
-          <th>Delete Contact</th>
+          <th>{t("Name")}</th>
+          <th colSpan={2}>{t("Email")}</th>
+          <th>{t("Phone")}</th>
+          <th>{t("Send Message")}</th>
+          <th>{t("Edit Contact")}</th>
+          <th>{t("Delete Contact")}</th>
         </tr>
       </thead>
       <tbody>

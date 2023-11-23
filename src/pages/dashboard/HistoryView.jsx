@@ -7,6 +7,7 @@ import Box from '@mui/material/Box'
 import { Link } from "react-router-dom";
 import { TbShoppingCartDollar } from "react-icons/tb"
 import { useAuth } from "../../context/AuthProvider";
+import { useTranslation } from "react-i18next";
 
 let PageSize  = 10
 
@@ -16,6 +17,8 @@ export default function HistoryView() {
   const [paginationData, setPaginationData] = useState([])
   console.log(paginationData)
   console.log(orderData)
+
+  const { t } = useTranslation()
 
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
@@ -79,12 +82,12 @@ export default function HistoryView() {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Order Number</th>
-          <th>Date</th>
-          <th>Total</th>
-          <th>Status</th>
-          <th rowSpan={3}>Items</th>
-          <th>Order Summary</th>
+          <th>{t("Order Number")}</th>
+          <th>{t("Date")}</th>
+          <th>{t("Total")}</th>
+          <th>{t("Status")}</th>
+          <th rowSpan={3}>{t("Items")}</th>
+          <th>{t("Order Summary")}</th>
         </tr>
       </thead>
       <tbody>

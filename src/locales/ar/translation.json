@@ -7,7 +7,7 @@
   "Confirm Password": "تاكيد كلمه السر",
 
   "Log in": "تسجيل الدخول",
-  "Sign up": "انشاء حساب جديد؟",
+  "Sign up": "انشاء حساب",
 
   "First Name": "الاسم الاول",
   "Last Name": "الاسم الاخير",
@@ -25,15 +25,15 @@
   "Forgot your Password?": "هل نسيت الباسورد؟",
 
 
-  "Cart": "عربة التسوق",
+  "Cart": "عربة المشتريات",
   "Sub-total": "الإجمالي الفرعي",
   "Total": "الإجمالي",
   "Keep shopping": "استمر في التسوق",
   "Continue to checkout": "المتابعة إلى السداد",
 
-  "My Folders": "مجلداتي",
-  "Create a Folder": "إنشاء مجلد",
-  "Create a Pile": "إنشاء كومة",
+  "My Folders": "ملفاتي",
+  "Create a Folder": "إنشاء ملف",
+  "Create a Pile": "إنشاء جمعيه",
   "Sort By": "ترتيب حسب",
   "Name": "الاسم",
   "Date": "التاريخ",
@@ -43,6 +43,9 @@
   "Delete": "حذف",
   "Collected": "تم جمع",
   "Search for a folder or a pile": "البحث عن مجلد أو كومة",
+  "New Folder": "ملف جديد",
+  "This folder is empty": "هذا المجلد فارغ",
+  "create a new pile": "إنشاء كومة جديدة",
 
   "Home": "الشاشه الرئيسيه",
   "Dashboard": "لوحة التحكم",
@@ -60,7 +63,6 @@
   "Contact Us": "تواصل معنا",
   "Terms and conditions": "الشروط والأحكام",
   "Privacy Policy": "سياسة الخصوصية",
-  "Video Tutorial": "دروس فيديو",
   "Cookies": "الكوكيز",
   "Birthday": "عيد ميلاد",
   "Gifts for teaches or coaches": "هدايا للمعلمين أو المدربين",
@@ -86,7 +88,102 @@
   "Gifts": "الهدايا",
   "Weddings": "زفاف",
   "New Baby": "مولود جديد",
-  
+
+  "Create Pile": "إنشاء جمعيه",
+  "Upload Image": "تحميل صورة",
+  "Title": "العنوان",
+  "Folder": "المجلد",
+  "My Pile 01": "جمعيه 01",
+  "Pile Type": "نوع الكومة",
+  "Event Date": "تاريخ الحدث",
+  "Deadline": "الموعد النهائي",
+  "Typing": "الكتابة",
+  "Create": "إنشاء",
+
+  "Phone": "الهاتف",
+  "Send Message": "إرسال رسالة",
+  "Edit Contact": "تعديل جهة الاتصال",
+  "Delete Contact": "حذف جهة الاتصال",
+  "Add": "إضافة",
+
+
+  "Order Number": "رقم الطلب",
+  "Status": "الحالة",
+  "Items": "العناصر",
+  "Order Summary": "ملخص الطلب",
+
+  "Edit Profile": "تعديل الملف الشخصي",
+  "Save Profile": "حفظ الملف الشخصي",
+
+  "Back to Piles": "العودة إلى الجمعيات",
+  "Reports": "التقارير",
+  "Managers": "المديرين",
+  "Share": "مشاركة",
+  "Add item": "إضافة عنصر",
+  "Add a category": "إضافة فئة",
+  "Search for an item": "البحث عن عنصر",
+  "You didn't add any item yet": "لم تقم بإضافة أي عنصر بعد",
+  "Edit Pile Info": "تعديل معلومات الجمعيه",
+  "Description": "الوصف",
+  "Quantity": "الكمية",
+  "Starting Price": "السعر الابتدائي",
+  "Add Category": "إضافة فئة",
+  "Category Name": "اسم الفئة",
+
+
+  "Share with a link": "مشاركة بواسطة رابط",
+  "Share With a QR Code": "مشاركة بواسطة رمز الاستجابة السريعة (QR Code)",
+  "Share this QR code that will send people to your Pile Page URL": "شارك رمز الاستجابة السريعة (QR Code) الذي سيوجه الناس إلى عنوان URL الخاص بصفحة الجمعيه الخاصة بك",
+  "Share via email": "مشاركة عبر البريد الإلكتروني",
+  "Send a custom invitation": "إرسال دعوة مخصصة",
+  "Copy": "نسخ",
+  "Edit Link": "تعديل الرابط",
+
+
+  "Add a Participant": "إضافة مشارك",
+  "Search For a Participant": "البحث عن مشارك",
+  "Role": "الدور",
+  "Date Added": "تاريخ الإضافة",
+  "Pile Name": "اسم الجمعيه",
+
+  "Amount": "كمية",
+  "Method": "الطريقة",
+  "Download": "تحميل",
+
+  "Message Center": "مركز الرسائل",
+  "Select Pile": "تحديد الجمعيه",
+  "To": "إلى",
+  "Add Recipient": "إضافة جهة الاتصال",
+  "Subject": "الموضوع",
+  "Send": "إرسال",
+
+
+  "Order Total": "الإجمالي للطلب",
+  "Added to Cart": "تمت الإضافة إلى العربة",
+  "Add to cart": "أضف إلى العربة",
+
+
+  "Welcome Back!": "مرحبًا مرة أخرى!",
+  "Don't have an account?": "لا تملك حساب؟",
+  "Create one": "أنشئ واحداً",
+  "Forgot your password?": "هل نسيت كلمة المرور؟",
+  "Continue": "متابعة",
+
+
+  "Welcome!": "مرحباً!",
+  "Already have an account?": "هل لديك حساب بالفعل؟",
+  "Login": "تسجيل الدخول",
+  "min. 8 Char": "الحد الأدنى 8 أحرف",
+  "Join": "انضم",
+
+
+  "Reset Your Password": "إعادة تعيين كلمة المرور",
+  "Enter Code": "أدخل الرمز",
+  "Code": "الرمز",
+  "New Password": "كلمة المرور الجديدة",
+  "Password Confirmation": "تأكيد كلمة المرور",
+
+
   "Contacts": "جهات الاتصال",
   "Orders": "الطلبات",
   "Profile": "الملف الشخصى",
@@ -99,9 +196,7 @@
   "Logout": "تسجيل الخروج",
 
   "Search for a  pile": "بحث عن جمعيه",
-  "Create Pile": "إنشاء جمعيه",
   "Create Folder": "إنشاء مجلد",
-  "Add Category": "اضافه منتج",
   "Add Item": "اضافه عنصر",
   "Edit Pile": "تعديل جمعيه",
   "Warning! Are you sure to": "تحذير! هل أنت متأكد من ",
@@ -109,12 +204,11 @@
   "Cancel": "الغاء",
   "delete": "حذف",
   "add": "اضافه",
-  "Add": "اضافه",
-  "Cart": "عربة المشتريات",
+ 
   "Not Found Carts Yet": "عربه المشتريات فارغه",
   "Not Found Items": "لا يوجد عناصر",
   "Not Found Messages": "لا يوجد رسائل",
-  "Send Message": "أرسال رسالة",
+
   "Update": "تحديث",
   "Edit": "تعديل",
   "phone": "الهاتف",
@@ -122,16 +216,11 @@
   "Add Contact": "إضافة جهة اتصال",
   "Message center": "مركز الرسائل",
   "Message type": "نوع الرسائل",
-  "Select Pile": "حدد جمعيه",
-  "My Pile 01": " جمعيه 01",
   "Invitation": "دعوة",
-  "To": "  لى",
   "Add recipients": "إضافه مستلمين",
   "From": "من",
   "May kenawy": "مايو قناوي",
-  "Subject": "الموضوع",
   "Add a description": "إضافة وصف",
-  "Send": "ارسال",
   "title": "العنوان",
   "content": "المحتوى",
   "message content": "محتوى الرساله",
@@ -145,13 +234,10 @@
   "Search for a pile": "ابحث عن جمعيه",
   "Items sold": "العناصر المباعه",
 
-  "Category": "المنتج",
-  "Description": "الوصف",
-  "Title": "العنوان",
+  "Category": "الفئه",
   "Item details": "تفاصيل العنصر",
 
-  "Status : ": "الحاله  ",
-  "Redeem": "الاسترداد",
+
   "Close Pile": "اغلاق الجمعيه",
   "AVAILABLE TO REDEEM": "متاح للاسترداد",
   "Add member": "إضافة عضو",
@@ -167,23 +253,18 @@
   "Send invitations and track payments and responses": "إرسال الدعوات وتتبع المدفوعات والاستجابات",
 
   " Group 01": " المجموعة 01",
-  "  My Pile 01": "  جمعيه 01",
+
   "Make item required  ": "جعل العنصر مطلوبا  ",
   "Set available quantity ": "ضبط الكمية المتاحة ",
   "please enter Title": "الرجاء إدخال العنوان",
-  "Folder": "مجلد",
   "Group1": "مجموعة 1",
   "please select folder": "الرجاء تحديد مجلد",
   "Type": "النوع",
-  "Birthday": "عيد ميلاد",
   "please select type": "الرجاء تحديد النوع",
-  "Deadline": "الموعد",
   "please select Deadline": "الرجاء تحديد الموعد ",
-  "Event Date": "تاريخ الحدث",
   "please select EventLine": "الرجاء تحديد تاريخ الحدث",
   "please enter description": "الرجاء إدخال الوصف",
   "please select image": "الرجاء اختيار صورة",
-  "Create": "إنشاء",
   "My Folder 01": "مجلد 01",
   "Folder name ": "إسم الملف ",
   "EGP": "جنيه مصري",
@@ -191,7 +272,6 @@
 
   "Order details  ": "تفاصيل الطلب",
   "Order No. ": "رقم الطلب. ",
-  "Total": "المجموع",
   " checkout ": " الدفع ",
   "Details": "التفاصيل",
 
@@ -211,9 +291,7 @@
   "Save": "حفظ",
   "Any Amount": "أي كمية",
   "Exact Amount": "المبلغ الدقيق",
-  "Amount": "كمية",
   "500": "500",
-  "Add item": "اضافة عنصر",
   "Edit item": "تعديل عنصر",
   "please enter title": "الرجاء إدخال العنوان",
   "Item price": "سعر العنصر",

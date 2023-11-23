@@ -17,6 +17,7 @@ import Select from '@mui/material/Select';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularWithValueLabel from "../../../components/CircularProgressWithLabel"
+import { useTranslation } from "react-i18next";
 
 export default function ItemsView() {
   const [value, setValue] = useState('');
@@ -41,6 +42,8 @@ export default function ItemsView() {
 
   const [itemsData, setItemData] = useState([])
   console.log(itemsData)
+
+  const { t } = useTranslation()
 
   const navigate = useNavigate()
 
@@ -287,9 +290,9 @@ export default function ItemsView() {
         </div> */}
 
         <div className="items-create-buttons">
-          <button onClick={openForm}><AiOutlinePlus /> Add item</button>
-          <button onClick={openCategoryForm}><AiOutlinePlus /> Add a category</button>
-          <input type="search" placeholder="Search for an item" />
+          <button onClick={openForm}><AiOutlinePlus /> {t("Add item")}</button>
+          <button onClick={openCategoryForm}><AiOutlinePlus /> {t("Add a category")}</button>
+          <input type="search" placeholder={t("Search for an item")} />
         </div>
       </div>
 
@@ -298,8 +301,8 @@ export default function ItemsView() {
         {itemsElements}
         {itemsData.length == 0 && 
         <div className="no-item-container">
-          <h1>You didn't add any item yet</h1>
-          <button onClick={openForm}><AiOutlinePlus /> Add Item</button>
+          <h1>{t("You didn't add any item yet")}</h1>
+          <button onClick={openForm}><AiOutlinePlus /> {t("Add Item")}</button>
         </div>}
       </div>
 
@@ -307,14 +310,14 @@ export default function ItemsView() {
         <section className="modal-overlay item-form-container">
           <ToastContainer />
           <div className="modal item-form" ref={modalRef}>
-                <h1>Add Item</h1>
+                <h1>{t("Add Item")}</h1>
                 <button className="close-button" type="button" onClick={closeForm}><AiFillCloseCircle /></button>
                 <div className="form-container">
                   <form onSubmit={handleCreateItemSubmit}>
                     <div className="from-elements-container">
                     <div className="input-banner-container" style={{display: "flex", flexDirection: "row", gap: "0.8rem", marginBottom: "1rem", justifyContent: "space-between", alignItems: "flex-start", paddingLeft: "2rem"}}>
                       <section className="upload-image-section">
-                        <label for="image" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> Upload Image <span style={{ color: "#EF6C4D" }}>*</span> </label>
+                        <label for="image" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> {t("Upload Image")} <span style={{ color: "#EF6C4D" }}>*</span> </label>
                         <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image" type="file" name="image" onChange={handleFileChange}  required/>
                       </section>
                       <CircularWithValueLabel value={uploadProgress} />
@@ -322,14 +325,14 @@ export default function ItemsView() {
 
 
                       <div className="title-input-container">
-                        <label htmlFor="name">Title <span>*</span></label>
+                        <label htmlFor="name">{t("Title")} <span>*</span></label>
                         <input type="text" placeholder="New Item 1" name="name" id="name" onChange={handleCreateItemChange} value={itemCreateForm.name} required/>
                       </div>
 
                       <div className="category-input-container">
-                        <label htmlFor="category-selection">Category</label>
+                        <label htmlFor="category-selection">{t("Category")}</label>
                         <select name="category_id" id="category-selection" value={itemCreateForm.category_id} onChange={handleCreateItemChange}>
-                          <option value="1">Category 1</option>
+                          <option value="1">{t("Category 1")}</option>
                         </select>
                       </div>
 
@@ -338,7 +341,7 @@ export default function ItemsView() {
 
                       <div className="item-price-input-container">
                         <div className="item-price-input-container-select">
-                          <label htmlFor="price_type">Item price</label>
+                          <label htmlFor="price_type">{t("Item price")}</label>
                           <select name="price_type" id="price_type" value={itemCreateForm.price_type} onChange={handleCreateItemChange} required>
                             <option value="total_amount">Total Amount</option>
                             <option value="any_amount">Any Amount</option>
@@ -361,13 +364,13 @@ export default function ItemsView() {
 
                     <div className="quantity-status-container">
                       <div className="item-quantity-input-container-input">
-                          <label htmlFor="quantity">Quantity</label>
+                          <label htmlFor="quantity">{t("Quantity")}</label>
                           <input type="text" placeholder="5" name="quantity" id="quantity" value={itemCreateForm.quantity} onChange={handleCreateItemChange} required />
                       </div>        
     
 
                       <div className="status-input-container">
-                          <label htmlFor="status-selection">Status</label>
+                          <label htmlFor="status-selection">{t("Status")}</label>
                           <select name="status" id="status-selection" value={itemCreateForm.status} onChange={handleCreateItemChange} required>
                             <option value="Active">Active</option>
                             <option value="Pending">Pending</option>
@@ -377,8 +380,8 @@ export default function ItemsView() {
   
 
                     <div className="form-buttons">
-                      <button type="button" onClick={closeForm}>Cancel</button>
-                      <button style={uploadProgress !== 0 ? { background: "#CCCCCC" } : null} disabled={typingStatus || uploadProgress !== 0}>{ typingStatus == true ? "Typing..." : "Create" }</button>
+                      <button type="button" onClick={closeForm}>{t("Cancel")}</button>
+                      <button style={uploadProgress !== 0 ? { background: "#CCCCCC" } : null} disabled={typingStatus || uploadProgress !== 0}>{ typingStatus == true ? `${t("Typing")}...` : `${t("Create")}` }</button>
                     </div>
                   </form>
                 </div>
@@ -389,13 +392,13 @@ export default function ItemsView() {
       {isCategoryFormVisible && (
         <section className="modal-overlay item-form-container">
           <div className="modal item-form category-form" ref={modalCategoryRef}>
-                <h1>Add category</h1>
+                <h1>{t("Add Category")}</h1>
                 <button className="close-button" type="button" onClick={closeCategoryForm}><AiFillCloseCircle /></button>
                 <div className="form-container">
                   <form>
                     <div className="from-elements-container">
                       <div className="title-input-container">
-                        <label htmlFor="">Category name <span>*</span></label>
+                        <label htmlFor="">{t("Category Name")} <span>*</span></label>
                         <input type="text" placeholder="Category 1" />
                       </div>
                     </div>
@@ -404,8 +407,8 @@ export default function ItemsView() {
 
 
                     <div className="form-buttons">
-                      <button onClick={closeCategoryForm}>Cancel</button>
-                      <button>save</button>
+                      <button onClick={closeCategoryForm}>{t("Cancel")}</button>
+                      <button>{t("Save")}</button>
                     </div>
                   </form>
                 </div>

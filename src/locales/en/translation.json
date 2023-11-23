@@ -84,6 +84,100 @@
   "Delete": "Delete",
   "Collected": "Collected",
   "Search for a folder or a pile": "Search for a folder or a pile",
+  "New Folder": "New Folder",
+  "This folder is empty": "This folder is empty",
+  "create a new pile": "create a new pile",
+
+  "Create Pile": "Create Pile",
+  "Upload Image": "Upload Image",
+  "Title": "Title",
+  "Folder": "Folder",
+  "Pile Type": "Pile Type",
+  "Event Date": "Event Date",
+  "Deadline": "Deadline",
+  "Typing": "Typing",
+  "Create": "Create",
+
+  "Phone": "Phone",
+  "Send Message": "Send Message",
+  "Edit Contact": "Edit Contact",
+  "Delete Contact": "Delete Contact",
+  "Add": "Add",
+
+
+  "Order Number": "Order Number",
+  "Status": "Status",
+  "Items": "Items",
+  "Order Summary": "Order Summary",
+
+  
+  "Edit Profile": "Edit Profile",
+  "Save Profile": "Save Profile",
+
+  "Back to Piles": "Back to Piles",
+  "Reports": "Reports",
+  "Managers": "Managers",
+  "Share": "Share",
+  "Add item": "Add item",
+  "Add a category": "Add a category",
+  "Search for an item": "Search for an item",
+  "You didn't add any item yet": "You didn't add any item yet",
+  "Edit Pile Info": "Edit Pile info",
+  "Description": "Description",
+  "Quantity": "Quantity",
+  "Starting Price": "Starting Price",
+  "Add Category": "Add Category",
+  "Category Name": "Category Name",
+
+  "Share with a link": "Share with a link",
+  "Share With a QR Code": "Share With a QR Code",
+  "Share this QR code that will send people to your Pile Page URL": "Share this QR code that will send people to your Pile Page URL",
+  "Share via email": "Share via email",
+  "Send a custom invitation": "Send a custom invitation",
+  "Copy": "Copy",
+  "Edit Link": "Edit Link",
+
+  "Add a Participant": "Add a Participant",
+  "Search For a Participant": "Search For a Participant",
+  "Role": "Role",
+  "Date Added": "Date Added",
+
+  "Amount": "Amount",
+  "Method": "Method",
+
+
+  "Message Center": "Message Center",
+  "Select Pile": "Select Pile",
+  "To": "To",
+  "Add Recipient": "Add Recipient",
+  "Subject": "Subject",
+  "Send": "Send",
+
+  "Order Total": "Order Total",
+  "Added to Cart": "Added to Cart",
+  "Add to cart": "Add to cart",
+
+
+  "Welcome Back!": "Welcome Back!",
+  "Don't have an account?": "Don't have an account?",
+  "Create one": " Create one",
+  "Forgot your password?": "Forgot your password?",
+  "Continue": "Continue",
+
+
+  "Welcome!": "Welcome!",
+  "Already have an account?": "Already have an account?",
+  "Login": "Login",
+  "min. 8 Char": "min. 8 Char",
+  "Join": "Join",
+
+  
+  "Reset Your Password": "Reset Your Password",
+  "Enter Code": "Enter Code", 
+  "Code": "Code",
+  "New Password": "New Password",
+  "Password Confirmation": "Password Confirmation",
+
 
   "Contacts": "Contacts",
   "Orders": "Orders",
@@ -91,15 +185,13 @@
   "Language": "Language",
   "Change Password": "Change Password",
   "Old Password": "Old Password",
-  "New Password": "New Password",
   "please enter your Old Password": "please enter your Old Password",
   "please enter your new Password": "please enter your new Password",
   "Logout": "Logout",
 
   "Search for a  pile": "Search for a pile",
-  "Create Pile": "Create Pile",
+
   "Create Folder": "Create Folder",
-  "Add Category": "Add Category",
   "Add Item": "Add Item",
   "Edit Pile": "Edit Pile",
   "Warning! Are you sure to": "Warning! Are you sure to",
@@ -107,12 +199,10 @@
   "Cancel": "Cancel",
   "delete": "delete",
   "add": "add",
-  "Add": "Add",
-  "Cart": "Cart",
   "Not Found Carts Yet": "Not Found Carts Yet",
   "Not Found Items": "Not Found Items",
   "Not Found Messages": "Not Found Messages",
-  "Send Message": "Send Message",
+ 
   "Update": "Update",
   "Edit": "Edit",
   "phone": "phone",
@@ -120,16 +210,15 @@
   "Add Contact": "Add Contact",
   "Message center": "Message center",
   "Message type": "Message type",
-  "Select Pile": "Select Pile",
+
   "My Pile 01": "  My Pile 01",
   "Invitation": "  Invitation",
-  "To": "  To",
+
   "Add recipients": "Add recipients",
   "From": "From",
   "May kenawy": "May kenawy",
-  "Subject": "Subject",
   "Add a description": "Add a description",
-  "Send": "Send",
+ 
   "title": "title",
   "content": "content",
   "message content": "message content",
@@ -144,8 +233,6 @@
   "Items sold": "Items sold",
 
   "Category": "Category",
-  "Description": "Description",
-  "Title": "Title",
   "Item details": "Item details",
 
   "Status : ": "Status : ",
@@ -157,7 +244,6 @@
   " MANAGERS ": " MANAGERS ",
   " REPORTS  ": " REPORTS  ",
   " MESSAGES ": " MESSAGES ",
-  "Add to cart": "Add to cart",
   "  Share with a link": "  Share with a link",
   "  Share via email": "  Share via email",
   "Copy and share your pile URL": "Copy and share your pile URL",
@@ -168,18 +254,14 @@
   "Make item required  ": "Make item required  ",
   "Set available quantity ": "Set available quantity ",
   "please enter Title": "please enter Title",
-  "Folder": "Folder",
   "Group1": "Group1",
   "please select folder": "please select folder",
   "Type": "Type",
   "please select type": "please select type",
-  "Deadline": "Deadline",
   "please select Deadline": "please select Deadline",
-  "Event Date": "Event Date",
   "please select EventLine": "please select EventLine",
   "please enter description": "please enter description",
   "please select image": "please select image",
-  "Create": "Create",
   "My Folder 01": "My Folder 01",
   "Folder name ": "Folder name ",
   "EGP": "EGP",
@@ -187,7 +269,6 @@
 
   "Order details  ": "Order details  ",
   "Order No. ": "Order No. ",
-  "Total": "Total",
   " checkout ": " checkout ",
   "Details": "Details",
 
@@ -206,9 +287,8 @@
   "Save": "Save",
   "any_amount": "any_amount",
   "Exact Amount": "Exact Amount",
-  "Amount": "Amount",
+
   "500": "500",
-  "Add item": "Add item",
   "Edit item": "Edit item",
   "please enter title": "please enter title",
   "Item price": "Item price",
