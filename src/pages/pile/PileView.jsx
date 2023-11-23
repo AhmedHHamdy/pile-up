@@ -45,7 +45,9 @@ export default function PileView() {
   useEffect(() => {
     const storedValue = localStorage.getItem('cachedValue');
 
-    if (Object.keys(storedValue).length !== 0 && location.state == null) {
+
+
+    if (storedValue && Object.keys(storedValue).length !== 0 && location.state == null) {
       const parsedValue = JSON.parse(storedValue);
       localStorage.setItem('cachedValue', JSON.stringify(parsedValue));
 
