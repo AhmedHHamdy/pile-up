@@ -18,7 +18,8 @@ export default function Signup() {
     email: '',
     phone: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
+    fcm_token: "none"
   })
 
   const navigate = useNavigate()
@@ -95,7 +96,8 @@ export default function Signup() {
         email: '',
         phone: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        fcm_token: "none"
       })
 
       if (data.token) {
