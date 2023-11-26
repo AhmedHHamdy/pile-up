@@ -5002,7 +5002,7 @@ div.item-component-buttons span {
   
   .cart-button {
     grid-column: 9;
-    margin-left: 2rem;
+    margin-left: 0rem;
   }
 
   .notification-link {
@@ -5210,7 +5210,8 @@ div.item-component-buttons span {
 /* Create Pile Page Responsiveness */
 @media all and (min-width:718px) and (max-width:900px) {
   .pile-form {
-    width: 70vh;
+    width: 55vh;
+    margin-right: 3rem;
   }
 
   .title-input-container input, .folder-input-container select {

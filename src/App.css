@@ -4979,7 +4979,7 @@ div.item-component-buttons span {
   
   .cart-button {
     grid-column: 9;
-    margin-right: 2rem;
+    margin: 0 1rem 0 4rem;
   }
 
   .notification-link {
@@ -4999,8 +4999,9 @@ div.item-component-buttons span {
   .languageSelector {
     grid-column: 3;
     justify-self: start;
-    margin: 0 0.8rem;
+    margin: 0 1rem;
     text-transform: uppercase;
+    /* width: 6vh; */
   }
 
   /* Cart */
@@ -5187,7 +5188,8 @@ div.item-component-buttons span {
 /* Create Pile Page Responsiveness */
 @media all and (min-width:718px) and (max-width:900px) {
   .pile-form {
-    width: 70vh;
+    width: 55vh;
+    margin-left: 2rem;
   }
 
   .title-input-container input, .folder-input-container select {

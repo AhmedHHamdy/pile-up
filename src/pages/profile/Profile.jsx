@@ -6,11 +6,19 @@ import { AiFillCloseCircle } from "react-icons/ai"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from "react-i18next"
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import { useAuth } from "../../context/AuthProvider";
 
 export default function Profile() {
   const [passwordFormOpen, setPasswordFormOpen] = useState(false)
 
   const { t } = useTranslation()
+
+  const { token } = useAuth()
+
+  const [loadingStatus, setLoadingStatus] = useState(true)
+  const [error, setError] = useState(null)
 
   const openPasswordForm = () => {
     setPasswordFormOpen(true)
@@ -21,8 +29,20 @@ export default function Profile() {
   }
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/profile`)
-          .then(res => setFormData(res.data.data))
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/profile`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+          })
+          .then(res => {
+            setLoadingStatus(false)
+            setFormData(res.data.data)
+          })
+          .catch(err => {
+            setLoadingStatus(false)
+            console.log(err); // Log any errors that occur
+            setError(err.message)
+          })
   }, [])
 
   // const [formData, setFormData] = useState({
@@ -132,6 +152,22 @@ export default function Profile() {
         // setErrMsg(err.response.data.message)
       });
   }
+
+
+  if (loadingStatus) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent:"center", gridColumn: "8", alignSelf: "center", marginTop: "3rem" }}>
+        <CircularProgress color="success"  />
+      </Box>
+    )
+  }
+
+  if (error) {
+    return (
+      <h1 style={{gridColumn: "2/-1", textAlign: "center" }}>{error} <br/> Please Refresh</h1>
+    )
+  }
+
 
   return (
       <section className="profile-container">
