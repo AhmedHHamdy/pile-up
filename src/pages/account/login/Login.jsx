@@ -60,14 +60,13 @@ export default function Login() {
       }
 
     } catch (err) {
-      if (!err.response) {
-        setErrMsg("No Server Response")
-      } else if (err.response.status == 400) {
-        setErrMsg('Missing Username or Password')
-      } else if (err.response.status == 401) {
-        setErrMsg('Unauthorized')
+      console.log(err.response.data.message)
+      if (err.response.data.message == "الحقل اسم المُستخدم غير موجود") {
+        setErrMsg("Wrong Password or Email")
+      } else if (err.response.data.message == "يجب أن يكون طول نص كلمة المرور على الأقل 6 حروفٍ/حرفًا") {
+        setErrMsg('The length of the password must be at least 6 characters')
       } else {
-        setErrMsg('Wrong Password or Email')
+        setErrMsg(err.response.data.message)
       }
       errRef.current.focus()
     }
@@ -88,7 +87,7 @@ export default function Login() {
         
         <form className="login-section-form" onSubmit={handleSubmit}>
           <label htmlFor="userName">{t("Email")}</label>
-          <input type="text" name="username" id="userName" onChange={handleChange} ref={userRef} value={formData.username} required />
+          <input type="email" name="username" id="userName" onChange={handleChange} ref={userRef} value={formData.username} required />
 
           <label htmlFor="password">{t("Password")}</label>
           <input type="password" name="password" id="password" onChange={handleChange} value={formData.password} required />

@@ -75,7 +75,7 @@ export default function Signup() {
     try {
 
       if (!validPassword) {
-        setErrMsg('Password does not meet the requirements')
+        setErrMsg('Password: 8-24 chars, at least 1 lowercase, 1 uppercase, 1 digit.')
         return
       }
 
@@ -106,7 +106,13 @@ export default function Signup() {
 
     } catch (err) {
       console.error(err.response.data.message);
-      setErrMsg(err.response.data.message)
+      if (err.response.data.message == "قيمة الحقل الهاتف مُستخدمة من قبل") {
+        setErrMsg("The phone value has already been used before.")
+      } else if (err.response.data.message == "قيمة الحقل البريد الالكتروني مُستخدمة من قبل") {
+        setErrMsg("The Email value has already been used before.")
+      } else {
+        setErrMsg(err.response.data.message)
+      }
     }
   }
 
