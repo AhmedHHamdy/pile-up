@@ -65,6 +65,8 @@ export default function Login() {
         setErrMsg("Wrong Password or Email")
       } else if (err.response.data.message == "يجب أن يكون طول نص كلمة المرور على الأقل 6 حروفٍ/حرفًا") {
         setErrMsg('The length of the password must be at least 6 characters')
+      } else if (err.response.data.message == "كلمة المرور غير صحيحة") {
+        setErrMsg("Wrong Password or Email")
       } else {
         setErrMsg(err.response.data.message)
       }
