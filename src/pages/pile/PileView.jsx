@@ -197,7 +197,8 @@ export default function PileView() {
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to="." end>{t("Items")}</NavLink>
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to="share">{t("Share")}</NavLink>
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to="managers">{t("Managers")}</NavLink>
-            <NavLink style={({isActive}) => isActive ? activeStyle : null} to="reports">{t("Reports")}</NavLink>
+            {/* <NavLink style={({isActive}) => isActive ? activeStyle : null} to="reports">{t("Reports")}</NavLink> */}
+            <NavLink style={({isActive}) => isActive ? activeStyle : null} to="messages">{t("Messages")}</NavLink>
           </div>
       </div>
 

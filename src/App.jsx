@@ -23,6 +23,7 @@ import Profile from './pages/profile/Profile'
 import SendResetCode from './pages/account/forgot/SendResetCode'
 import CartPage from './pages/cart/CartPage'
 import NotFound from './pages/404'
+import MessagesView from './pages/pile/pile-details/MessagesView'
 
 
 function App() {
@@ -44,7 +45,8 @@ function App() {
               <Route index element={<ItemsView />} />
               <Route path='share' element={<ShareView />} />
               <Route path='managers' element={<ManagersView />} />
-              <Route path='reports' element={<ReportsView />} />
+              {/* <Route path='reports' element={<ReportsView />} /> */}
+              <Route path='messages' element={<MessagesView />} />
             </Route>
 
             
