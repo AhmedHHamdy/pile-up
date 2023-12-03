@@ -17,6 +17,9 @@ export default function Profile() {
 
   const { token } = useAuth()
 
+  const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/
+  const [validPassword, setValidPassword] = useState(false);
+
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
 
@@ -77,11 +80,16 @@ export default function Profile() {
         [name]: value
       }
     })
+
+    if (name === "password") {
+      const isPasswordValid = PWD_REGEX.test(value);
+      setValidPassword(isPasswordValid);
+    }
   }
 
   function handlePasswordFormSubmit(event) {
     event.preventDefault()
-    if (formPassword.password == formPassword.password_confirmation) {
+    if (formPassword.password == formPassword.password_confirmation && validPassword) {
       axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/profile/update-password`, formPassword)
           .then(res => {
             console.log(res)
@@ -98,7 +106,7 @@ export default function Profile() {
             toast.error(err.message)
           })
     } else {
-      toast.error("Please make sure your passwords match")
+      toast.error("Please make sure your passwords match, and it follows the password change requirements (Password: 8-24 chars, at least 1 lowercase, 1 uppercase, 1 digit.)")
     }
   }
 
