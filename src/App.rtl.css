@@ -1211,7 +1211,7 @@ main {
   background: #FAD4CBright 4 top 50%D;
   position: absolute;
   z-index: 0;
-  width: 93vh;
+  width: 50vh;
   height: 12vh;
   bottom: 220px;
   border-top-left-radius: 10rem;
@@ -1389,7 +1389,7 @@ main {
   background: #FAD4CBright 4 top 50%D;
   position: absolute;
   z-index: 0;
-  width: 120.5vh;
+  width: 80.5vh;
   height: 14vh;
   top: 100px;
   right: -20vh;
