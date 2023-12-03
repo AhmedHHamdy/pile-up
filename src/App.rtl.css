@@ -427,6 +427,12 @@ header > svg {
   height: 50vh;
   overflow-y: auto;
   margin-top: 0.7rem;
+  position: relative;
+}
+
+[dir = "rtl"] .create-folder-container .menu-container {
+  position: absolute;
+  left: 1rem;
 }
 
 .sort-piles-by-section {
