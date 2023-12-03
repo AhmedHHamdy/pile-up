@@ -2545,7 +2545,7 @@ main {
   padding: 1rem 1.1rem;
 }
 
-.pile-container .pileview-container-nav a:last-child {
+[dir = "ltr"] .pile-container .pileview-container-nav a:last-child {
   margin-right: 1.6rem;
 }
 
@@ -5341,6 +5341,10 @@ div.item-component-buttons span {
 
   .category-form .category {
     margin-bottom: 21rem;
+  }
+
+  .table-container {
+    overflow-x: auto;
   }
 }
 

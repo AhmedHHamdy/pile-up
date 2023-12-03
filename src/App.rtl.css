@@ -2578,7 +2578,7 @@ main {
   padding: 1rem 1.1rem;
 }
 
-.pile-container .pileview-container-nav a:last-child {
+[dir = "rtl"] .pile-container .pileview-container-nav a:last-child {
   margin-left: 1.6rem;
 }
 
@@ -5668,9 +5668,9 @@ div.item-component-buttons span {
     gap: 1rem;
   }
 
-  .pile-container .pileview-container-nav a:last-child {
-    margin-left: 0;
-  }
+[dir = "rtl"] .pile-container .pileview-container-nav a:last-child {
+  margin-left: 1.6rem;
+}
 
   .items-buttons-container .items-create-buttons button:first-of-type {
     grid-column: 1/9;
