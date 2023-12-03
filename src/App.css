@@ -831,13 +831,13 @@ header > svg {
    height: 25vh;
 }
 
-  .upload-image-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1rem;
-  }
+.upload-image-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
 
 
 .form-buttons {
@@ -2734,7 +2734,7 @@ font-weight: 500;
   border-radius: 0.3rem;
 }
 
-.item-starting-price-input-container-input {
+[dir = "ltr"] .item-starting-price-input-container-input {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -2743,7 +2743,7 @@ font-weight: 500;
   margin-left: 3rem;
 }
 
-.item-starting-price-input-container-input div {
+[dir = "ltr"] .item-starting-price-input-container-input div {
   background: #CACACA;
   color: #1A181B;
   padding: 0.5rem 0.3rem;
@@ -2754,7 +2754,7 @@ font-weight: 500;
 }
 
 
-.item-starting-price-input-container-input input {
+[dir = "ltr"] .item-starting-price-input-container-input input {
   border-radius: 0.4rem;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
@@ -5905,6 +5905,44 @@ div.item-component-buttons span {
 scrollbar-color: #333 #f1f1f1;  */
 
 
+
+/* Category Styling */
+
+.category-list-container-item {
+  border: 1px solid #CCCCCC;
+  padding: 0rem 0rem;
+  border-radius: 0.4rem;
+}
+
+.category-list-container-item .category-name-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #CCCCCC;
+  padding: 0rem 1rem;
+  /* background: #fcf6f6; */
+  font-family: inter;
+  border-radius: 0.4rem;
+}
+
+.category-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.category-buttons-container button {
+  background: none;
+  border: none;
+  color: #707070;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .button {
   background: #EF6C4D!important;
 }
@@ -5978,7 +6016,9 @@ scrollbar-color: #333 #f1f1f1;  */
   /* text-transform: capitalize; */
 }
 
-
+.category-form .category {
+  margin-bottom: 18rem!important;
+}
 
 tr {
   /* height: 2vh; */

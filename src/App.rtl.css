@@ -795,6 +795,20 @@ header > svg {
   margin-bottom: 1rem;
 }
 
+
+[dir = "rtl"] .MuiBox-root {
+  margin-left: 3rem;
+}
+
+[dir = "rtl"] .from-elements-container .input-banner-container {
+  padding-left: 0!important;
+  padding-right: 2rem!important;
+}
+
+[dir = "rtl"] .custom-file-upload {
+  padding-right: 2rem!important;
+}
+
 [dir = "rtl"] .from-elements-container .title-input-container  {
   grid-row: 2;
   grid-column: 1/8;
@@ -2753,7 +2767,7 @@ font-weight: 500;
   border-radius: 0.3rem;
 }
 
-.item-starting-price-input-container-input {
+[dir = "rtl"] .item-starting-price-input-container-input {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -2762,7 +2776,7 @@ font-weight: 500;
   margin-right: 3rem;
 }
 
-.item-starting-price-input-container-input div {
+[dir = "rtl"] .item-starting-price-input-container-input div {
   background: #CACACA;
   color: #1A181B;
   padding: 0.5rem 0.3rem;
@@ -2773,7 +2787,7 @@ font-weight: 500;
 }
 
 
-.item-starting-price-input-container-input input {
+[dir = "rtl"] .item-starting-price-input-container-input input {
   border-radius: 0.4rem;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;

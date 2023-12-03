@@ -18,10 +18,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularWithValueLabel from "../../../components/CircularProgressWithLabel"
 import { useTranslation } from "react-i18next";
+import Category from "../../../components/Category";
 
 export default function ItemsView() {
   const [value, setValue] = useState('');
   const { token } = useAuth()
+
+  const [categoryList, setCategoryList] = useState([])
 
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
@@ -260,6 +263,25 @@ export default function ItemsView() {
   //   }
   // }, [isCategoryFormVisible])
 
+  
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/items/list?pile_id=${pileData.id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(res => {
+      setLoadingStatus(false)
+      console.log(res)
+      setItemData(res.data.data)
+    })
+    .catch(err => {
+      console.log(err)
+      setError(err.message)
+    })
+  }, [])
+
 
   const itemsElements = itemsData.map((item, i) => {
     return (<PileItem key={i} name={item.name_en} price={item.price} id={item.id} image={item.image} />)
@@ -392,8 +414,10 @@ export default function ItemsView() {
       {isCategoryFormVisible && (
         <section className="modal-overlay item-form-container">
           <div className="modal item-form category-form" ref={modalCategoryRef}>
-                <h1>{t("Add Category")}</h1>
-                <button className="close-button" type="button" onClick={closeCategoryForm}><AiFillCloseCircle /></button>
+                <section>
+                  <h1>{t("Add Category")}</h1>
+                  <button className="close-button" type="button" onClick={closeCategoryForm}><AiFillCloseCircle /></button>
+                </section>
                 <div className="form-container">
                   <form>
                     <div className="from-elements-container">
