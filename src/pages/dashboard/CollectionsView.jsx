@@ -94,9 +94,9 @@ export default function FolderView() {
 
 
   const piles = folderId ? sortingPile.sort === "name" ? folderId.piles.sort((a, b) => a["name_en"].localeCompare(b["name_en"])).map((pile, i) => (
-    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} image={pile["image"]} status={pile.status} folderId={folderChange} />
+    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} image={pile["image"]} collected={pile.collected} status={pile.status} folderId={folderChange} />
   )) : folderId.piles.sort((a, b) => a["event_date"].split('T')[0].localeCompare(b["event_date"].split('T')[0])).map((pile, i) => (
-    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} image={pile["image"]} status={pile.status} folderId={folderChange} />
+    <Pile key={i} name={pile.name_ar} updated={pile.updated_at.split('T')[0]} total="2500" id={pile.id} image={pile["image"]} collected={pile.collected} status={pile.status} folderId={folderChange} />
   )) : null;
 
 

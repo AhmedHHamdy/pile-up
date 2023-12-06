@@ -36,7 +36,7 @@ export default function Pile(props) {
         <div className="pile-info">
           <h3>{props.name} {props.status == "closed" ? `- “${props.status}”` : ''}</h3>
           <h4 className="updated-data">Updated: <span className="updated-data-span">{props.updated}</span></h4>
-          <h4 className="collected-data">{t("Collected")}: <span className="collected-data-total"> {props.total} {t("EGP")}</span></h4>
+          <h4 className="collected-data">{t("Collected")}: <span className="collected-data-total"> {props.collected} {t("EGP")}</span></h4>
         </div>
 
         <div className="pile-buttons">
