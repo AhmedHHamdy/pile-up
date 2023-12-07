@@ -64,7 +64,7 @@ header .link-img-logo {
 .dashboard-link {
   grid-column: 7;
   grid-row: 1;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .dashboard-link svg {
@@ -109,20 +109,27 @@ header .link-img-logo {
 .signup-link > svg {
   font-size: 1.2rem;
   margin-right: 0.5rem;
+  display: none;
 }
 
 .login-link > svg {
   font-size: 1.2rem;
   margin-right: 0.5rem;
+  display: none;
 }
 
 .signup-link {
-  grid-column: 12;
+  grid-column: 11;
+  grid-row: 1;
+  font-size: 1rem;
+  justify-self: end;
 }
 
 .login-link {
-  grid-column: 11;
+  grid-column: 10;
   grid-row: 1;
+  font-size: 1rem;
+  justify-self: end;
 }
 
 .logout-link {
@@ -1082,7 +1089,7 @@ main {
   justify-content: center;
   color: #FFFFFF;
   border-radius: 0.1rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 [dir = "rtl"] .first-section-bg {
@@ -1586,7 +1593,7 @@ main {
   }
   
   .dashboard-link {
-    margin-right: 1rem;
+    margin-right: 0rem;
   }
   
   
@@ -4468,7 +4475,7 @@ div.item-component-buttons span {
   
     .dashboard-link {
       grid-column:7;
-      margin-right: 1rem;
+      margin-right: 0rem;
     }
   
     .vendors-link {
@@ -4490,6 +4497,14 @@ div.item-component-buttons span {
       justify-self: end;
       grid-row: 1;
     }
+
+    /* .login-link {
+      font-size: 0.9rem;
+    }
+
+    .signup-link {
+      font-size: 0.9rem;
+    } */
 }
 
 /* Not Found Page */
@@ -4526,6 +4541,10 @@ div.item-component-buttons span {
   justify-self: end;
   font-family: "Cairo", inter;
   grid-column:12;
+}
+
+.languageSelector option {
+  font-family: "Cairo", inter;
 }
 
 .languageSelector:focus {
@@ -4629,6 +4648,13 @@ div.item-component-buttons span {
   }
 }
 
+@media all and (min-width:900px) and (max-width:1000px) {
+  .dashboard-link {
+    margin-right: 1rem;
+  }
+}
+
+
 
 /* Navigation Header */
 @media all and (min-width:900px) and (max-width:1124px) {
@@ -4638,6 +4664,7 @@ div.item-component-buttons span {
 
   .dashboard-link {
     grid-column:6;
+  
   }
 
   .vendors-link {
@@ -4674,6 +4701,7 @@ div.item-component-buttons span {
 
   .dashboard-link {
     grid-column: 6;
+    margin-right: 1rem;
   }
 
   .vendors-link {

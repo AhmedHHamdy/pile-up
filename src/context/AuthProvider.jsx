@@ -1,27 +1,28 @@
 import { createContext, useState, useContext, useEffect, useMemo } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   // State to hold the authentication token
-  const [token, setToken_] = useState(localStorage.getItem("token"));
-  // const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [token, setToken_] = useState(Cookies.get("token")); 
 
   // Function to set the authentication token
   const setToken = (newToken) => {
+    console.log(newToken)
     setToken_(newToken);
+    if (newToken === undefined) {
+      return;
+    }
+    Cookies.set("token", newToken); 
   };
 
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-      localStorage.setItem('token',token);
-      // setIsAuthenticated(true)
     } else {
       delete axios.defaults.headers.common["Authorization"];
-      localStorage.removeItem('token')
-      // setIsAuthenticated(true)
     }
   }, [token]);
 

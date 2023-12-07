@@ -97,22 +97,27 @@ header .link-img-logo {
 }
 
 .signup-link > svg {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-left: 0.5rem;
+  display: none;
 }
 
 .login-link > svg {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-left: 0.5rem;
+  display: none;
 }
 
 .signup-link {
-  grid-column: 12;
+  grid-column: 11;
+  grid-row: 1;
+  justify-self: end;
 }
 
 .login-link {
-  grid-column: 11;
+  grid-column: 10;
   grid-row: 1;
+  justify-self: end;
 }
 
 .logout-link {
@@ -1047,7 +1052,7 @@ main {
 .first-section-info a {
   grid-row: 5;
   grid-column: 1/4;
-  height: 5vh;;
+  height: 5vh;
   text-decoration: none;
   background: #EF6C4D;
   text-align: center;
@@ -4490,6 +4495,10 @@ div.item-component-buttons span {
   grid-column:12;
 }
 
+.languageSelector option {
+  font-family: poppins, inter;
+}
+
 .languageSelector:focus {
   outline: 2px solid #03BCA4; /* You can customize the color and style */
 }
@@ -4512,7 +4521,7 @@ div.item-component-buttons span {
   /* CollectionView */
 
   .folder-creation-section {
-    width: 35vh;
+    width: 20rem;
     grid-column: 1/2;
   }
 
@@ -4676,7 +4685,7 @@ div.item-component-buttons span {
   /* CollectionView */
 
   .folder-creation-section {
-    width: 25vh;
+    width: 15rem;
     grid-column: 1/2;
   }
 
@@ -4805,7 +4814,7 @@ div.item-component-buttons span {
     margin-right: 1.5rem;
   }
 
-  .menu-container {
+  [dir = "ltr"] .menu-container {
     right: 1rem;
   }
 
@@ -5004,7 +5013,7 @@ div.item-component-buttons span {
     justify-self: start;
   }
 
-  .menu-container {
+  [dir = "ltr"] .menu-container {
     right: 1rem;
   }
 

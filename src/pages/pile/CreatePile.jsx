@@ -171,7 +171,7 @@ export default function CreatePile() {
                   <label for="file-input" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> {t("Upload Image")} <span style={{ color: "#EF6C4D" }}>*</span></label>
                   <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image"  type="file" name="file-input" onChange={handleFileChange} required />
                 </section>
-                 <CircularWithValueLabel value={uploadProgress} />
+                 {uploadProgress == 0 && <CircularWithValueLabel value={uploadProgress} />}
               </div>
 
               <div className="title-input-container">
