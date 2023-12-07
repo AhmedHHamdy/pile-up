@@ -1,7 +1,6 @@
 import { useState } from "react";
 import i18n from "../i18n"
 import { useTranslation } from "react-i18next";
-import Flag from 'react-world-flags'
 
 const LanguageSelector = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language) // i18n.language contains the language assigned to lng in i18n.js file.

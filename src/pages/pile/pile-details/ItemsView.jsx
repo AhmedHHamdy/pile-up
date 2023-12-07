@@ -332,15 +332,17 @@ export default function ItemsView() {
         <section className="modal-overlay item-form-container">
           <ToastContainer />
           <div className="modal item-form" ref={modalRef}>
-                <h1>{t("Add Item")}</h1>
-                <button className="close-button" type="button" onClick={closeForm}><AiFillCloseCircle /></button>
+                <section className="add-items-top-nav">
+                  <h1>{t("Add Item")}</h1>
+                  <button className="close-button" type="button" onClick={closeForm}><AiFillCloseCircle /></button>
+                </section>
                 <div className="form-container">
                   <form onSubmit={handleCreateItemSubmit}>
                     <div className="from-elements-container">
-                    <div className="input-banner-container" style={{display: "flex", flexDirection: "row", gap: "0.8rem", marginBottom: "1rem", justifyContent: "space-between", alignItems: "flex-start", paddingLeft: "2rem"}}>
+                    <div className="input-banner-container">
                       <section className="upload-image-section">
-                        <label for="image" class="custom-file-upload" style={{ paddingLeft: "2rem" }}> {t("Upload Image")} <span style={{ color: "#EF6C4D" }}>*</span> </label>
-                        <input className="input-banner-container" style={{ paddingLeft: "2rem" }} id="image" type="file" name="image" onChange={handleFileChange}  required/>
+                        <label for="image" class="custom-file-upload"> {t("Upload Image")} <span style={{ color: "#EF6C4D" }}>*</span> </label>
+                        <input className="input-banner-container" id="image" type="file" name="image" onChange={handleFileChange}  required/>
                       </section>
                       <CircularWithValueLabel value={uploadProgress} />
                     </div>
