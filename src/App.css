@@ -48,10 +48,12 @@ header .link-img-logo {
 
 .home-link {
  grid-column: 6;
+ grid-row: 1;
 }
 
 .dashboard-link {
   grid-column: 7;
+  grid-row: 1;
 }
 
 .dashboard-link svg {
@@ -60,6 +62,7 @@ header .link-img-logo {
 
 .vendors-link {
   grid-column: 8;
+  grid-row: 1;
 }
 
 .profile-link, .notification-link {
@@ -75,8 +78,10 @@ header .link-img-logo {
 }
 
 .notification-link {
-  grid-column: 11;
-  justify-self: center;
+  grid-column: 10;
+  justify-self: end;
+  grid-row: 1;
+  align-self: center;
 }
 
 .signup-link, .login-link {
@@ -135,8 +140,8 @@ header .link-img-logo {
   align-self: center;
   padding: 0.6rem 0.2rem;
   border-radius: 0.4rem;
-  grid-column: 10;
-  justify-self: start;
+  grid-column: 9;
+  justify-self: end;
   grid-row: 1;
   cursor: pointer;
   width: 7vh;
@@ -4066,9 +4071,10 @@ tfoot {
 }
 
 .menu {
-  grid-column: 12;
+  grid-column: 11;
   align-self: center;
   justify-self: end;
+  grid-row: 1;
 }
 
 .menu-button {
@@ -4432,8 +4438,8 @@ div.item-component-buttons span {
     }
     
     .cart-button {
-      grid-column: 11;
-      margin-right: 2rem;
+      grid-column: 10;
+      margin-right: 0rem;
       justify-self: end;
     }
   
@@ -4442,7 +4448,7 @@ div.item-component-buttons span {
     }
   
     .menu {
-      grid-column: 12;
+      grid-column: 11;
       justify-self: end;
       grid-row: 1;
     }
@@ -4479,9 +4485,9 @@ div.item-component-buttons span {
   border-radius: 0.3rem;
   padding: 0.45rem 0.5rem 0.45rem 0.5rem;
   align-self: center;
-  justify-self: center;
+  justify-self: end;
   font-family: poppins, inter;
-  grid-column:3;
+  grid-column:12;
 }
 
 .languageSelector:focus {
@@ -4985,7 +4991,7 @@ div.item-component-buttons span {
   
   .cart-button {
     grid-column: 9;
-    margin: 0 1rem 0 4rem;
+    margin: 0 1rem 0 0rem;
   }
 
   .notification-link {

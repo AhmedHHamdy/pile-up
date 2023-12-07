@@ -19,7 +19,6 @@ import { useTranslation } from "react-i18next";
 // import '../App.rtl.css?inline'; // Import styles as a module
 
 
-
 export default function Header() {
 
   const { i18n, t } = useTranslation()
@@ -151,8 +150,8 @@ export default function Header() {
 
   return (
     <header>
-      <a className="link-img-logo" href="/"><img src={pileUp_logo} alt="PileUp-logo" /></a>
-
+      <Link className="link-img-logo" to="/"><img src={pileUp_logo} alt="PileUp-logo" /></Link>
+    
       <LanguageSelector />
 
       <Link className="home-link" to="/">{t("Home")}</Link>

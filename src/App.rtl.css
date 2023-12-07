@@ -9,13 +9,15 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Cairo', sans-serif;
   background: #F8F8F8;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-weight: 600;
 }
 
 button, a {
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 /* Header component */
@@ -56,10 +58,13 @@ header .link-img-logo {
 
 .home-link {
  grid-column: 6;
+ grid-row: 1;
 }
 
 .dashboard-link {
   grid-column: 7;
+  grid-row: 1;
+  margin-right: 1rem;
 }
 
 .dashboard-link svg {
@@ -68,6 +73,7 @@ header .link-img-logo {
 
 .vendors-link {
   grid-column: 8;
+  grid-row: 1;
 }
 
 .profile-link, .notification-link {
@@ -78,13 +84,14 @@ header .link-img-logo {
 }
 
 .profile-link {
-  grid-column: 12;
+  grid-column: 11;
   grid-row: 1;
 }
 
 .notification-link {
-  grid-column: 11;
-  justify-self: center;
+  grid-column: 10;
+  justify-self: end;
+  grid-row: 1;
 }
 
 .signup-link, .login-link {
@@ -143,8 +150,8 @@ header .link-img-logo {
   align-self: center;
   padding: 0.6rem 0.2rem;
   border-radius: 0.4rem;
-  grid-column: 10;
-  justify-self: start;
+  grid-column: 9;
+  justify-self: end;
   grid-row: 1;
   cursor: pointer;
   width: 7vh;
@@ -233,7 +240,7 @@ header .link-img-logo {
   margin-top: 2rem;
   cursor: pointer;
   border: 0;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .cart-navigation button {
@@ -245,7 +252,7 @@ header .link-img-logo {
   font-size: 1rem;
   color: #1A181B;
   cursor: pointer;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
   border: 2px solid #ABABAB;
 }
 
@@ -338,7 +345,7 @@ header > svg {
   border: 0;
   padding: 0.8rem 3.6rem;
   border-radius: 0.7rem;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .folders-section {
@@ -382,7 +389,7 @@ header > svg {
   padding: 1rem 1rem;
   width: 35vh;
   border-radius: 0.4rem;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 
@@ -407,7 +414,7 @@ header > svg {
   font-size: 1.5rem;
   font-weight: 400;
   text-transform: capitalize;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .folder-container-top .folder-select-input-container {
@@ -443,17 +450,17 @@ header > svg {
 }
 
 .sort-piles-by-section label {
-  font-family: "poppins", inter;
+  font-family: "Cairo", inter;
 }
 .sort-piles-by-section select {
   padding: 0.2rem 0.4rem 0.2rem 0;
   border-radius: 0.2rem;
   border: 1px solid #CCCCCC;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .sort-piles-by-section select option {
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 /* Folder component Styling*/
@@ -478,7 +485,7 @@ header > svg {
   font-size: 1.1rem;
   font-weight: 400;
   text-transform: capitalize;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .folder > svg {
@@ -604,7 +611,7 @@ header > svg {
   justify-content: center;
   grid-column: -1;
   gap: 0.5rem;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .pile-buttons button {
@@ -642,19 +649,19 @@ header > svg {
 .pile-container .pile-info h3 {
   text-transform: capitalize;
   color: #008A78;
-  font-family: "poppins", inter;
+  font-family: "Cairo", inter;
   font-weight: 500;
   font-size: 1.3rem;
 }
 
 .pile-container .pile-info .updated-data {
   font-weight: 400;
-  font-family: "poppins", inter;
+  font-family: "Cairo", inter;
 }
 
 .pile-container .pile-info .collected-data {
   font-weight: 600;
-  font-family: inter;
+  font-family: "Cairo";
 }
 
 .pile-container .pile-info div  {
@@ -685,14 +692,14 @@ header > svg {
 }
 
 .no-pile-view div > h2 {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1.2rem;
   margin: 0;
   text-align: center;
 }
 
 .no-pile-view div > p {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1.2rem;
   color: #CACACA;
   margin: 0;
@@ -748,7 +755,7 @@ header > svg {
   border: 0;
   border-radius: 0.6rem;
   cursor: pointer;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 
@@ -1040,7 +1047,7 @@ main {
 .first-section-info h1 {
   font-size: 3.1rem;
   color: #03BCA4;
-  font-family: "Poppins";
+  font-family: "Cairo";
   font-weight: 600;
   grid-row: 1;
   grid-column: 1/-1;
@@ -1051,14 +1058,14 @@ main {
 .first-section-info h1 span {
   font-size: 3.4rem;
   color: #03BCA4;
-  font-family: "Poppins";
+  font-family: "Cairo";
   font-weight: 900;
 }
 
 .first-section-info p {
   grid-row: 3;
   grid-column: 1/-1;
-  font-family: "Poppins";
+  font-family: "Cairo";
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
@@ -1111,7 +1118,7 @@ main {
 
 .second-section-info h2 {
   font-size: 3.2rem;
-  font-family: "Poppins";
+  font-family: "Cairo";
   grid-column: 1/12;
   margin-bottom: 0;
 }
@@ -1119,7 +1126,7 @@ main {
 .second-section-info p {
   grid-column: 1/2;
   font-size: 1.2rem;
-  font-family: "Poppins";
+  font-family: "Cairo";
   grid-column: 1/13;
   margin: 2.4rem 0 1rem 0;
 }
@@ -1168,7 +1175,7 @@ main {
 
 .third-section-info h2 {
   font-size: 3.2rem;
-  font-family: "Poppins";
+  font-family: "Cairo";
   grid-column: 1/12;
   margin-bottom: 0;
 }
@@ -1176,7 +1183,7 @@ main {
 .third-section-info p {
   grid-column: 1/2;
   font-size: 1.2rem;
-  font-family: "Poppins";
+  font-family: "Cairo";
   grid-column: 1/12;
   margin: 2.4rem 0 1rem 0;
 }
@@ -1206,7 +1213,7 @@ main {
 
 .fourth-section h2 {
   font-size: 3.2rem;
-  font-family: "Poppins";
+  font-family: "Cairo";
   font-weight: 600;
   margin: 0 2rem;
   grid-column: 5/-1;
@@ -1278,7 +1285,7 @@ main {
 
 .fifth-section h2 {
   font-size: 3.8rem;
-  font-family: "Poppins";
+  font-family: "Cairo";
   font-weight: 600;
   grid-column: 1/6;
   margin: 0;
@@ -1286,7 +1293,7 @@ main {
 
 .fifth-section p {
   font-size: 1.3rem;
-  font-family: "Poppins";
+  font-family: "Cairo";
   grid-column: 7/13;
   margin: 1.2rem 0 0 0;
 }
@@ -1303,7 +1310,7 @@ main {
 .sixth-section h1 {
   grid-column: 5/7;
   font-size: 3.5rem;
-  font-family: Poppins;
+  font-family: "Cairo";
   font-weight: 600;
   position: relative;
   bottom: 91px;
@@ -1311,7 +1318,7 @@ main {
 
 .sixth-section h1 span {
   font-size: 3.5rem;
-  font-family: "Poppins";
+  font-family: "Cairo";
   font-weight: 900;
 }
 
@@ -1352,7 +1359,7 @@ main {
 
 .sixth-section-carousel div p {
   font-weight: 400;
-  font-family: "Poppins";
+  font-family: "Cairo";
   line-height: 1.5;
 }
 
@@ -1386,7 +1393,7 @@ main {
 .seventh-section h2 {
   grid-column: 4/-1;
   font-size: 3rem;
-  font-family: Poppins;
+  font-family: "Cairo";
   font-weight: 600;
   z-index: 1;
 }
@@ -1437,7 +1444,7 @@ main {
   margin: 0;
   align-self: center;
   font: 1.5rem;
-  font-family: Poppins;
+  font-family: "Cairo";
   font-weight: 600;
   padding-bottom: 1rem;
 }
@@ -1451,7 +1458,7 @@ main {
 
 .seventh-section-faq .seventh-section-faq-answer  {
   grid-column: 1/-1;
-  font-family: inter;
+  font-family: "Cairo";
   border-radius: 0;
   font-weight: 400;
   border: 0;
@@ -1575,11 +1582,11 @@ main {
   }
 
   .home-link {
-   margin-left: 1rem;
+   /* margin-left: 1rem; */
   }
   
   .dashboard-link {
-    margin-left: 1rem;
+    margin-right: 1rem;
   }
   
   
@@ -2630,7 +2637,7 @@ main {
   border-radius: 0.4rem;
   color: #FFFFFF;
   cursor: pointer;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2994,7 +3001,7 @@ font-weight: 500;
   color: #EF6C4D;
   cursor: pointer;
   background: none;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3016,7 +3023,7 @@ font-weight: 500;
   border-radius: 0.4rem;
   padding: 0.5rem 1rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .items-list-container {
@@ -3057,7 +3064,7 @@ font-weight: 500;
   border: 0;
   cursor: pointer;
   font-size: 1rem;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .pile-item-buttons button:last-of-type {
@@ -3313,7 +3320,7 @@ font-weight: 500;
   color: #FFFFFF;
   border-radius: 0.3rem;
   cursor: pointer;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3331,7 +3338,7 @@ font-weight: 500;
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   padding: 0.5rem 0.7rem 0.5rem 0;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .managers-list-container {
@@ -3483,7 +3490,7 @@ tfoot {
   color: #FFFFFF;
   border-radius: 0.3rem;
   cursor: pointer;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3831,7 +3838,7 @@ tfoot {
 }
 
 .profile-header h1{
-  font-family: "Poppins";
+  font-family: "Cairo";
 }
 
 .profile-form img {
@@ -4103,7 +4110,7 @@ tfoot {
 }
 
 .menu {
-  grid-column: 12;
+  grid-column: 11;
   align-self: center;
   justify-self: end;
 }
@@ -4190,7 +4197,7 @@ tfoot {
 
 .item-cart-image-name h1 {
   text-transform: capitalize;
-  font-family: inter;
+  font-family: "Cairo";
   font-weight: 500;
 }
 
@@ -4456,12 +4463,12 @@ div.item-component-buttons span {
     /* Navigation Header */
     .home-link {
       grid-column:6;
-      margin-left: 1rem;
+      /* margin-left: 1rem; */
     }
   
     .dashboard-link {
       grid-column:7;
-      margin-left: 1rem;
+      margin-right: 1rem;
     }
   
     .vendors-link {
@@ -4469,8 +4476,8 @@ div.item-component-buttons span {
     }
     
     .cart-button {
-      grid-column: 11;
-      margin-left: 2rem;
+      grid-column: 10;
+      margin-left: 0rem;
       justify-self: end;
     }
   
@@ -4479,7 +4486,7 @@ div.item-component-buttons span {
     }
   
     .menu {
-      grid-column: 12;
+      grid-column: 11;
       justify-self: end;
       grid-row: 1;
     }
@@ -4495,7 +4502,7 @@ div.item-component-buttons span {
 
 .not-found-container h1 {
   font-size: 2rem;
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
 }
 
 .not-found-container a {
@@ -4516,9 +4523,9 @@ div.item-component-buttons span {
   border-radius: 0.3rem;
   padding: 0.45rem 0.5rem 0.45rem 0.5rem;
   align-self: center;
-  justify-self: center;
-  font-family: poppins, inter;
-  grid-column:3;
+  justify-self: end;
+  font-family: "Cairo", inter;
+  grid-column:12;
 }
 
 .languageSelector:focus {
@@ -5973,7 +5980,7 @@ scrollbar-color: #333 #f1f1f1;  */
 }
 
 .Add-contact-form form div label {
-  font-family: poppins, inter;
+  font-family: "Cairo", inter;
   width: 22vh;
 }
 
@@ -6012,7 +6019,7 @@ scrollbar-color: #333 #f1f1f1;  */
   /* min-height: 89vh; */
   width: 100%;
   /* table-layout: fixed; */
-  font-family: poppins;
+  font-family: "Cairo";
 }
 
 .table-orders tr:nth-child(even) {
