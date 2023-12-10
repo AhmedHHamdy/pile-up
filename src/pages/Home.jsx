@@ -7,6 +7,7 @@ import helpIcon from "../assets/Help.png"
 import moneyWalletPic from "../assets/pileup-wallet-orange 2.png"
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FaMinus } from "react-icons/fa";
 
 export default function Home() {
   const [openStates, setOpenStates] = useState(Array(4).fill(false)); // 4 items, all initially closed
@@ -26,12 +27,12 @@ export default function Home() {
       items: 4
     },
     desktop: {
-      breakpoint: { max: 1500, min: 1325 },
+      breakpoint: { max: 1500, min: 1001 },
       items: 4
     },
     tablet: {
-      breakpoint: { max: 1324, min: 650 },
-      items: 2
+      breakpoint: { max: 1000, min: 650 },
+      items: 1
     },
     mobile: {
       breakpoint: { max: 500, min: 0 },
@@ -191,7 +192,7 @@ export default function Home() {
         {openStates.map((isOpen, i) => 
             <div className={isOpen ? 'rounded' : null} key={i} onClick={() => handleClick(i)}>
               <h3>Lorem Ipsum ?</h3>
-              <AiOutlinePlus />
+              {isOpen ? <FaMinus className="minus-icon" /> : <AiOutlinePlus />}
               {isOpen && <div className="seventh-section-faq-answer">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               </div>}

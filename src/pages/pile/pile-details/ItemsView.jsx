@@ -375,7 +375,7 @@ export default function ItemsView() {
 
                         <div className="item-price-input-container-input">
                           <div><span>EGP</span></div>
-                          <input type="text" placeholder="500" name="price" value={itemCreateForm.price} onChange={handleCreateItemChange} required/>
+                          <input type="text" placeholder="500" title="Please enter only numeric values" pattern="\d*" name="price" value={itemCreateForm.price} onChange={handleCreateItemChange} required/>
                         </div>        
                       </div>
                     </div>
@@ -383,13 +383,13 @@ export default function ItemsView() {
                     {itemCreateForm.price_type == "any_amount" && <div className="item-starting-price-input-container-input">
                         {/* <label htmlFor="starting_price">Starting Price </label> */}
                         <div><span>EGP</span></div>
-                        <input type="text" placeholder="Starting Price" id="starting_price" name="starting_price" value={itemCreateForm.starting_price} onChange={handleCreateItemChange} required />
+                        <input type="text" placeholder="Starting Price" title="Please enter only numeric values" pattern="\d*" id="starting_price" name="starting_price" value={itemCreateForm.starting_price} onChange={handleCreateItemChange} required />
                     </div>}
 
                     <div className="quantity-status-container">
                       <div className="item-quantity-input-container-input">
                           <label htmlFor="quantity">{t("Quantity")}</label>
-                          <input type="text" placeholder="5" name="quantity" id="quantity" value={itemCreateForm.quantity} onChange={handleCreateItemChange} required />
+                          <input type="text" placeholder="5" pattern="\d*" title="please enter only numeric values" name="quantity" id="quantity" value={itemCreateForm.quantity} onChange={handleCreateItemChange} required />
                       </div>        
     
 
@@ -416,7 +416,7 @@ export default function ItemsView() {
       {isCategoryFormVisible && (
         <section className="modal-overlay item-form-container">
           <div className="modal item-form category-form" ref={modalCategoryRef}>
-                <section>
+                <section className="category-top-nav">
                   <h1>{t("Add Category")}</h1>
                   <button className="close-button" type="button" onClick={closeCategoryForm}><AiFillCloseCircle /></button>
                 </section>

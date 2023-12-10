@@ -187,22 +187,22 @@ export default function ContactsView() {
       <form onSubmit={handleAddContactSubmission}>
         <div>
           <label htmlFor="first_name">{t("First Name")}:</label>
-          <input type="text" name="first_name" id="first_name" placeholder="John" value={addContactForm.first_name} onChange={handleAddContactFormChange} required />
+          <input type="text" name="first_name" id="first_name" placeholder={`${t("First Name")}`} value={addContactForm.first_name} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
           <label htmlFor="last_name">{t("Last Name")}:</label>
-          <input type="text" name="last_name" id="last_name" placeholder="Smith" value={addContactForm.last_name} onChange={handleAddContactFormChange} required />
+          <input type="text" name="last_name" id="last_name" placeholder={`${t("Last Name")}`} value={addContactForm.last_name} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
           <label htmlFor="email" className="email-label">{t("Email")}:</label>
-          <input type="email" name="email" id="email" placeholder="John@Smith.com" value={addContactForm.email} onChange={handleAddContactFormChange} required />
+          <input type="email" name="email" id="email" placeholder={`${t("Email")}`} value={addContactForm.email} onChange={handleAddContactFormChange} required />
         </div>
 
         <div>
           <label htmlFor="phone" className="phone-label">{t("Phone")}:</label>
-          <input type="tel" name="phone" id="phone" placeholder="555 5555 5555" value={addContactForm.phone} onChange={handleAddContactFormChange} required />
+          <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="phone" placeholder="555 5555 5555" value={addContactForm.phone} onChange={handleAddContactFormChange} required />
         </div>
         <button className="add-contact-button">{t("Add")}</button>
       </form>
