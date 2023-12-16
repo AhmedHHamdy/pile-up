@@ -38,9 +38,9 @@
 Pile Up is a crowdfunding platform that enables users to create Piles, each comprising various funding goals and items. Contributors can donate funds to help achieve these goals and obtain the items within the Piles.
 
 <div align="center">
-    <img src="https://ibb.co/RbNssz5" width="300" height="auto"/>
-    <img src="https://ibb.co/M6LMCRj" width="300" height="auto"/>
-    <img src="https://ibb.co/bNsmh9y" width="300" height="auto"/>
+    <img src="./src/assets/Screenshot 2023-12-16 210510.png" />
+    <img src="./src/assets/w.png" />
+    <img src="./src/assets/Screenshot 2023-12-16 210847.png" />
 </div>
 
 
@@ -48,9 +48,6 @@ Pile Up is a crowdfunding platform that enables users to create Piles, each comp
 ### User Dashboard
 Users have access to a personalized dashboard displaying an overview of their Piles, contributions, and invitations. The platform incorporates authentication, a cart system, and a feature for inviting friends to join Piles.
 
-<div align="center">
-    <img src="https://ibb.co/RbNssz5" width="300" height="auto"/>
-</div>  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
